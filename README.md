@@ -2,7 +2,7 @@
 
 A benchmarking suite for GraphQL clients, with focus on their cache implementations.
 
-If you'd like to run them in a browser, there is a built copy hosted at: http://graphql-client-benchmarks.s3-website-us-west-2.amazonaws.com/
+If you'd like to run them in a browser, there is a built copy hosted at: https://convoyinc.github.io/graphql-client-benchmarks/
 
 If you want to run them in node, it is also available as a node module that exposes a bin script that executes the CLI runner.
 
