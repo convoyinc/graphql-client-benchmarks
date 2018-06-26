@@ -13,6 +13,18 @@ parse_version() {
 end_script
 }
 
+write_package_key() {
+  local KEY="${1}"
+  local VALUE="${2}"
+
+  node <<-end_script
+    const fs = require('fs');
+    const packageInfo = JSON.parse(fs.readFileSync('package.json'));
+    packageInfo['${KEY}'] = '${VALUE}';
+    fs.writeFileSync('package.json', JSON.stringify(packageInfo, null, 2));
+end_script
+}
+
 # Make sure we have all tags available
 git fetch origin --tags
 
@@ -37,7 +49,11 @@ if [[ "${PRE}" != "" ]]; then
 fi
 
 echo "Releasing ${NEW_VERSION}…"
-yarn publish --new-version "${NEW_VERSION}"
+write_package_key version "${NEW_VERSION}"
+
+# TODO: https://github.com/yarnpkg/yarn/issues/2717
+# yarn publish --new-version "${NEW_VERSION}"
+npm publish
 
 git tag v${NEW_VERSION} -m "${CIRCLE_BUILD_URL}"
 git push --tags
