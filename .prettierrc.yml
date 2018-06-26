@@ -1,0 +1,13 @@
+printWidth: 110
+tabWidth: 2
+semi: true
+singleQuote: true
+trailingComma: 'all'
+bracketSpacing: true
+arrowParens: 'avoid'
+proseWrap: 'preserve'
+overrides:
+  -
+    files: 'typings/unexpected/**/*.d.ts'
+    options:
+      printWidth: 200
