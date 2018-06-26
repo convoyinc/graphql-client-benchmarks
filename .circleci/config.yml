@@ -27,6 +27,7 @@ jobs:
           paths:
             - .git
             - ~/.ssh
+            - ~/.gitconfig
 
       # Cache node_modules to speed up the build step.
       - restore_cache:
