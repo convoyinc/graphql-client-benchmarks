@@ -1,0 +1,26 @@
+query mostCommentedIssues {
+  organization(login: "facebook") @static {
+    __typename
+    repositories(first: 50) @static {
+      __typename
+      nodes {
+        __typename
+        createdAt
+        homepageUrl
+        issues(first: 50, states: OPEN, orderBy: { field: COMMENTS, direction: DESC }) @static {
+          __typename
+          nodes {
+            __typename
+            createdAt
+            id
+            title
+            comments {
+              __typename
+              totalCount
+            }
+          }
+        }
+      }
+    }
+  }
+}

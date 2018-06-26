@@ -69,7 +69,10 @@ export class Relay extends Client {
   transformRawExample(rawExample: SingleRawExample, schema: string): RelayExample {
     const schemaAst = graphql.buildASTSchema(graphql.parse(schema));
     let context = new graphqlCompiler.CompilerContext(schemaAst);
-    context = context.addAll(graphqlCompiler.Parser.parse(schemaAst, rawExample.operation));
+    // In some queries, we leverage Hermes' @static directive; but Relay doesn't
+    // like unknown directives. Quick hack to remove it.
+    const scrubbedOperation = rawExample.operation.replace(/@static/g, '');
+    context = context.addAll(graphqlCompiler.Parser.parse(schemaAst, scrubbedOperation));
     const artifacts = relayCompiler.compileRelayArtifacts(context, TRANSFORMS) as any[];
 
     const requests = artifacts.filter(a => a.kind !== 'Fragment');
