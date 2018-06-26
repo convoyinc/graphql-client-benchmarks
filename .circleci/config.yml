@@ -52,6 +52,7 @@ jobs:
     <<: *job-common
     steps:
       - restore_cache: *cache-code-and-dependencies
+      - restore_cache: *cache-repository
       - run: git config --global user.email "donvoy@convoy.com"
       - run: git config --global user.name "Don Voy"
       - run: yarn run update-pages
