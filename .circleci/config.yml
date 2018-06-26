@@ -26,6 +26,7 @@ jobs:
           <<: *cache-repository
           paths:
             - .git
+            - ~/.ssh
 
       # Cache node_modules to speed up the build step.
       - restore_cache:

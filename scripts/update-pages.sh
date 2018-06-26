@@ -11,4 +11,4 @@ git clone -b gh-pages https://github.com/convoyinc/graphql-client-benchmarks ./d
 cd ./dist
 git add .
 git commit -m "Built web reporter for ${CURRENT_COMMIT}"
-git push
+git push origin gh-pages
