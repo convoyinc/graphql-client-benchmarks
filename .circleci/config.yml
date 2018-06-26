@@ -1,0 +1,76 @@
+version: 2
+
+aliases:
+  - &job-common
+    docker:
+      - image: circleci/node:8.11.2@sha256:35e25a4f33185fa9be124a08f3466a942efe7ec889c05af40b3718082720a580
+  - &cache-repository
+    key: repository-{{ .Revision }}
+  - &cache-dependencies
+    key: dependencies-{{ checksum "yarn.lock" }}
+  - &cache-code-and-dependencies
+    key: code-and-dependencies-{{ .Revision }}
+
+jobs:
+  build:
+    <<: *job-common
+    steps:
+      # We cache .git metadata to speed up checkouts, and also so that we can
+      # use it later in the workflow when releaseing the package.
+      - restore_cache:
+          keys:
+            - repository-{{ .Revision }}
+            - repository-
+      - checkout
+      - save_cache:
+          <<: *cache-repository
+          paths:
+            - .git
+
+      # Cache node_modules to speed up the build step.
+      - restore_cache:
+          keys:
+            - dependencies-{{ checksum "yarn.lock" }}
+            - dependencies-
+      - run: yarn install --frozen-lockfile
+      - save_cache:
+          <<: *cache-dependencies
+          paths:
+            - node_modules
+
+      - run: yarn run compile-ts
+
+      # Finally, bundle everything up for later steps.
+      - save_cache:
+          <<: *cache-code-and-dependencies
+          paths:
+            - .
+
+  update-pages:
+    <<: *job-common
+    steps:
+      - restore_cache: *cache-code-and-dependencies
+      - run: git config --global user.email "donvoy@convoy.com"
+      - run: git config --global user.name "Don Voy"
+      - run: yarn run update-pages
+
+  release:
+    <<: *job-common
+    steps:
+      - restore_cache: *cache-code-and-dependencies
+      - run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+      - run: git config --global user.email "donvoy@convoy.com"
+      - run: git config --global user.name "Don Voy"
+      - run: yarn run release
+
+workflows:
+  version: 2
+  primary:
+    jobs:
+      - build
+      - update-pages:
+          requires:
+            - build
+      - release:
+          requires:
+            - build

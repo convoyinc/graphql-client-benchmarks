@@ -1,0 +1,16 @@
+# MacOS
+.DS_Store
+
+# Node
+node_modules/
+npm-*.log*
+yarn-*.log*
+
+# TypeScript Sources
+*.ts
+*.tsx
+!*.d.ts
+typings/**/*.d.ts
+
+# Webpack
+dist/

@@ -6,7 +6,7 @@ CURRENT_COMMIT=$(git rev-parse HEAD)
 rm -rf ./dist
 git clone -b gh-pages https://github.com/convoyinc/graphql-client-benchmarks ./dist
 
-./scripts/compile.sh
+./scripts/compile-web.sh
 
 cd ./dist
 git add .

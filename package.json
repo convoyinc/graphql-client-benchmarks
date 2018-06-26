@@ -11,7 +11,8 @@
     "compile-ts": "./scripts/compile-ts.sh",
     "compile-web": "./scripts/compile-web.sh",
     "dev": "./scripts/dev.sh",
-    "update-pages": "./scripts/update-pages.sh"
+    "update-pages": "./scripts/update-pages.sh",
+    "release": "./scripts/release.sh"
   },
   "bin": {
     "graphql-client-benchmarks": "./src/reporters/cli/entry.js"
