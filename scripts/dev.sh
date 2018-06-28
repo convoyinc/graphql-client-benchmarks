@@ -2,5 +2,4 @@
 set -x
 
 webpack-serve \
-  --config ./src/reporters/web/webpack.config.js \
-  --mode production
+  --config ./src/reporters/web/webpack.config.js

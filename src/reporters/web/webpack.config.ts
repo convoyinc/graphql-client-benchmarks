@@ -8,7 +8,7 @@ function assertValidConfiguration(config: webpack.Configuration) {}
 assertValidConfiguration(exports as typeof import('./webpack.config'));
 
 // https://webpack.js.org/concepts/mode/
-export const mode = 'development';
+export const mode = 'production';
 
 // https://webpack.js.org/configuration/entry-context/#context
 export const context = path.resolve(__dirname, '..', '..', '..');
