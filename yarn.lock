@@ -412,9 +412,9 @@ anymatch@^2.0.0:
     micromatch "^3.1.4"
     normalize-path "^2.1.1"
 
-apollo-cache-hermes@^0.5.31-alpha:
-  version "0.5.31-alpha"
-  resolved "https://registry.npmjs.org/apollo-cache-hermes/-/apollo-cache-hermes-0.5.31-alpha.tgz#27016d322e15ad11deaa2b4ce38dabb451121835"
+apollo-cache-hermes@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.npmjs.org/apollo-cache-hermes/-/apollo-cache-hermes-0.6.0.tgz#4e441a681438bddac156ba163ada93429cdcb211"
   dependencies:
     apollo-cache "^1.0.0"
     apollo-utilities "^1.0.0"
