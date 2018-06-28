@@ -99,7 +99,18 @@ function walkSelectionSetForLeaves(
 }
 
 function selectLeaves(random: fastRandom.FastRandomGenerator, leaves: FieldNode[][], selectPercent: number) {
-  const toShuffle = [...leaves];
+  const toKeep = [];
+  const toShuffle = [];
+  for (const leaf of leaves) {
+    const fieldName = leaf[leaf.length - 1].name.value;
+    // To appease Apollo caches, preserve entity identities.
+    if (fieldName === 'id' || fieldName === '__typename') {
+      toKeep.push(leaf);
+    } else {
+      toShuffle.push(leaf);
+    }
+  }
+
   const shuffled = [];
   while (toShuffle.length) {
     const index = Math.floor(random.nextFloat() * toShuffle.length);
@@ -108,7 +119,7 @@ function selectLeaves(random: fastRandom.FastRandomGenerator, leaves: FieldNode[
   }
 
   const toSelect = Math.ceil(selectPercent * leaves.length);
-  return shuffled.slice(0, toSelect);
+  return shuffled.slice(0, toSelect).concat(toKeep);
 }
 
 function selectionSetFromLeaves(leaves: FieldNode[][]): FieldSetNode {
