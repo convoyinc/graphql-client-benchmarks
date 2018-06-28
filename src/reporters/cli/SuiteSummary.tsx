@@ -92,7 +92,7 @@ export class SuiteSummary extends Component<Summary> {
           confidence: {(100 - stats.percentRelativeMarginOfError).toFixed(2)}%
           {'\n'}
           {'\u200b'}
-          count: {stats.iterations} range: {stats.min.toFixed(3)}ms-{stats.max.toFixed(3)}ms
+          count: {stats.iterations} range: {stats.min.toFixed(0)}-{stats.max.toFixed(0)}ms
         </Color>
       </Table.Cell>
     );

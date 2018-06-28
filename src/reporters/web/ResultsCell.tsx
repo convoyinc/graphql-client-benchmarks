@@ -91,7 +91,7 @@ export class ResultsCell extends React.PureComponent<ResultsCellProps> {
         </div>
         <div>confidence: {(100 - stats.percentRelativeMarginOfError).toFixed(2)}%</div>
         <div>
-          count: {stats.iterations} range: {stats.min.toFixed(3)}ms-{stats.max.toFixed(3)}ms
+          count: {stats.iterations} range: {stats.min.toFixed(0)}-{stats.max.toFixed(0)}ms
         </div>
       </React.Fragment>
     );
