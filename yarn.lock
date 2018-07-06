@@ -426,13 +426,13 @@ apollo-cache-hermes@^0.6.1:
     make-error "^1.3.0"
     tslib "^1.9.0"
 
-"apollo-cache-inmemory-beta@npm:apollo-cache-inmemory@1.3.0-beta.3":
-  version "1.3.0-beta.3"
-  resolved "https://registry.npmjs.org/apollo-cache-inmemory/-/apollo-cache-inmemory-1.3.0-beta.3.tgz#74606d64d37eca0772544728450678c2f17cb0c1"
+"apollo-cache-inmemory-beta@npm:apollo-cache-inmemory@1.3.0-beta.4":
+  version "1.3.0-beta.4"
+  resolved "https://registry.npmjs.org/apollo-cache-inmemory/-/apollo-cache-inmemory-1.3.0-beta.4.tgz#874e0de79a95a0d766adadc580bac516c5b30d4e"
   dependencies:
     apollo-cache "^1.1.12"
     apollo-utilities "^1.0.16"
-    optimism "^0.6.4"
+    optimism "^0.6.5"
 
 apollo-cache-inmemory@^1.2.5:
   version "1.2.5"
@@ -3879,9 +3879,9 @@ opn@^5.1.0, opn@^5.3.0:
   dependencies:
     is-wsl "^1.1.0"
 
-optimism@^0.6.4:
-  version "0.6.4"
-  resolved "https://registry.npmjs.org/optimism/-/optimism-0.6.4.tgz#b4eab689e421bdc0ec3e3dcc923dc8546fda7929"
+optimism@^0.6.5:
+  version "0.6.5"
+  resolved "https://registry.npmjs.org/optimism/-/optimism-0.6.5.tgz#9fc3dd71bb58cb1a608af99ecfa96731bcf011f3"
   dependencies:
     immutable-tuple "^0.4.4"
 
