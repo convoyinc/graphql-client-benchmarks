@@ -4,7 +4,7 @@ import { ApolloInMemory } from './apollo-inmemory';
 
 export class ApolloInMemoryBeta extends ApolloInMemory {
   static metadata = {
-    name: `Apollo (InMemory 1.3.0-beta.3)`,
+    name: `Apollo (InMemory 1.3.0-beta.6)`,
   };
 
   constructor() {
