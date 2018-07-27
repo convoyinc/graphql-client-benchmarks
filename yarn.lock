@@ -426,12 +426,12 @@ apollo-cache-hermes@^0.6.1:
     make-error "^1.3.0"
     tslib "^1.9.0"
 
-"apollo-cache-inmemory-beta@npm:apollo-cache-inmemory@1.3.0-beta.4":
-  version "1.3.0-beta.4"
-  resolved "https://registry.npmjs.org/apollo-cache-inmemory/-/apollo-cache-inmemory-1.3.0-beta.4.tgz#874e0de79a95a0d766adadc580bac516c5b30d4e"
+"apollo-cache-inmemory-beta@npm:apollo-cache-inmemory@1.3.0-beta.6":
+  version "1.3.0-beta.6"
+  resolved "https://registry.npmjs.org/apollo-cache-inmemory/-/apollo-cache-inmemory-1.3.0-beta.6.tgz#5767741216e441b05b6966c99cd4e3f2cb67c09b"
   dependencies:
-    apollo-cache "^1.1.12"
-    apollo-utilities "^1.0.16"
+    apollo-cache "^1.1.13"
+    apollo-utilities "^1.0.17"
     optimism "^0.6.5"
 
 apollo-cache-inmemory@^1.2.5:
@@ -447,6 +447,12 @@ apollo-cache@^1.0.0, apollo-cache@^1.1.12:
   resolved "https://registry.npmjs.org/apollo-cache/-/apollo-cache-1.1.12.tgz#070015c9051b2ebb69676beb10466a9c0b259f91"
   dependencies:
     apollo-utilities "^1.0.16"
+
+apollo-cache@^1.1.13:
+  version "1.1.13"
+  resolved "https://registry.npmjs.org/apollo-cache/-/apollo-cache-1.1.13.tgz#75c28091825992b2eec9fb63c9a367db3b4714a8"
+  dependencies:
+    apollo-utilities "^1.0.17"
 
 apollo-client@^2.3.5:
   version "2.3.5"
@@ -479,6 +485,12 @@ apollo-link@^1.0.0, apollo-link@^1.2.2:
 apollo-utilities@^1.0.0, apollo-utilities@^1.0.16:
   version "1.0.16"
   resolved "https://registry.npmjs.org/apollo-utilities/-/apollo-utilities-1.0.16.tgz#787310df4c3900a68c0beb3d351c59725a588cdb"
+  dependencies:
+    fast-json-stable-stringify "^2.0.0"
+
+apollo-utilities@^1.0.17:
+  version "1.0.17"
+  resolved "https://registry.npmjs.org/apollo-utilities/-/apollo-utilities-1.0.17.tgz#04cd22db5c5dba8dbd349e28b0d9f9f525ab8e8a"
   dependencies:
     fast-json-stable-stringify "^2.0.0"
 
