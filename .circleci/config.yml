@@ -3,7 +3,7 @@ version: 2
 aliases:
   - &job-common
     docker:
-      - image: circleci/node:8.11.2@sha256:35e25a4f33185fa9be124a08f3466a942efe7ec889c05af40b3718082720a580
+      - image: convoyinc/circleci-node:10.13.0
   - &cache-repository
     key: repository-{{ .Revision }}
   - &cache-dependencies
