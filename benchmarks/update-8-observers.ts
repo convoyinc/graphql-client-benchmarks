@@ -3,9 +3,9 @@ import expect from 'unexpected';
 
 import { Benchmark, Observer, Client, Example } from '../src';
 
-export default class WriteEightObserversPartialUpdate extends Benchmark {
+export default class UpdateEightObservers extends Benchmark {
   static metadata = {
-    title: `write (8 observers, partial update)`,
+    title: `update (8 observers)`,
   };
 
   observers: Observer[] = [];
