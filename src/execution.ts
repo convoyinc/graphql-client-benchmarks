@@ -157,7 +157,7 @@ async function runClientBenchmark(
 
   for (let i = 0; i < config.verifyPasses; i++) {
     if (context.canceled || context.failure) break;
-    await runSingleBenchmarkPass(context, BenchmarkClass, client, example, Phase.VERIFY, {
+    await runSingleBenchmarkPass(context, BenchmarkClass, ClientClass, example, Phase.VERIFY, {
       verify: true,
     });
   }
@@ -185,7 +185,7 @@ async function runClientBenchmark(
     const warmupStart = performanceNow();
     for (let i = 0; i < config.warmups; i++) {
       if (context.canceled || context.failure) break;
-      await runSingleBenchmarkPass(context, BenchmarkClass, client, example, Phase.WARMUP);
+      await runSingleBenchmarkPass(context, BenchmarkClass, ClientClass, example, Phase.WARMUP);
     }
     reporter({
       ...eventCommon,
@@ -218,7 +218,7 @@ async function runClientBenchmark(
       const duration = await runSingleBenchmarkPass(
         context,
         BenchmarkClass,
-        client,
+        ClientClass,
         example,
         Phase.ITERATION,
       );
@@ -270,13 +270,13 @@ function isFinalIteration(config: Configuration, runStart: number, stats: Stats)
 async function runSingleBenchmarkPass(
   context: Context,
   BenchmarkClass: BenchmarkConstructor,
-  client: Client,
+  ClientClass: ClientConstructor,
   example: Example,
   phase: Event.Phase,
   { verify = false } = {},
 ) {
   try {
-    const benchmark: Benchmark = new BenchmarkClass(client, example);
+    const benchmark: Benchmark = new BenchmarkClass(new ClientClass(), example);
     await benchmark.setup();
 
     const start = performanceNow();
