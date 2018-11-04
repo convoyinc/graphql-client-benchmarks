@@ -13,6 +13,7 @@ const STYLES = dapper.compile({
     th: {
       color: '#e6e8e9',
       fontWeight: 'normal',
+      whiteSpace: 'pre',
     },
   },
   infoCell: {
@@ -48,8 +49,10 @@ export class SuiteSummary extends React.PureComponent<SuiteSummaryProps> {
 
     return (
       <tr>
-        <th>Benchmarks</th>
-        {clients.map(client => <th key={client.name}>{client.name}</th>)}
+        <th />
+        {clients.map(client => (
+          <th key={client.name}>{client.name.replace(' (', '\n(')}</th>
+        ))}
       </tr>
     );
   }
@@ -60,7 +63,7 @@ export class SuiteSummary extends React.PureComponent<SuiteSummaryProps> {
 
     return benchmarks.map(benchmark => (
       <tr key={benchmark.title}>
-        <th className={this.styles.infoColumn}>{benchmark.title}</th>
+        <th className={this.styles.infoColumn}>{benchmark.title.replace(' (', '\n(')}</th>
         {clients.map(client => this._renderResults(benchmark.title, client.name))}
       </tr>
     ));
