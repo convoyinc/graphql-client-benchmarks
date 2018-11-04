@@ -2,7 +2,7 @@ import { Hermes } from 'apollo-cache-hermes';
 
 import { ApolloInMemory } from './apollo-inmemory';
 
-export class ApolloHermes extends ApolloInMemory {
+export class ApolloHermesStrict extends ApolloInMemory {
   static metadata = {
     name: `Apollo (Hermes, strict)`,
   };
