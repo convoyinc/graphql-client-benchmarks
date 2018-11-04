@@ -412,16 +412,15 @@ anymatch@^2.0.0:
     micromatch "^3.1.4"
     normalize-path "^2.1.1"
 
-apollo-cache-hermes@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.npmjs.org/apollo-cache-hermes/-/apollo-cache-hermes-0.8.0.tgz#8caf6cb22efc82413b060a670e039ddc25714783"
-  integrity sha512-en571KNWf4JUv+GwfpAlyHWK8idYgJwQBMDrtXq5O4ctoWORnmCzi9i2zDQ0CpBmv4sYEY8NDNO8lILnEfvQpg==
+apollo-cache-hermes@^0.8.1:
+  version "0.8.1"
+  resolved "https://registry.npmjs.org/apollo-cache-hermes/-/apollo-cache-hermes-0.8.1.tgz#2663a3f359c1c491ddb69eb7bd65bc44a750e1f1"
+  integrity sha512-5Tp7oLktrSX9QQuxbe24xbXqSdXN+9h6Bh6umb8AH+SY8zTUqxva8pH6xwYXfRjFo/5x0e2kHeNsvRnwhJKrcw==
   dependencies:
     apollo-cache "^1.0.0"
     apollo-utilities "^1.0.0"
     deep-freeze-strict "^1.0.0"
     lodash.findindex "^4.0.0"
-    lodash.get "^4.0.0"
     lodash.isequal "^4.5.0"
     lodash.set "^4.0.0"
     make-error "^1.3.0"
@@ -3293,10 +3292,6 @@ lodash.findindex@^4.0.0:
 lodash.flattendeep@^4.4.0:
   version "4.4.0"
   resolved "https://registry.npmjs.org/lodash.flattendeep/-/lodash.flattendeep-4.4.0.tgz#fb030917f86a3134e5bc9bec0d69e0013ddfedb2"
-
-lodash.get@^4.0.0:
-  version "4.4.2"
-  resolved "https://registry.npmjs.org/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
 
 lodash.isequal@^4.5.0:
   version "4.5.0"
