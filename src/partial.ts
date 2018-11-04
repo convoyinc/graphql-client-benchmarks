@@ -14,7 +14,7 @@ import { SingleRawExample } from './Example';
 // Use a consistent seed for consistent partials for a given query.
 const SEED = 12345678;
 
-const NUM_EXAMPLES = 8;
+const NUM_EXAMPLES = 25;
 
 interface OnlyFieldNode extends FieldNode {
   selectionSet?: FieldSetNode;

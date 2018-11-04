@@ -3,9 +3,11 @@ import expect from 'unexpected';
 
 import { Benchmark, Observer, Client, Example } from '../src';
 
-export default class UpdateEightObservers extends Benchmark {
+export default class UpdateTwentyFiveObservers extends Benchmark {
+  numObservers = 25;
+
   static metadata = {
-    title: `update (8 observers)`,
+    title: `update (25 observers)`,
   };
 
   observers: Observer[] = [];
@@ -15,28 +17,28 @@ export default class UpdateEightObservers extends Benchmark {
     super(client, example);
 
     // This is a bit hacky, but does a decent job of exploring partial updates.
-    const update = updateScalarFields(_.last(example.partials).response);
-    for (let i = 0; i < 8; i++) {
-      this.updatedResponses.push(_.merge({}, example.partials[i].response, update));
+    const update = updateScalarFields(example.partials[0].response);
+    for (let i = 0; i < this.numObservers; i++) {
+      this.updatedResponses.push(overlayResponse(example.partials[i].response, update));
     }
   }
 
   async setup() {
     await this.client.write(this.example);
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < this.numObservers; i++) {
       this.observers.push(this.client.observe(this.example.partials[i]));
     }
   }
 
   async run() {
     await this.client.write({
-      ..._.last(this.example.partials),
-      response: _.last(this.updatedResponses),
+      ...this.example.partials[0],
+      response: this.updatedResponses[0],
     });
   }
 
   async verify() {
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < this.numObservers; i++) {
       const observer = this.observers[i];
       const updatedResponse = this.updatedResponses[i];
 
@@ -63,4 +65,22 @@ function updateScalarFields(response: any) {
     if (typeof value === 'number') return value + 1;
     if (typeof value === 'boolean') return !value;
   });
+}
+
+/**
+ * Overlays any values found in `source` on top of `response`, if `response` has
+ * values at that path.
+ */
+function overlayResponse(response: any, source: any) {
+  if (Array.isArray(response)) {
+    return response.map((v, i) => overlayResponse(v, _.get(source, i)));
+  } else if (_.isObject(response)) {
+    return _.mapValues(response, (v, k) => overlayResponse(v, _.get(source, k)));
+  } else if (response === undefined) {
+    return undefined;
+  } else if (source) {
+    return source;
+  } else {
+    return response;
+  }
 }

@@ -2,16 +2,15 @@ import expect from 'unexpected';
 
 import { Benchmark, ReadResult, Observer } from '../src';
 
-export default class WriteWithTenObserversAndEmptyCache extends Benchmark {
+export default class WriteWithTwentyFiveObserversAndEmptyCache extends Benchmark {
   static metadata = {
-    title: `write (8 observers, fully cached)`,
+    title: `write (25 observers, empty cache)`,
   };
 
   observers: Observer[] = [];
 
   async setup() {
-    await this.client.write(this.example);
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 25; i++) {
       this.observers.push(this.client.observe(this.example.partials[i]));
     }
   }
