@@ -15,7 +15,7 @@ export default class UpdateOneObserver extends Benchmark {
     super(client, example);
 
     // This is a bit hacky, but does a decent job of exploring partial updates.
-    const update = updateScalarFields(example.partials[3].response);
+    const update = updateScalarFields(example.partials[example.partials.length / 2 - 1].response);
     this.updatedResponse = _.merge({}, example.response, update);
   }
 

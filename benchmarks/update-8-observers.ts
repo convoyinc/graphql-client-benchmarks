@@ -15,7 +15,7 @@ export default class UpdateEightObservers extends Benchmark {
     super(client, example);
 
     // This is a bit hacky, but does a decent job of exploring partial updates.
-    const update = updateScalarFields(example.partials[7].response);
+    const update = updateScalarFields(_.last(example.partials).response);
     for (let i = 0; i < 8; i++) {
       this.updatedResponses.push(_.merge({}, example.partials[i].response, update));
     }
@@ -30,8 +30,8 @@ export default class UpdateEightObservers extends Benchmark {
 
   async run() {
     await this.client.write({
-      ...this.example.partials[7],
-      response: this.updatedResponses[7],
+      ..._.last(this.example.partials),
+      response: _.last(this.updatedResponses),
     });
   }
 
