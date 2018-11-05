@@ -49,6 +49,9 @@ const STYLES = dapper.compile({
   error: {
     textAlign: 'center',
   },
+  mean: {
+    whiteSpace: 'nowrap',
+  },
 });
 
 export class ResultsCell extends React.PureComponent<ResultsCellProps> {
@@ -85,13 +88,13 @@ export class ResultsCell extends React.PureComponent<ResultsCellProps> {
       <React.Fragment>
         <div>
           mean:{' '}
-          <strong>
+          <strong className={this.styles.mean}>
             {stats.mean.toFixed(3)}ms ±{stats.marginOfError.toFixed(3)}ms
           </strong>
         </div>
         <div>confidence: {(100 - stats.percentRelativeMarginOfError).toFixed(2)}%</div>
         <div>
-          count: {stats.iterations} range: {stats.min.toFixed(0)}-{stats.max.toFixed(0)}ms
+          samples: {stats.iterations} range: {stats.min.toFixed(0)}-{stats.max.toFixed(0)}ms
         </div>
       </React.Fragment>
     );
