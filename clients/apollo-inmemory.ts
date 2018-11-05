@@ -5,6 +5,7 @@ import { ApolloClient, ObservableQuery } from 'apollo-client';
 import { Subscription } from 'apollo-client/util/Observable';
 import { ApolloLink } from 'apollo-link';
 import { InMemoryCache } from 'apollo-cache-inmemory';
+import packageInfo from 'apollo-cache-inmemory/package.json';
 
 import { Client, Observer, SingleExample, SingleRawExample } from '../src';
 
@@ -38,7 +39,7 @@ interface ApolloExample extends SingleExample {
 
 export class ApolloInMemory extends Client {
   static metadata = {
-    name: `Apollo (InMemory)`,
+    name: `Apollo (InMemory v${(packageInfo as any).version})`,
   };
 
   apollo: ApolloClient<any>;

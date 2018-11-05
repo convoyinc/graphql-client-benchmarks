@@ -2,6 +2,7 @@ import * as graphql from 'graphql';
 import * as graphqlCompiler from 'graphql-compiler';
 import * as relayCompiler from 'relay-compiler';
 import * as relayRuntime from 'relay-runtime';
+import packageInfo from 'relay-runtime/package.json';
 
 import { Client, SingleExample, SingleRawExample, Observer } from '../src';
 
@@ -56,7 +57,7 @@ interface RelayExample extends SingleExample {
 
 export class Relay extends Client {
   static metadata = {
-    name: `Relay`,
+    name: `Relay (v${(packageInfo as any).version})`,
   };
 
   private _client = new relayRuntime.Environment({
