@@ -15,3 +15,6 @@ yarn-*.log*
 
 # Webpack
 dist/
+
+# VS Code
+.vscode/
