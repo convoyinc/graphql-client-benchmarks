@@ -14,6 +14,6 @@ export default class ReadWithEmptyCache extends Benchmark {
   }
 
   async verify() {
-    expect(this.result, 'to be', null);
+    expect(this.result.data, 'to be', null);
   }
 }
