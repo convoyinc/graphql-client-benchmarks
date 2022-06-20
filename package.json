@@ -15,13 +15,11 @@
     "update-pages": "./scripts/update-pages.sh",
     "release": "./scripts/release.sh"
   },
-  "bin": {
-    "graphql-client-benchmarks": "./src/reporters/cli/entry.js"
-  },
+  "bin": "./src/reporters/cli/entry.js",
   "main": "./src",
   "dependencies": {
     "@apollo/client": "^3.6.8",
-    "@convoy/dapper": "^2.0.104",    
+    "@convoy/dapper": "^2.0.104",
     "browser-process-hrtime": "^0.1.2",
     "chroma-js": "^1.3.7",
     "fast-random": "^2.0.4",
@@ -68,5 +66,6 @@
     "webpack-command": "^0.2.1",
     "webpack-serve": "^1.0.4",
     "webpack-visualizer-plugin": "^0.1.11"
-  }
+  },
+  "packageManager": "yarn@3.2.1"
 }
