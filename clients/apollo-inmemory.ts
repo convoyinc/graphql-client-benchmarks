@@ -7,7 +7,9 @@ import {
   InMemoryCache,
   ObservableQuery,
   ObservableSubscription,
+// eslint-disable-next-line import/no-internal-modules
 } from '@apollo/client/core';
+// eslint-disable-next-line import/no-internal-modules
 import packageInfo from '@apollo/client/package.json';
 
 import { Client, Observer, SingleExample, SingleRawExample } from '../src';

@@ -3,6 +3,7 @@ import {
   getFragmentDefinitions,
   createFragmentMap,
   FragmentMap,
+// eslint-disable-next-line import/no-internal-modules
 } from '@apollo/client/utilities';
 import fastRandom from 'fast-random';
 import graphqlTag from 'graphql-tag';
