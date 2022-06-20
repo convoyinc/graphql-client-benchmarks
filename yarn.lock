@@ -156,22 +156,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/bluebird@npm:^3.5.20":
-  version: 3.5.20
-  resolution: "@types/bluebird@npm:3.5.20"
-  checksum: fc147a9f49b35da9e00c47cb32f7961ca01d9e15cd25646640f54e25eda4711e730b1667b37cab7562e90bf304c5ab30b2a3b130327d2589b17b83036cd783d3
-  languageName: node
-  linkType: hard
-
-"@types/chalk@npm:^2.2.0":
-  version: 2.2.0
-  resolution: "@types/chalk@npm:2.2.0"
-  dependencies:
-    chalk: "*"
-  checksum: 846437590d0bf0026d8c2f454e5d91a486becfabde61c0441025e791a0fed75304e143717bc4d025569394dcce5a32f2c53d97253d0c735ac1abae63f1b25c3e
-  languageName: node
-  linkType: hard
-
 "@types/chroma-js@npm:^1.3.5":
   version: 1.3.5
   resolution: "@types/chroma-js@npm:1.3.5"
@@ -209,10 +193,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^8.0.0":
-  version: 8.10.18
-  resolution: "@types/node@npm:8.10.18"
-  checksum: 843824a9ecbe2a09e6c4286e2940a074b9a9675e1c385ea890d446bc4bf07ea23b1d019724149c614fceff4d4295e9c29748bc989631d9ab33a2cb4a81c03625
+"@types/node@npm:^12.12.22":
+  version: 12.20.55
+  resolution: "@types/node@npm:12.20.55"
+  checksum: e4f86785f4092706e0d3b0edff8dca5a13b45627e4b36700acd8dfe6ad53db71928c8dee914d4276c7fd3b6ccd829aa919811c9eb708a2c8e4c6eb3701178c37
   languageName: node
   linkType: hard
 
@@ -1883,17 +1867,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chalk@npm:*, chalk@npm:^2.0.0, chalk@npm:^2.0.1, chalk@npm:^2.1.0, chalk@npm:^2.3.0, chalk@npm:^2.3.1, chalk@npm:^2.3.2":
-  version: 2.4.1
-  resolution: "chalk@npm:2.4.1"
-  dependencies:
-    ansi-styles: ^3.2.1
-    escape-string-regexp: ^1.0.5
-    supports-color: ^5.3.0
-  checksum: 196eb8e99a0c00c6fcef216c794b109fd071931b10ec0f8f305c368fb6d776d0d4857d0028d2cc3561632428d6d94a41d7edf33b506f7540b7c8492f4224d89e
-  languageName: node
-  linkType: hard
-
 "chalk@npm:^1.1.1, chalk@npm:^1.1.3":
   version: 1.1.3
   resolution: "chalk@npm:1.1.3"
@@ -1904,6 +1877,17 @@ __metadata:
     strip-ansi: ^3.0.0
     supports-color: ^2.0.0
   checksum: 9d2ea6b98fc2b7878829eec223abcf404622db6c48396a9b9257f6d0ead2acf18231ae368d6a664a83f272b0679158da12e97b5229f794939e555cc574478acd
+  languageName: node
+  linkType: hard
+
+"chalk@npm:^2.0.0, chalk@npm:^2.0.1, chalk@npm:^2.1.0, chalk@npm:^2.3.0, chalk@npm:^2.3.1, chalk@npm:^2.3.2":
+  version: 2.4.1
+  resolution: "chalk@npm:2.4.1"
+  dependencies:
+    ansi-styles: ^3.2.1
+    escape-string-regexp: ^1.0.5
+    supports-color: ^5.3.0
+  checksum: 196eb8e99a0c00c6fcef216c794b109fd071931b10ec0f8f305c368fb6d776d0d4857d0028d2cc3561632428d6d94a41d7edf33b506f7540b7c8492f4224d89e
   languageName: node
   linkType: hard
 
@@ -3913,12 +3897,10 @@ __metadata:
   dependencies:
     "@apollo/client": ^3.6.8
     "@convoy/dapper": ^2.0.104
-    "@types/bluebird": ^3.5.20
-    "@types/chalk": ^2.2.0
     "@types/chroma-js": ^1.3.5
     "@types/fast-stats": ^0.0.29
     "@types/lodash": ^4.14.110
-    "@types/node": ^8.0.0
+    "@types/node": ^12.12.22
     "@types/react": ^16.3.16
     "@types/relay-runtime": ^1.3.3
     "@types/webpack": ^4.4.0
