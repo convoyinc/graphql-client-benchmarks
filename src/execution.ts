@@ -52,7 +52,7 @@ export function runSuite(
   clientClasses: ClientConstructor[],
   rawExample: RawExample,
   config: Configuration = DEFAULT_CONFIG,
-) {
+): SuitePromise {
   const context: Context = {
     reporter,
     config,

@@ -32,7 +32,7 @@ export async function main() {
   // Give it a chance to render a final time.
   await new Promise(resolve => setTimeout(resolve, 0));
 
-  if (!canceled) {
+  if (canceled !== null) {
     stopRendering();
   }
 }

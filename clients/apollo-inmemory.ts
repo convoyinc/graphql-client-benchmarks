@@ -1,17 +1,20 @@
+// Updated imports
 import graphqlTag from 'graphql-tag';
-import { ApolloCache } from 'apollo-cache';
-import { ApolloClient, ObservableQuery } from 'apollo-client';
-// eslint-disable-next-line import/no-internal-modules
-import { Subscription } from 'apollo-client/util/Observable';
-import { ApolloLink } from 'apollo-link';
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import packageInfo from 'apollo-cache-inmemory/package.json';
+import {
+  ApolloClient,
+  ApolloLink,
+  ApolloCache,
+  InMemoryCache,
+  ObservableQuery,
+  ObservableSubscription,
+} from '@apollo/client/core';
+import packageInfo from '@apollo/client/package.json';
 
 import { Client, Observer, SingleExample, SingleRawExample } from '../src';
 
 class ApolloObserver implements Observer {
   private _mostRecentResult?: any = null;
-  private _subscription?: Subscription;
+  private _subscription?: ObservableSubscription;
   constructor(observable: ObservableQuery<any>) {
     this._subscription = observable.subscribe(
       ({ data }) => {

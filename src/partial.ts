@@ -1,13 +1,13 @@
 import {
-  getOperationDefinitionOrDie,
+  getOperationDefinition,
   getFragmentDefinitions,
   createFragmentMap,
   FragmentMap,
-} from 'apollo-utilities';
+} from '@apollo/client/utilities';
 import fastRandom from 'fast-random';
 import graphqlTag from 'graphql-tag';
 import { print } from 'graphql/language/printer'; // eslint-disable-line import/no-internal-modules
-import { DocumentNode, SelectionSetNode, FieldNode, OperationDefinitionNode } from 'graphql';
+import { DocumentNode, SelectionSetNode, FieldNode, OperationDefinitionNode, Kind } from 'graphql';
 
 import { SingleRawExample } from './Example';
 
@@ -33,7 +33,7 @@ interface FieldSetNode extends SelectionSetNode {
  */
 export function generatePartialExamples(example: SingleRawExample): SingleRawExample[] {
   const document = graphqlTag(example.operation);
-  const operation = getOperationDefinitionOrDie(document);
+  const operation = getOperationDefinition(document);
   const leaves = findLeafPaths(document);
   const random = fastRandom(SEED);
 
@@ -43,8 +43,8 @@ export function generatePartialExamples(example: SingleRawExample): SingleRawExa
     const partialLeaves = selectLeaves(random, leaves, selectPercent);
     const partialSelectionSet = selectionSetFromLeaves(partialLeaves);
     const partialOperation: OperationDefinitionNode = {
-      kind: 'OperationDefinition',
-      name: { kind: 'Name', value: `partial${i}` },
+      kind: Kind.OPERATION_DEFINITION,
+      name: { kind: Kind.NAME, value: `partial${i}` },
       selectionSet: partialSelectionSet,
       directives: operation.directives,
       operation: operation.operation,
@@ -64,7 +64,7 @@ export function generatePartialExamples(example: SingleRawExample): SingleRawExa
 
 function findLeafPaths(document: DocumentNode) {
   const leaves: FieldNode[][] = [];
-  const operation = getOperationDefinitionOrDie(document);
+  const operation = getOperationDefinition(document);
   const fragmentMap = createFragmentMap(getFragmentDefinitions(document));
   walkSelectionSetForLeaves(leaves, fragmentMap, operation.selectionSet, []);
 
@@ -128,7 +128,7 @@ function selectionSetFromLeaves(leaves: FieldNode[][]): FieldSetNode {
     mergeLeaf(selections, leaf);
   }
 
-  return { kind: 'SelectionSet', selections };
+  return { kind: Kind.SELECTION_SET, selections };
 }
 
 function mergeLeaf(selections: OnlyFieldNode[], leaf: FieldNode[]) {
@@ -143,13 +143,13 @@ function mergeLeaf(selections: OnlyFieldNode[], leaf: FieldNode[]) {
   let ancestor = selections.find(s => s.name.value === top.name.value);
   if (!ancestor) {
     ancestor = {
-      kind: 'Field',
+      kind: Kind.FIELD,
       alias: top.alias,
       name: top.name,
       arguments: top.arguments,
       directives: top.directives,
       selectionSet: {
-        kind: 'SelectionSet',
+        kind: Kind.SELECTION_SET,
         selections: [],
       },
     };

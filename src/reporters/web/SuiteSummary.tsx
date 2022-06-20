@@ -63,7 +63,7 @@ export class SuiteSummary extends React.PureComponent<SuiteSummaryProps> {
 
     return benchmarks.map(benchmark => (
       <tr key={benchmark.title}>
-        <th className={this.styles.infoColumn}>{benchmark.title.replace(' (', '\n(')}</th>
+        <th className={this.styles.infoCell}>{benchmark.title.replace(' (', '\n(')}</th>
         {clients.map(client => this._renderResults(benchmark.title, client.name))}
       </tr>
     ));
