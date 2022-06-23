@@ -144,13 +144,17 @@ async function runClientBenchmark(
   const verifyStart = performanceNow();
 
   let example: Example;
-  try {
+  try {    
     const rootExample = client.transformRawExample(rawExample, schema);
+    // TODO: figure out handling of partials for Relay and remove fake partials
+    const fakePartials = partials.map(p => rootExample)
     example = {
       ...rootExample,
       title,
-      partials: partials.map(p => client.transformRawExample(p, schema)),
+      // partials: partials.map(p => client.transformRawExample(p, schema)),
+      partials: fakePartials
     };
+    console.log("example", example);
   } catch (error) {
     context.failure = { error, phase: Phase.VERIFY };
   }
