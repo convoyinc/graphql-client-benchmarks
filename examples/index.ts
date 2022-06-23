@@ -6,19 +6,22 @@ import { RawExample, generatePartialExamples } from '../src';
 const exampleContext = require.context(
   '.',
   true,
-  /(metadata\.json|operation\.gql|response\.json|schema\.gql)$/,
+  /(metadata\.json|operation\.gql|response\.json|schema\.gql|relayArtifact.graphql.ts)$/,
 );
 
 const examplesByDirname = {};
 // Walk all asset files, and group them into examples (by dirname).
+console.log("Example context ", exampleContext.keys())
 exampleContext.keys().forEach(assetPath => {
   const examplePath = path.dirname(assetPath);
   if (!examplesByDirname[examplePath]) {
     examplesByDirname[examplePath] = {};
   }
 
-  const assetType = path.basename(assetPath, path.extname(assetPath));
-  const assetContent = exampleContext(assetPath);
+  let assetType = path.basename(assetPath, path.extname(assetPath));
+  // Remove the secondary ".graphql" extension from relayArtifact
+  assetType = assetType.replace(".graphql", "")
+  const assetContent = exampleContext(assetPath)
 
   if (assetType == 'metadata') {
     examplesByDirname[examplePath] = { ...examplesByDirname[examplePath], ...assetContent };
@@ -26,6 +29,7 @@ exampleContext.keys().forEach(assetPath => {
     examplesByDirname[examplePath][assetType] = assetContent;
   }
 });
+console.log("Examples by dirname ", examplesByDirname)
 
 const examples: RawExample[] = [];
 for (const dirname of Object.keys(examplesByDirname)) {
@@ -44,5 +48,7 @@ for (const dirname of Object.keys(examplesByDirname)) {
 function isRawExample(value: any): value is RawExample {
   return value.title && value.operation && value.response && value.schema;
 }
+
+console.log("Examples", examples)
 
 export = examples;
