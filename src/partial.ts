@@ -31,8 +31,11 @@ interface FieldSetNode extends SelectionSetNode {
  *
  * E.g. the first example will have 100% of the fields, the second 87.5%, and so
  * on.
+ * 
+ * @param {SingleRawExample} example - single raw example based on which modified partials will be created
+ * @returns {Array<SingleRawExample>} - returns an array of signle raw examples with modified graphql queries
  */
-export function generatePartialExamples(example: SingleRawExample): SingleRawExample[] {
+export function generatePartialExamples(example: SingleRawExample): Array<SingleRawExample> {
   const document = graphqlTag(example.operation);
   const operation = getOperationDefinition(document);
   const leaves = findLeafPaths(document);
@@ -179,3 +182,8 @@ function reduceResponse(selectionSet: FieldSetNode, response: object | any[]) {
 
   return reducedResponse;
 }
+
+
+/**
+ * 
+ */
