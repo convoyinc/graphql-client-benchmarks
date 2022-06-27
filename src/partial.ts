@@ -26,7 +26,7 @@ interface FieldSetNode extends SelectionSetNode {
 }
 
 /**
- * Create 8 partial instances of the operation, by selecting a linearly
+ * Create NUM_EXAMPLES partial instances of the operation, by selecting a linearly
  * decreasing % of fields.
  *
  * E.g. the first example will have 100% of the fields, the second 87.5%, and so
@@ -182,8 +182,3 @@ function reduceResponse(selectionSet: FieldSetNode, response: object | any[]) {
 
   return reducedResponse;
 }
-
-
-/**
- * 
- */
