@@ -1,4 +1,4 @@
-import { GraphQLTaggedNode } from "relay-runtime";
+import { ConcreteRequest } from "relay-runtime";
 
 export interface SingleExample {
   response: object;
@@ -15,7 +15,7 @@ export interface SingleRawExample {
   operation: string;
   variables?: object;
   response: object;
-  relayArtifact?: GraphQLTaggedNode;
+  relayArtifact?: ConcreteRequest;
 }
 
 export interface RawExample extends SingleRawExample {

@@ -31,7 +31,7 @@ exampleContext.keys().forEach(assetPath => {
 });
 console.log("Examples by dirname ", examplesByDirname)
 
-const examples: RawExample[] = [];
+const examples: Array<RawExample> = [];
 for (const dirname of Object.keys(examplesByDirname)) {
   const example = examplesByDirname[dirname];
   if (!isRawExample(example)) {

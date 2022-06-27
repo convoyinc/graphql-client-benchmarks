@@ -14,7 +14,7 @@ import {
   createOperationDescriptor
 } from 'relay-runtime'
 
-import { Client, SingleExample, SingleRawExample, Observer } from '../src';
+import { Client, SingleExample, Observer, RawExample } from '../src';
 
 class RelayObserver implements Observer {
   private _mostRecentResult?: any = null;
@@ -58,7 +58,7 @@ export class Relay extends Client {
     store: new Store(new RecordSource()),
   });
 
-  transformRawExample(rawExample: SingleRawExample, schema: string): RelayExample {
+  transformRawExample(rawExample: RawExample, schema: string): RelayExample {
     const request = getRequest(rawExample.relayArtifact);
     const operation = createOperationDescriptor(request, rawExample.variables);
 
