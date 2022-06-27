@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<9efa3fd4a35b22743c6e6d1a74816539>>
+ * @generated SignedSource<<b4dba4a07bb9de355768ce548653b740>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,8 +9,8 @@
 // @ts-nocheck
 
 import { ConcreteRequest, Query } from 'relay-runtime';
-export type mostCommentedIssuesQuery$variables = {};
-export type mostCommentedIssuesQuery$data = {
+export type relayRawQuery$variables = {};
+export type relayRawQuery$data = {
   readonly organization: {
     readonly __typename: "Organization";
     readonly repositories: {
@@ -36,9 +36,9 @@ export type mostCommentedIssuesQuery$data = {
     };
   } | null;
 };
-export type mostCommentedIssuesQuery = {
-  response: mostCommentedIssuesQuery$data;
-  variables: mostCommentedIssuesQuery$variables;
+export type relayRawQuery = {
+  response: relayRawQuery$data;
+  variables: relayRawQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){
@@ -157,7 +157,7 @@ return {
     "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
-    "name": "mostCommentedIssuesQuery",
+    "name": "relayRawQuery",
     "selections": [
       {
         "alias": null,
@@ -206,7 +206,7 @@ return {
   "operation": {
     "argumentDefinitions": [],
     "kind": "Operation",
-    "name": "mostCommentedIssuesQuery",
+    "name": "relayRawQuery",
     "selections": [
       {
         "alias": null,
@@ -252,16 +252,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "cdcdbef6c69f6e7f6c79905655b66046",
+    "cacheID": "ea67f1636c13a21d473e20ac554bbab2",
     "id": null,
     "metadata": {},
-    "name": "mostCommentedIssuesQuery",
+    "name": "relayRawQuery",
     "operationKind": "query",
-    "text": "query mostCommentedIssuesQuery {\n  organization(login: \"facebook\") {\n    __typename\n    repositories(first: 50) {\n      __typename\n      nodes {\n        __typename\n        createdAt\n        homepageUrl\n        issues(first: 50, states: OPEN, orderBy: {field: COMMENTS, direction: DESC}) {\n          __typename\n          nodes {\n            __typename\n            createdAt\n            id\n            title\n            comments {\n              __typename\n              totalCount\n            }\n          }\n        }\n        id\n      }\n    }\n    id\n  }\n}\n"
+    "text": "query relayRawQuery {\n  organization(login: \"facebook\") {\n    __typename\n    repositories(first: 50) {\n      __typename\n      nodes {\n        __typename\n        createdAt\n        homepageUrl\n        issues(first: 50, states: OPEN, orderBy: {field: COMMENTS, direction: DESC}) {\n          __typename\n          nodes {\n            __typename\n            createdAt\n            id\n            title\n            comments {\n              __typename\n              totalCount\n            }\n          }\n        }\n        id\n      }\n    }\n    id\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "eb15fdd2c8b83ba06de1d1696bc38973";
+(node as any).hash = "3ee77ece5c8ff8da89606f99735d55a4";
 
 export default node;

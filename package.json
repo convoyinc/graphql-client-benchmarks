@@ -9,6 +9,7 @@
   "scripts": {
     "cli": "node ./src/reporters/cli/entry.js",
     "compile": "./scripts/compile.sh",
+    "compile-artifacts": "./scripts/compile-artifacts.sh",
     "compile-ts": "./scripts/compile-ts.sh",
     "compile-web": "./scripts/compile-web.sh",
     "dev": "./scripts/dev.sh",

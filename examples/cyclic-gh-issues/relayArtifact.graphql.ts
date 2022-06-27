@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<a8618f940675911e12dea56baa77dca7>>
+ * @generated SignedSource<<abe2c9f198bf2bd24737804a4b53d092>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,8 +9,8 @@
 // @ts-nocheck
 
 import { ConcreteRequest, Query } from 'relay-runtime';
-export type cyclicGitHubIssuesQuery$variables = {};
-export type cyclicGitHubIssuesQuery$data = {
+export type relayRawQuery$variables = {};
+export type relayRawQuery$data = {
   readonly organization: {
     readonly __typename: "Organization";
     readonly id: string;
@@ -38,9 +38,9 @@ export type cyclicGitHubIssuesQuery$data = {
     };
   } | null;
 };
-export type cyclicGitHubIssuesQuery = {
-  response: cyclicGitHubIssuesQuery$data;
-  variables: cyclicGitHubIssuesQuery$variables;
+export type relayRawQuery = {
+  response: relayRawQuery$data;
+  variables: relayRawQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){
@@ -184,7 +184,7 @@ return {
     "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
-    "name": "cyclicGitHubIssuesQuery",
+    "name": "relayRawQuery",
     "selections": (v4/*: any*/),
     "type": "Query",
     "abstractKey": null
@@ -193,20 +193,20 @@ return {
   "operation": {
     "argumentDefinitions": [],
     "kind": "Operation",
-    "name": "cyclicGitHubIssuesQuery",
+    "name": "relayRawQuery",
     "selections": (v4/*: any*/)
   },
   "params": {
-    "cacheID": "6a144d436e5aaf1e96037696130ed9ca",
+    "cacheID": "dbb52a0d1b9e85add8e0b3d74bb7d7c5",
     "id": null,
     "metadata": {},
-    "name": "cyclicGitHubIssuesQuery",
+    "name": "relayRawQuery",
     "operationKind": "query",
-    "text": "query cyclicGitHubIssuesQuery {\n  organization(login: \"facebook\") {\n    __typename\n    id\n    repositories(first: 10) {\n      __typename\n      nodes {\n        __typename\n        id\n        createdAt\n        homepageUrl\n        issues(first: 10, states: OPEN) {\n          __typename\n          nodes {\n            __typename\n            id\n            createdAt\n            title\n            repository {\n              __typename\n              id\n            }\n          }\n        }\n      }\n    }\n  }\n}\n"
+    "text": "query relayRawQuery {\n  organization(login: \"facebook\") {\n    __typename\n    id\n    repositories(first: 10) {\n      __typename\n      nodes {\n        __typename\n        id\n        createdAt\n        homepageUrl\n        issues(first: 10, states: OPEN) {\n          __typename\n          nodes {\n            __typename\n            id\n            createdAt\n            title\n            repository {\n              __typename\n              id\n            }\n          }\n        }\n      }\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "afc78c94aafccd81c50dd85e95270c63";
+(node as any).hash = "6859df2835d57373c300ecc7d523b5ce";
 
 export default node;

@@ -1,27 +1,25 @@
 import graphql from 'babel-plugin-relay/macro';
 
 graphql`
-  query cyclicGitHubIssuesQuery {
+  query relayRawQuery {
     organization(login: "facebook") {
       __typename
-      id
-      repositories(first: 10) {
+      repositories(first: 50) {
         __typename
         nodes {
           __typename
-          id
           createdAt
           homepageUrl
-          issues(first: 10, states: OPEN) {
+          issues(first: 50, states: OPEN, orderBy: { field: COMMENTS, direction: DESC }) {
             __typename
             nodes {
               __typename
-              id
               createdAt
+              id
               title
-              repository {
+              comments {
                 __typename
-                id
+                totalCount
               }
             }
           }

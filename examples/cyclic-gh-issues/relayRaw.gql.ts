@@ -1,25 +1,27 @@
 import graphql from 'babel-plugin-relay/macro';
 
 graphql`
-  query mostCommentedIssuesQuery {
+  query relayRawQuery {
     organization(login: "facebook") {
       __typename
-      repositories(first: 50) {
+      id
+      repositories(first: 10) {
         __typename
         nodes {
           __typename
+          id
           createdAt
           homepageUrl
-          issues(first: 50, states: OPEN, orderBy: { field: COMMENTS, direction: DESC }) {
+          issues(first: 10, states: OPEN) {
             __typename
             nodes {
               __typename
-              createdAt
               id
+              createdAt
               title
-              comments {
+              repository {
                 __typename
-                totalCount
+                id
               }
             }
           }

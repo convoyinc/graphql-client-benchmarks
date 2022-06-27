@@ -2,5 +2,5 @@
     "src": "./examples/fb-most-commented/",
     "schema": "./examples/fb-most-commented/schema.gql",
     "language": "typescript",
-    "artifactDirectory": "./examples/_artifacts/fb-most-commented"
+    "artifactDirectory": "./examples/fb-most-commented/_artifacts"
 }
