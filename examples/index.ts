@@ -40,6 +40,7 @@ for (const dirname of Object.keys(examplesByDirname)) {
     );
   }
 
+  // TODO-UPGRADE: The partials are now pre-generated during build, therefore this needs to be implemented
   example.partials = generatePartialExamples(example);
 
   examples.push(example);
