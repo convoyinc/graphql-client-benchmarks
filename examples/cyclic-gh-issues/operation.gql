@@ -1,4 +1,4 @@
-query cyclicGitHubIssues {
+query operationQuery {
   organization(login: "facebook") {
     __typename
     id

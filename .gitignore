@@ -25,3 +25,7 @@ dist/
 
 # VS Code
 .vscode/
+
+# Examples generated artifacts
+examples/**/__partials__
+examples/**/relayArtifact.graphql.ts

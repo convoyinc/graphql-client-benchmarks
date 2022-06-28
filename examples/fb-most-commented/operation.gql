@@ -1,4 +1,4 @@
-query mostCommentedIssues {
+query operationQuery {
   organization(login: "facebook") {
     __typename
     repositories(first: 50) {

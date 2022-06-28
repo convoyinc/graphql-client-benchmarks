@@ -13,8 +13,9 @@ for DIRECTORY in $DIRECTORIES; do
   mkdir $DIRECTORY/__artifacts__
   # compile artifacts
   yarn relay $DIRECTORY/relay.config.json
-  # move generated root artifact and rename
-  mv $DIRECTORY/__artifacts__/relayRawQuery.graphql.ts $DIRECTORY/relayArtifact.graphql.ts
+  # remove raw query, move generated root artifact and rename
+  rm $DIRECTORY/operation.gql.ts
+  mv $DIRECTORY/__artifacts__/operationQuery.graphql.ts $DIRECTORY/relayArtifact.graphql.ts
   # remove all temp versions of partial relay artifacts and replace them with the compiled ones
   rm -rf $DIRECTORY/__partials__/relay/*
   mv $DIRECTORY/__artifacts__/* $DIRECTORY/__partials__/relay/
