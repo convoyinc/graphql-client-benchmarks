@@ -2,5 +2,6 @@
     "src": "./examples/fb-most-commented/",
     "schema": "./examples/fb-most-commented/schema.gql",
     "language": "typescript",
-    "artifactDirectory": "./examples/fb-most-commented/_artifacts"
+    "artifactDirectory": "./examples/fb-most-commented/__artifacts__",
+    "exclude": ["**/__partials__/other/**"]
 }

@@ -26,6 +26,43 @@ interface FieldSetNode extends SelectionSetNode {
 }
 
 /**
+ * Create NUM_EXAMPLES partial instances of the input query by selecting a linearly
+ * decreasing % of fields. 
+ * 
+ * This is different to the generatePartialExamples(example: SingleRawExample): Array<SingleRawExample> function bc it works with string queries instead of operations.
+ * 
+ * @param {string} query - GraphQL query in a string format
+ * @returns {Array<string>} - An array of modified partial GraphQL queries in a string format
+ */
+export function generatePartialExamplesFromQuery(query: string): Array<string> {
+  const document = graphqlTag(query);
+  const operation = getOperationDefinition(document);
+  const leaves = findLeafPaths(document);
+  const random = fastRandom(SEED);
+
+  const partials:Array<string> = [];
+  for (let i = NUM_EXAMPLES; i > 0; i--) {
+    const selectPercent = i / NUM_EXAMPLES;
+    const partialLeaves = selectLeaves(random, leaves, selectPercent);
+    const partialSelectionSet = selectionSetFromLeaves(partialLeaves);    
+    const partialOperation: OperationDefinitionNode = {
+      kind: Kind.OPERATION_DEFINITION,
+      name: { kind: Kind.NAME, value: `partial${i}Query` },
+      selectionSet: partialSelectionSet,
+      directives: operation.directives,
+      operation: operation.operation,
+      // TODO: Remove unused variables.
+      variableDefinitions: operation.variableDefinitions,
+    };
+
+    partials.push(print(partialOperation));
+  }
+
+  return partials;
+}
+
+
+/**
  * Create NUM_EXAMPLES partial instances of the operation, by selecting a linearly
  * decreasing % of fields.
  *
@@ -46,6 +83,7 @@ export function generatePartialExamples(example: SingleRawExample): Array<Single
     const selectPercent = i / NUM_EXAMPLES;
     const partialLeaves = selectLeaves(random, leaves, selectPercent);
     const partialSelectionSet = selectionSetFromLeaves(partialLeaves);
+    console.log("Partials",partialSelectionSet)
     const partialOperation: OperationDefinitionNode = {
       kind: Kind.OPERATION_DEFINITION,
       name: { kind: Kind.NAME, value: `partial${i}` },

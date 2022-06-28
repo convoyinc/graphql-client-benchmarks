@@ -2,5 +2,6 @@
     "src": "./examples/cyclic-gh-issues/",
     "schema": "./examples/cyclic-gh-issues/schema.gql",
     "language": "typescript",
-    "artifactDirectory": "./examples/cyclic-gh-issues/_artifacts"
+    "artifactDirectory": "./examples/cyclic-gh-issues/__artifacts__",
+    "exclude": ["**/__partials__/other/**"]
 }
