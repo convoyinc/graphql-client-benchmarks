@@ -60,7 +60,7 @@ export class Relay extends Client {
     store: new Store(new RecordSource()),
   });
 
-  transformRawExample(rawExample: RawExample, schema: string): RelayExample {
+  transformRawExample(rawExample: RawExample): RelayExample {
     const request = getRequest(rawExample.relayArtifact);
     const operation = createOperationDescriptor(request, rawExample.variables);
 

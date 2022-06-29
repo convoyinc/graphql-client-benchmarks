@@ -145,11 +145,11 @@ async function runClientBenchmark(
 
   let example: Example;
   try {    
-    const rootExample = client.transformRawExample(rawExample, schema);    
+    const rootExample = client.transformRawExample(rawExample);    
     example = {
       ...rootExample,
       title,
-      partials: partials.map(p => client.transformRawExample(p, schema))
+      partials: partials.map(p => client.transformRawExample(p))
     };
     console.log("example", example);
   } catch (error) {

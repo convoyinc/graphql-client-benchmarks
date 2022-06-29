@@ -22,7 +22,7 @@ export interface ClientConstructor<TClient extends Client = Client> {
 }
 
 export abstract class Client {
-  abstract transformRawExample(rawExample: SingleRawExample, schema: string): SingleExample;
+  abstract transformRawExample(rawExample: SingleRawExample): SingleExample;
   abstract read(example: SingleExample): Promise<ReadResult>;
   abstract write(example: SingleExample): Promise<void>;
   abstract observe(example: SingleExample): Observer;
