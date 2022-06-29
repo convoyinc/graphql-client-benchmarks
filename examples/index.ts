@@ -35,6 +35,7 @@ exampleContext.keys().forEach(assetPath => {
   }
 });
 
+// Go through all partials and group them by example 
 partialContext.keys().forEach(assetPath => {
   const partialBaseDir = `./${path.dirname(assetPath).split("/")[1]}`;
   if (!examplesByDirname[partialBaseDir].rawPartials) {
