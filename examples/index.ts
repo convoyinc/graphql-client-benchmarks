@@ -1,6 +1,6 @@
 import * as path from 'path';
 
-import { RawExample, generatePartialExamples } from '../src';
+import { RawExample, restructurePartialExamples } from '../src';
 
 // Collect all files for examples in this directory (recursively)
 const exampleContext = require.context(
@@ -9,9 +9,14 @@ const exampleContext = require.context(
   /(metadata\.json|operation\.gql|response\.json|schema\.gql|relayArtifact.graphql.ts)$/,
 );
 
+const partialContext = require.context(
+  '.',
+  true,
+  /(partial.+\.gql|partial.+Query\.graphql\.ts)$/,
+)
+
 const examplesByDirname = {};
 // Walk all asset files, and group them into examples (by dirname).
-console.log("Example context ", exampleContext.keys())
 exampleContext.keys().forEach(assetPath => {
   const examplePath = path.dirname(assetPath);
   if (!examplesByDirname[examplePath]) {
@@ -29,7 +34,28 @@ exampleContext.keys().forEach(assetPath => {
     examplesByDirname[examplePath][assetType] = assetContent;
   }
 });
-console.log("Examples by dirname ", examplesByDirname)
+
+partialContext.keys().forEach(assetPath => {
+  const partialBaseDir = `./${path.dirname(assetPath).split("/")[1]}`;
+  if (!examplesByDirname[partialBaseDir].rawPartials) {
+    examplesByDirname[partialBaseDir].rawPartials = {};
+  }
+
+  let assetType = path.basename(assetPath, path.extname(assetPath));
+  // Remove the secondary ".graphql" extension from relayArtifact
+  assetType = assetType.replace(".graphql", "")
+  const assetContent = partialContext(assetPath)
+
+  if (!examplesByDirname[partialBaseDir].rawPartials[assetType.replace("Query", "")]) {
+    examplesByDirname[partialBaseDir].rawPartials[assetType.replace("Query", "")] = {};
+  }
+
+  if (assetType.includes("Query")) {
+    examplesByDirname[partialBaseDir].rawPartials[assetType.replace("Query", "")]["relayArtifact"] = assetContent;
+  } else {
+    examplesByDirname[partialBaseDir].rawPartials[assetType]["operation"] = assetContent;
+  }
+})
 
 const examples: Array<RawExample> = [];
 for (const dirname of Object.keys(examplesByDirname)) {
@@ -40,8 +66,8 @@ for (const dirname of Object.keys(examplesByDirname)) {
     );
   }
 
-  // TODO-UPGRADE: The partials are now pre-generated during build, therefore this needs to be implemented
-  example.partials = generatePartialExamples(example);
+  example.partials = restructurePartialExamples(example);
+  delete example.rawPartials;
 
   examples.push(example);
 }

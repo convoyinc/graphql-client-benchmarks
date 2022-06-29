@@ -8,7 +8,7 @@ export interface SingleExample {
 // requires to execute operations.
 export interface Example extends SingleExample {
   title: string;
-  partials: SingleExample[];
+  partials: Array<SingleExample>;
 }
 
 export interface SingleRawExample {
@@ -21,5 +21,11 @@ export interface SingleRawExample {
 export interface RawExample extends SingleRawExample {
   title: string;
   schema: string;
-  partials: SingleRawExample[];
+  partials: Array<SingleRawExample>;
+  rawPartials?: Array<RawPartial>;
+}
+
+export interface RawPartial {
+  relayArtifact: ConcreteRequest;
+  operation: string;
 }

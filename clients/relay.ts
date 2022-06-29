@@ -4,6 +4,7 @@ import type {
   Snapshot,
   Disposable,
   OperationDescriptor,
+  ConcreteRequest,
 } from 'relay-runtime';
 import {
   Environment,
@@ -43,7 +44,8 @@ class RelayObserver implements Observer {
 
 interface RelayExample extends SingleExample {
   operation: any;
-  variables?: object
+  variables?: object;
+  relayArtifact: ConcreteRequest;
 }
 
 export class Relay extends Client {
@@ -65,6 +67,8 @@ export class Relay extends Client {
     return {
       operation,
       response: rawExample.response,
+      variables: rawExample.variables,
+      relayArtifact: rawExample.relayArtifact
     };
   }
 

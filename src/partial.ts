@@ -10,7 +10,7 @@ import graphqlTag from 'graphql-tag';
 import { print } from 'graphql/language/printer'; // eslint-disable-line import/no-internal-modules
 import { DocumentNode, SelectionSetNode, FieldNode, OperationDefinitionNode, Kind } from 'graphql';
 
-import { SingleRawExample } from './Example';
+import { RawExample, RawPartial, SingleRawExample } from './Example';
 
 // Use a consistent seed for consistent partials for a given query.
 const SEED = 12345678;
@@ -61,45 +61,28 @@ export function generatePartialExamplesFromQuery(query: string): Array<string> {
   return partials;
 }
 
-
 /**
- * Create NUM_EXAMPLES partial instances of the operation, by selecting a linearly
- * decreasing % of fields.
- *
- * E.g. the first example will have 100% of the fields, the second 87.5%, and so
- * on.
+ * Take the object of raw partials from the example provided and structure them in a nice way so the tool can work with them
  * 
- * @param {SingleRawExample} example - single raw example based on which modified partials will be created
- * @returns {Array<SingleRawExample>} - returns an array of signle raw examples with modified graphql queries
+ * @param {RawExample} example - example created from the root query which has the operation, variables and response
+ * @returns {Array<SingleRawExample>}
  */
-export function generatePartialExamples(example: SingleRawExample): Array<SingleRawExample> {
-  const document = graphqlTag(example.operation);
-  const operation = getOperationDefinition(document);
-  const leaves = findLeafPaths(document);
-  const random = fastRandom(SEED);
-
-  const partials: SingleRawExample[] = [];
-  for (let i = NUM_EXAMPLES; i > 0; i--) {
-    const selectPercent = i / NUM_EXAMPLES;
-    const partialLeaves = selectLeaves(random, leaves, selectPercent);
-    const partialSelectionSet = selectionSetFromLeaves(partialLeaves);
-    console.log("Partials",partialSelectionSet)
-    const partialOperation: OperationDefinitionNode = {
-      kind: Kind.OPERATION_DEFINITION,
-      name: { kind: Kind.NAME, value: `partial${i}` },
-      selectionSet: partialSelectionSet,
-      directives: operation.directives,
-      operation: operation.operation,
-      // TODO: Remove unused variables.
-      variableDefinitions: operation.variableDefinitions,
-    };
+export function restructurePartialExamples(example: RawExample): Array<SingleRawExample> {
+  const partials: Array<SingleRawExample> = [];
+  // TODO-UPGRADE: find out from Vlad if he thinks its important partials are sorted
+  Object.values(example.rawPartials).forEach((partial) => {
+    const document = graphqlTag(partial.operation);
+    const operation = getOperationDefinition(document);
+    const leaves = findLeafPaths(document);
+    const partialSelectionSet = selectionSetFromLeaves(leaves);
 
     partials.push({
-      operation: print(partialOperation),
+      operation: partial.operation,
+      relayArtifact: partial.relayArtifact,
       variables: example.variables,
       response: reduceResponse(partialSelectionSet, example.response),
     });
-  }
+  })
 
   return partials;
 }

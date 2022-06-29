@@ -149,9 +149,7 @@ async function runClientBenchmark(
     example = {
       ...rootExample,
       title,
-      // TODO-UPGRADE: figure out handling of partials for Relay and remove fake partials
-      // partials: partials.map(p => client.transformRawExample(p, schema)),
-      partials: partials.map(p => rootExample)
+      partials: partials.map(p => client.transformRawExample(p, schema))
     };
     console.log("example", example);
   } catch (error) {
