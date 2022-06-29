@@ -28,7 +28,6 @@
     "fast-random": "^2.0.4",
     "fast-stats": "^0.0.3",
     "graphql": "^16.5.0",
-    "graphql-compiler": "^1.6.0",
     "graphql-tag": "^2.12.6",
     "ink": "^0.5.0",
     "le-table": "^6.1.8",
