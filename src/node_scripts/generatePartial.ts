@@ -35,8 +35,8 @@ exampleDirs.forEach((exampleDir) => {
         
         const relayTemplate = `import graphql from 'babel-plugin-relay/macro';\ngraphql\`\n${partial}\n\``
 
-        writeFileSync(`./examples/${exampleDir.name}/__partials__/relay/partial${partials.length - i}.gql.ts`, relayTemplate)
-        writeFileSync(`./examples/${exampleDir.name}/__partials__/other/partial${partials.length - i}.gql`, partial)
+        writeFileSync(`./examples/${exampleDir.name}/__partials__/relay/partial${(partials.length - i) < 10 ? "0" + String((partials.length - i)) : (partials.length - i)}.gql.ts`, relayTemplate)
+        writeFileSync(`./examples/${exampleDir.name}/__partials__/other/partial${(partials.length - i) < 10 ? "0" + String((partials.length - i)) : (partials.length - i)}.gql`, partial)
     }
 
 })

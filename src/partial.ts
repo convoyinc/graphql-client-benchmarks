@@ -47,7 +47,7 @@ export function generatePartialExamplesFromQuery(query: string): Array<string> {
     const partialSelectionSet = selectionSetFromLeaves(partialLeaves);    
     const partialOperation: OperationDefinitionNode = {
       kind: Kind.OPERATION_DEFINITION,
-      name: { kind: Kind.NAME, value: `partial${i}Query` },
+      name: { kind: Kind.NAME, value: `partial${i < 10 ? "0" + String(i) : i}Query` },
       selectionSet: partialSelectionSet,
       directives: operation.directives,
       operation: operation.operation,
@@ -72,7 +72,6 @@ export function restructurePartialExamples(example: RawExample): Array<SingleRaw
   // TODO-UPGRADE: find out from Vlad if he thinks its important partials are sorted
   Object.values(example.rawPartials).forEach((partial) => {
     const document = graphqlTag(partial.operation);
-    const operation = getOperationDefinition(document);
     const leaves = findLeafPaths(document);
     const partialSelectionSet = selectionSetFromLeaves(leaves);
 
@@ -80,9 +79,11 @@ export function restructurePartialExamples(example: RawExample): Array<SingleRaw
       operation: partial.operation,
       relayArtifact: partial.relayArtifact,
       variables: example.variables,
-      response: reduceResponse(partialSelectionSet, example.response),
+      response: reduceResponse(partialSelectionSet, example.response)
     });
   })
+
+  partials.sort().reverse()
 
   return partials;
 }

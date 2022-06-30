@@ -283,7 +283,7 @@ async function runSingleBenchmarkPass(
     const start = performanceNow();
     await benchmark.run();
     const duration = performanceNow() - start;
-
+  
     if (verify) {
       await benchmark.verify();
     }
