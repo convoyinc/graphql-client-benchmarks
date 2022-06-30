@@ -42,14 +42,14 @@ interface ApolloExample extends SingleExample {
   variables?: object;
 }
 
-export class ApolloInMemory extends Client {
+export class ApolloInMemoryResultCache extends Client {
   static metadata = {
-    name: `Apollo (InMemory v${(packageInfo as any).version})`,
+    name: `Apollo (InMemory v${(packageInfo as any).version} - Result Caching)`,
   };
 
   apollo: ApolloClient<any>;
 
-  constructor(cache: ApolloCache<any> = new InMemoryCache({resultCaching: false})) {
+  constructor(cache: ApolloCache<any> = new InMemoryCache()) {
     super();
 
     this.apollo = new ApolloClient({
