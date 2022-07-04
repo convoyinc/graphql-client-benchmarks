@@ -1,3 +1,7 @@
+# TO RUN LOCALLY (before new docs come)
+- run `yarn compile-ts`
+- run `yarn dev`
+
 # GraphQL Client Benchmarks
 
 A benchmarking suite for GraphQL clients, with focus on their cache implementations.
@@ -19,7 +23,7 @@ These approaches are mostly undocumented and lightly supported—expect to roll 
 
 ## Examples
 
-The benchmarking suite is set up to support many example queries and responses. If you have some you'd like to add to the suite, you can add them to the [`examples`](./examples) folder, following the same structure. They'll automatically be pulled into the benchmarking suite. Before running the benchamrking suite with `yarn dev` make sure to run `yarn compile-artifacts` which takes care about compiling your newly added queries for Relay (This step is also automatically executed when you run `yarn compile`).
+The benchmarking suite is set up to support many example queries and responses. If you have some you'd like to add to the suite, you can add them to the [`examples`](./examples) folder, following the same structure. They'll automatically be pulled into the benchmarking suite. If you decide to add new examples/change the existing ones, run `yarn compile-artifacts` before running the benchamrking suite with `yarn dev`. This takes care about compiling your newly added queries for Relay. (Only add/edit, metadata.json/operation.gql/schema.gql/response.json other files are generated )
 
 ## Environments
 
