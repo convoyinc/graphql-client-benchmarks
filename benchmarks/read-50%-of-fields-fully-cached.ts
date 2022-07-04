@@ -8,14 +8,16 @@ export default class ReadDuplicate extends Benchmark {
   };
 
   result?: ReadResult;
+  midpoint?: number;
 
   async setup() {
     await this.client.write(this.example);
-    await this.client.read(this.example);
+    await this.client.read(this.example);    
+    this.midpoint = Math.floor(this.example.partials.length / 2 - 1);
   }
 
   async run() {
-    const halfQuery = this.example.partials[3];
+    const halfQuery = this.example.partials[this.midpoint];
     this.result = await this.client.read(halfQuery);
   }
 
