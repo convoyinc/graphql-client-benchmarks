@@ -16,6 +16,10 @@ export const context = path.resolve(__dirname, '..', '..', '..');
 // https://webpack.js.org/configuration/entry-context/#entry
 export const entry = './src/reporters/web/entry';
 
+export const output = {
+  path: path.resolve(__dirname, 'dist'),
+  filename: "benchmark.bundle.js"
+}
 // https://webpack.js.org/configuration/resolve/
 export const resolve = {
   // https://webpack.js.org/configuration/resolve/#resolve-extensions
@@ -57,3 +61,4 @@ export const plugins = [
 
 // https://webpack.js.org/configuration/externals/
 export const externals = {};
+
