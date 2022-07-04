@@ -69,7 +69,6 @@ export function generatePartialExamplesFromQuery(query: string): Array<string> {
  */
 export function restructurePartialExamples(example: RawExample): Array<SingleRawExample> {
   const partials: Array<SingleRawExample> = [];
-  // TODO-UPGRADE: find out from Vlad if he thinks its important partials are sorted
   Object.values(example.rawPartials).forEach((partial) => {
     const document = graphqlTag(partial.operation);
     const leaves = findLeafPaths(document);

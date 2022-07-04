@@ -151,7 +151,6 @@ async function runClientBenchmark(
       title,
       partials: partials.map(p => client.transformRawExample(p))
     };
-    console.log("example", example);
   } catch (error) {
     context.failure = { error, phase: Phase.VERIFY };
   }
@@ -295,6 +294,7 @@ async function runSingleBenchmarkPass(
     return duration;
   } catch (error) {
     context.failure = { error, phase };
+    console.log("ERROR: ",error);
     return undefined;
   }
 }
