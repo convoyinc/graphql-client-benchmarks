@@ -75,8 +75,7 @@ export class Relay extends Client {
   async read({ operation }: RelayExample) {
     // TODO-UPGRADE: Check if all data is missing 
     const res = this._client.lookup(operation.fragment);
-    if (res.isMissingData) console.log("Missing data: ", res)
-    return res.data ? { data: res.data } : null;
+    return (!res.data || res.isMissingData) ? { data: null } : { data: res.data };
   }
 
   async write({ operation, response }: RelayExample) {
