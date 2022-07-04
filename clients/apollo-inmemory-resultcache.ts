@@ -44,7 +44,7 @@ interface ApolloExample extends SingleExample {
 
 export class ApolloInMemoryResultCache extends Client {
   static metadata = {
-    name: `Apollo (InMemory v${(packageInfo as any).version} - Result Caching)`,
+    name: `Apollo (InMemory v${(packageInfo as any).version} - Result Caching Enabled)`,
   };
 
   apollo: ApolloClient<any>;
