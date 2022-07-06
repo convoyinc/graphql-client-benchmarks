@@ -1,4 +1,6 @@
-import { Color, Component, Indent, renderToString } from 'ink';
+// import { Text, Component, Indent, renderToString } from 'ink';
+import {Text} from '../../../node_modules/ink';
+import {render, Indent, Component} from 'ink'
 
 import { Table } from './Table';
 import { Summary } from '../../reporting';
@@ -8,14 +10,14 @@ export class SuiteSummary extends Component<Summary> {
     const { title } = this.props;
     return (
       <div>
-        <Indent size={1}>
+        <Indent {...{size:1}}>
           <div />
           <div>
-            <Color yellow>GraphQL Client Benchmark Suite</Color>
+            <Text color="yellow">GraphQL Client Benchmark Suite</Text>
           </div>
           <div />
           <div>
-            Example Query: <Color blue>{title}</Color>
+            Example Query: <Text color="blue">{title}</Text>
           </div>
         </Indent>
         <div />
@@ -33,11 +35,11 @@ export class SuiteSummary extends Component<Summary> {
     return (
       <Table.Row>
         <Table.Cell width={40} height={3} stretch={false} hAlign="center">
-          <Color> Benchmarks </Color>
+          <Text> Benchmarks </Text>
         </Table.Cell>
         {clients.map(client => (
           <Table.Cell hAlign="center">
-            <Color yellow> {client.name} </Color>
+            <Text color="yellow"> {client.name} </Text>
           </Table.Cell>
         ))}
       </Table.Row>
@@ -50,7 +52,7 @@ export class SuiteSummary extends Component<Summary> {
     return benchmarks.map(benchmark => (
       <Table.Row>
         <Table.Cell width={40} height={3} stretch={false}>
-          <Color blue> {benchmark.title} </Color>
+          <Text color="blue"> {benchmark.title} </Text>
         </Table.Cell>
         {clients.map(client => this._renderStats(benchmark.title, client.name))}
       </Table.Row>
@@ -64,10 +66,10 @@ export class SuiteSummary extends Component<Summary> {
     if (result && result.failure) {
       return (
         <Table.Cell hAlign="center" vAlign="middle">
-          <Color white bgRed>
+          <Text color="white" backgroundColor="bgRed">
             {' '}
             Error during {result.phase}{' '}
-          </Color>
+          </Text>
           {'\u200b'}
         </Table.Cell>
       );
@@ -76,7 +78,7 @@ export class SuiteSummary extends Component<Summary> {
 
       return (
         <Table.Cell hAlign="center" vAlign="middle">
-          <Color dim>{status}…</Color>
+          <Text>{status}…</Text>
         </Table.Cell>
       );
     }
@@ -84,7 +86,7 @@ export class SuiteSummary extends Component<Summary> {
 
     return (
       <Table.Cell>
-        <Color dim={!complete}>
+        <Text>
           {'\u200b'}
           mean: {stats.mean.toFixed(3)}ms ±{stats.marginOfError.toFixed(3)}ms
           {'\n'}
@@ -93,7 +95,7 @@ export class SuiteSummary extends Component<Summary> {
           {'\n'}
           {'\u200b'}
           count: {stats.iterations} range: {stats.min.toFixed(0)}-{stats.max.toFixed(0)}ms
-        </Color>
+        </Text>
       </Table.Cell>
     );
   }
