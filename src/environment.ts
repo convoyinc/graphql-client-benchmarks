@@ -19,9 +19,9 @@ function polyfillNode() {
 
   // In order to interoperate with Webpack, we need to be able to "statically"
   // load .gql files. Easiest way is to match Webpack's raw-loader behavior:
-  require.extensions['.gql'] = function loadGraphQLDocument(module, filename) {
-    module.exports = fs.readFileSync(filename, { encoding: 'utf-8' });
-  };
+  // require.extensions['.gql'] = function loadGraphQLDocument(module, filename) {
+  //   module.exports = fs.readFileSync(filename, { encoding: 'utf-8' });
+  // };
 }
 
 function polyfillBrowser() {
