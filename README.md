@@ -34,3 +34,35 @@ The benchmarks are designed to be run in three different ways:
 **cli**: The [CLI reporter](./src/reporters/cli) provides a UI for running the baked in examples on a terminal. It can be
 
 **api**: The benchmark suite and runner is also exposed via [an API](./src/index.ts) that you can use to run the examples, or provide your own. The primary entry point is [`runSuite`](./src/execution.ts). Take a look at the web or cli reporters for an idea of how to run it, and you'll probably want to leverage the [console reporter](./src/reporters/console) to get started.
+
+# New Docs (WIP)
+## What is this?
+Benchmark to measure the performance of caches of various GraphQL clients.
+
+## Why?
+This is a useful tool to use when starting a new project and thinking about the tech stack to use. If you know what operations will your app perform the most, you can use this as a guide to pick the client which provides the best performance for you and then argue your choice using the results, if needed.
+
+This could be helpful for Teams as well.
+
+Furthermore, teams who build these GQL clients can use this as a guideline to what they need to optimize in their products.
+
+## How does it work?
+This benchmark doesn’t use the client’s React API’s, but rather uses the core API’s of the clients to measure their data store performance. This way it provides framework agnostic results which measure the pure performance of the cache.
+
+### Customisation
+This benchmark is easily customisable, you can add new example queries and benchmarks which suite your needs, you can alternate between different examples or just use the ones’ provided.
+
+### Why testing result cache in Apollo
+Currently there are 2 parts of the Apollo cache - `EntityStore` and `ResultCache`.
+
+`EntityStore` is the main cache which holds normalized data, therefore when data is read from it, it needs to be de-normalized
+
+`ResultCache` has been introduced to help with the denormalization problem. Therefore, when the first `read` of a query is executed against the `EntityStore` the de-normalized data is memoized in the `ResultCache` and this then makes all upcoming `reads` of the identical query very fast. However, this comes with the overhead of having to write into the `ResultCache` on every first `read` operation on some query that has not yet been memoized. (The match has to be 1:1 exact here)
+
+## Benchmarks
+We have 3 major test groups - **read**, **write** and **update**
+...
+## Future
+In the future, we might 
+- add URQL client to the benchmark as well to provide a better choice for people depending on this with their decision.
+- add more example queries which cover more real-life usages, especially in TMP
