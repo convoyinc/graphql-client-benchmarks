@@ -26,11 +26,11 @@ export const optimization = {
   runtimeChunk: 'single'
 }
 
-// https://webpack.js.org/concepts/output/
-export const output = {
-  path: path.resolve(__dirname, 'dist'),
-  filename: "[name].bundle.js"
-}
+// // https://webpack.js.org/concepts/output/
+// export const output = {
+//   path: path.resolve(__dirname, 'dist'),
+//   filename: "[name].bundle.js"
+// }
 
 // https://webpack.js.org/configuration/resolve/
 export const resolve = {
