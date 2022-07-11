@@ -15,10 +15,10 @@ const partialContext = require.context(
   /(partial.+\.gql|partial.+Query\.graphql\.ts)$/,
 )
 
-const examplesByDirname = {};
+const examplesByDirname: any = {};
 // Walk all asset files, and group them into examples (by dirname).
 exampleContext.keys().forEach(assetPath => {
-  const examplePath = path.dirname(assetPath);
+  const examplePath = path.dirname(assetPath).replace(/(\.|\/)/gm,"");
   if (!examplesByDirname[examplePath]) {
     examplesByDirname[examplePath] = {};
   }
@@ -37,8 +37,8 @@ exampleContext.keys().forEach(assetPath => {
 
 // Go through all partials and group them by example 
 partialContext.keys().forEach(assetPath => {
-  const partialBaseDir = `./${path.dirname(assetPath).split("/")[1]}`;
-  if (!examplesByDirname[partialBaseDir].rawPartials) {
+  const partialBaseDir = path.dirname(assetPath.replace(/(^(\.\/)|^\.|^\/)/gm, "")).split("/")[0];
+  if (!('rawPartials' in examplesByDirname[partialBaseDir])) {
     examplesByDirname[partialBaseDir].rawPartials = {};
   }
 
