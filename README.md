@@ -1,4 +1,7 @@
-# TO RUN LOCALLY (before new docs come)
+
+# Run without building in browser
+https://andycko.github.io/graphql-client-benchmarks/
+# Run locally (before new docs come)
 - run `yarn compile-ts`
 - run `yarn dev`
 
