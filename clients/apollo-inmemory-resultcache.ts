@@ -7,12 +7,13 @@ import {
   InMemoryCache,
   ObservableQuery,
   ObservableSubscription,
+  DocumentNode,
 // eslint-disable-next-line import/no-internal-modules
 } from '@apollo/client/core';
 // eslint-disable-next-line import/no-internal-modules
 import packageInfo from '@apollo/client/package.json';
 
-import { Client, Observer, SingleExample, SingleRawExample } from '../src';
+import { Client, FragmentId, FragmentResponse, Observer, SingleExample, SingleRawExample } from '../src';
 
 class ApolloObserver implements Observer {
   private _mostRecentResult?: any = null;
@@ -38,8 +39,13 @@ class ApolloObserver implements Observer {
 }
 
 interface ApolloExample extends SingleExample {
-  operation: any;
+  operation: DocumentNode;
+  fragmentOperation?: DocumentNode;
+  fragmentIdPool?: Array<FragmentId>;
+  fragmentResponsePool?: Array<FragmentResponse>
   variables?: object;
+  id?: string;
+  fragment?: DocumentNode;
 }
 
 export class ApolloInMemoryResultCache extends Client {
@@ -59,8 +65,15 @@ export class ApolloInMemoryResultCache extends Client {
   }
 
   transformRawExample(rawExample: SingleRawExample): ApolloExample {
+    let fragmentOperation: DocumentNode;
+    if (rawExample.fragment) 
+      fragmentOperation = graphqlTag(rawExample.fragment)
+    
     return {
       operation: graphqlTag(rawExample.operation),
+      fragmentOperation,
+      fragmentIdPool: rawExample.fragmentIdPool,
+      fragmentResponsePool: rawExample.fragmentResponsePool,
       response: rawExample.response,
       variables: rawExample.variables,
     };
@@ -70,6 +83,17 @@ export class ApolloInMemoryResultCache extends Client {
     try {
       return {
         data: this.apollo.readQuery({ query: operation, variables }),
+      };
+    } catch (error) {
+      // Apollo throws if data is missing
+      return null;
+    }
+  }
+
+  async readFragment({ fragmentOperation, variables }: ApolloExample, id: FragmentId) {
+    try {      
+      return {
+        data: this.apollo.readFragment({ id: `${id.typename}:${id.id}`, fragment: fragmentOperation, variables }),
       };
     } catch (error) {
       // Apollo throws if data is missing

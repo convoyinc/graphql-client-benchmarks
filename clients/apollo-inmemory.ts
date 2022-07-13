@@ -12,7 +12,7 @@ import {
 // eslint-disable-next-line import/no-internal-modules
 import packageInfo from '@apollo/client/package.json';
 
-import { Client, Observer, SingleExample, SingleRawExample } from '../src';
+import { Client, FragmentId, Observer, ReadResult, SingleExample, SingleRawExample } from '../src';
 
 class ApolloObserver implements Observer {
   private _mostRecentResult?: any = null;
@@ -43,6 +43,9 @@ interface ApolloExample extends SingleExample {
 }
 
 export class ApolloInMemory extends Client {
+  readFragment(example: SingleExample, id: FragmentId): Promise<ReadResult<object>> {
+    throw new Error('Method not implemented.');
+  }
   static metadata = {
     name: `Apollo (InMemory v${(packageInfo as any).version})`,
   };

@@ -15,7 +15,7 @@ import {
   createOperationDescriptor
 } from 'relay-runtime'
 
-import { Client, SingleExample, Observer, RawExample } from '../src';
+import { Client, SingleExample, Observer, RawExample, ReadResult, FragmentId } from '../src';
 
 class RelayObserver implements Observer {
   private _mostRecentResult?: any = null;
@@ -49,6 +49,9 @@ interface RelayExample extends SingleExample {
 }
 
 export class Relay extends Client {
+  readFragment(example: SingleExample, id: FragmentId): Promise<ReadResult<object>> {
+    throw new Error('Method not implemented.');
+  }
   static metadata = {
     name: `Relay (v${(packageInfo as any).version})`,
   };

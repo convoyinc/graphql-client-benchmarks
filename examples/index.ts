@@ -1,12 +1,12 @@
 import * as path from 'path';
 
-import { RawExample, restructurePartialExamples } from '../src';
+import { RawExample, FragmentId, restructurePartialExamples } from '../src';
 
 // Collect all files for examples in this directory (recursively)
 const exampleContext = require.context(
   '.',
   true,
-  /(metadata\.json|operation\.gql|response\.json|schema\.gql|relayArtifact.graphql.ts)$/,
+  /(metadata\.json|operation\.gql|response\.json|schema\.gql|relayArtifact\.graphql\.ts|fragment\.gql)$/,
 );
 
 const partialContext = require.context(
@@ -28,6 +28,7 @@ exampleContext.keys().forEach(assetPath => {
   assetType = assetType.replace(".graphql", "")
   const assetContent = exampleContext(assetPath)
 
+  console.log(assetType)
   if (assetType == 'metadata') {
     examplesByDirname[examplePath] = { ...examplesByDirname[examplePath], ...assetContent };
   } else {
@@ -60,6 +61,20 @@ partialContext.keys().forEach(assetPath => {
 
 const examples: Array<RawExample> = [];
 for (const dirname of Object.keys(examplesByDirname)) {
+  // Parse fragment id pool from fragment path
+  if("fragmentPath" in examplesByDirname[dirname]) {
+    examplesByDirname[dirname].fragmentResponsePool = examplesByDirname[dirname]
+      .fragmentPath.split(".").reduce((a, b) => a[b], examplesByDirname[dirname].response)      
+
+    examplesByDirname[dirname].fragmentIdPool = examplesByDirname[dirname].fragmentResponsePool
+      .map((x) => ({
+        typename: x.__typename,
+        id: x.id
+      }) as FragmentId);
+
+    delete examplesByDirname[dirname].fragmentPath
+  }
+
   const example = examplesByDirname[dirname];
   if (!isRawExample(example)) {
     throw new Error(
