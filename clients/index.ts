@@ -3,4 +3,4 @@ import { ApolloInMemoryResultCache } from './apollo-inmemory-resultcache';
 import { Relay } from './relay';
 
 // export = [ApolloInMemory, ApolloInMemoryResultCache, Relay];
-export = [ApolloInMemoryResultCache];
+export = [ApolloInMemory, ApolloInMemoryResultCache];

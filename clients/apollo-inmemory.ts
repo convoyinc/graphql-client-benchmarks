@@ -7,12 +7,13 @@ import {
   InMemoryCache,
   ObservableQuery,
   ObservableSubscription,
+  DocumentNode,
 // eslint-disable-next-line import/no-internal-modules
 } from '@apollo/client/core';
 // eslint-disable-next-line import/no-internal-modules
 import packageInfo from '@apollo/client/package.json';
 
-import { Client, Fragment, Observer, ReadResult, SingleExample, SingleRawExample } from '../src';
+import { Client, Fragment, FragmentExample, Observer, SingleExample, SingleRawExample } from '../src';
 
 class ApolloObserver implements Observer {
   private _mostRecentResult?: any = null;
@@ -38,8 +39,10 @@ class ApolloObserver implements Observer {
 }
 
 interface ApolloExample extends SingleExample {
-  operation: any;
+  operation: DocumentNode;
   variables?: object;
+  id?: string;
+  fragment?: FragmentExample;
 }
 
 export class ApolloInMemory extends Client {
@@ -59,8 +62,17 @@ export class ApolloInMemory extends Client {
   }
 
   transformRawExample(rawExample: SingleRawExample): ApolloExample {
+    let fragment: FragmentExample; 
+    
+    if ("fragment" in rawExample) 
+      fragment = {
+        operation: graphqlTag(rawExample.fragment.operation),
+        fragmentPool: rawExample.fragment.fragmentPool
+      }      
+    
     return {
       operation: graphqlTag(rawExample.operation),
+      fragment,
       response: rawExample.response,
       variables: rawExample.variables,
     };
@@ -77,8 +89,15 @@ export class ApolloInMemory extends Client {
     }
   }
 
-  readFragment(example: SingleExample, fragmentInstance: Fragment): Promise<ReadResult<object>> {
-    throw new Error('Method not implemented.');
+  async readFragment({ fragment , variables }: ApolloExample, fragmentInstance: Fragment) {
+    try {      
+      return {
+        data: this.apollo.readFragment({ id: `${fragmentInstance.typename}:${fragmentInstance.id}`, fragment: fragment.operation, variables }),
+      };
+    } catch (error) {
+      // Apollo throws if data is missing
+      return null;
+    }
   }
 
   async write({ operation, response, variables }: ApolloExample) {
