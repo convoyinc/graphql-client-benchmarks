@@ -15,7 +15,7 @@ import {
   createOperationDescriptor
 } from 'relay-runtime'
 
-import { Client, SingleExample, Observer, RawExample, ReadResult, FragmentId } from '../src';
+import { Client, SingleExample, Observer, RawExample, ReadResult, Fragment } from '../src';
 
 class RelayObserver implements Observer {
   private _mostRecentResult?: any = null;
@@ -49,9 +49,6 @@ interface RelayExample extends SingleExample {
 }
 
 export class Relay extends Client {
-  readFragment(example: SingleExample, id: FragmentId): Promise<ReadResult<object>> {
-    throw new Error('Method not implemented.');
-  }
   static metadata = {
     name: `Relay (v${(packageInfo as any).version})`,
   };
@@ -79,6 +76,10 @@ export class Relay extends Client {
     // TODO-UPGRADE: Check if all data is missing 
     const res = this._client.lookup(operation.fragment);
     return (!res.data || res.isMissingData) ? { data: null } : { data: res.data };
+  }
+  
+  readFragment(example: SingleExample, fragmentInstance: Fragment): Promise<ReadResult<object>> {
+    throw new Error('Method not implemented.');
   }
 
   async write({ operation, response }: RelayExample) {

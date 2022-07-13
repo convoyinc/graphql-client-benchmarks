@@ -1,4 +1,4 @@
-import { FragmentId, SingleExample, SingleRawExample } from './Example';
+import { Fragment, SingleExample, SingleRawExample } from './Example';
 
 export interface GraphQLError {}
 
@@ -24,7 +24,7 @@ export interface ClientConstructor<TClient extends Client = Client> {
 export abstract class Client {
   abstract transformRawExample(rawExample: SingleRawExample): SingleExample;
   abstract read(example: SingleExample): Promise<ReadResult>;
-  abstract readFragment(example: SingleExample, id: FragmentId): Promise<ReadResult>;
+  abstract readFragment(example: SingleExample, fragmentInstance: Fragment): Promise<ReadResult>;
   abstract write(example: SingleExample): Promise<void>;
   abstract observe(example: SingleExample): Observer;
 }

@@ -1,6 +1,6 @@
 import * as path from 'path';
 
-import { RawExample, FragmentId, restructurePartialExamples } from '../src';
+import { RawExample, Fragment, restructurePartialExamples } from '../src';
 
 // Collect all files for examples in this directory (recursively)
 const exampleContext = require.context(
@@ -31,6 +31,8 @@ exampleContext.keys().forEach(assetPath => {
   console.log(assetType)
   if (assetType == 'metadata') {
     examplesByDirname[examplePath] = { ...examplesByDirname[examplePath], ...assetContent };
+  } else if (assetType == 'fragment') {
+    examplesByDirname[examplePath][assetType] = {operation: assetContent}
   } else {
     examplesByDirname[examplePath][assetType] = assetContent;
   }
@@ -63,14 +65,15 @@ const examples: Array<RawExample> = [];
 for (const dirname of Object.keys(examplesByDirname)) {
   // Parse fragment id pool from fragment path
   if("fragmentPath" in examplesByDirname[dirname]) {
-    examplesByDirname[dirname].fragmentResponsePool = examplesByDirname[dirname]
+    const responsePool = examplesByDirname[dirname]
       .fragmentPath.split(".").reduce((a, b) => a[b], examplesByDirname[dirname].response)      
 
-    examplesByDirname[dirname].fragmentIdPool = examplesByDirname[dirname].fragmentResponsePool
+    examplesByDirname[dirname].fragment.fragmentPool = responsePool
       .map((x) => ({
         typename: x.__typename,
-        id: x.id
-      }) as FragmentId);
+        id: x.id,
+        response: x
+      }) as Fragment);
 
     delete examplesByDirname[dirname].fragmentPath
   }

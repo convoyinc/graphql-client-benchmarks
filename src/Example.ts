@@ -1,9 +1,8 @@
+import { DocumentNode } from "graphql";
 import { ConcreteRequest } from "relay-runtime";
 
 export interface SingleExample {
-  response: object;
-  fragmentIdPool?: Array<FragmentId>;
-  fragmentResponsePool?: Array<FragmentResponse>;
+  response: object;  
 }
 
 // Each client implementation extends this with the additional properties it
@@ -11,6 +10,7 @@ export interface SingleExample {
 export interface Example extends SingleExample {
   title: string;  
   partials: Array<SingleExample>;
+  fragment?: RawFragment;
 }
 
 export interface SingleRawExample {
@@ -18,14 +18,22 @@ export interface SingleRawExample {
   variables?: object;
   response: object;
   relayArtifact?: ConcreteRequest;
-  fragment?: string;
-  fragmentIdPool?: Array<FragmentId>;
-  fragmentResponsePool?: Array<FragmentResponse>;
+  fragment?: RawFragment;
 }
 
-export interface FragmentId {
+export interface RawFragment {
+  operation: string;
+  fragmentPool: Array<Fragment>;
+}
+
+export interface Fragment {
   typename: string;
   id: string;
+  response: FragmentResponse
+}
+
+export interface FragmentExample extends Omit<RawFragment, "operation"> {
+  operation: DocumentNode;
 }
 
 export interface FragmentResponse {

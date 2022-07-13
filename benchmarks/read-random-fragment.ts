@@ -1,6 +1,6 @@
 import expect from 'unexpected';
 
-import { Benchmark, ReadResult, FragmentId, FragmentResponse } from '../src';
+import { Benchmark, ReadResult, Fragment } from '../src';
 
 export default class ReadSatisfied extends Benchmark {
   static metadata = {
@@ -8,24 +8,19 @@ export default class ReadSatisfied extends Benchmark {
   };
 
   result?: ReadResult;
-  fragmentId?: FragmentId;
-  fragmentResponse?: FragmentResponse;
+  fragment?: Fragment;
 
   async setup() {
     await this.client.write(this.example);
-    if (this.example.fragmentIdPool) {
-        this.fragmentId = this.example.fragmentIdPool[Math.floor(Math.random() * this.example.fragmentIdPool.length)]
-        console.log(this.example)
-        this.fragmentResponse = this.example.fragmentResponsePool.filter(x => x.id === this.fragmentId.id)[0]
-    }
+    if (this.example.fragment.fragmentPool)
+        this.fragment = this.example.fragment.fragmentPool[Math.floor(Math.random() * this.example.fragment.fragmentPool.length)]            
   }
 
   async run() {
-    this.result = await this.client.readFragment(this.example, this.fragmentId);
-    console.log(this.result)
+    this.result = await this.client.readFragment(this.example, this.fragment);
   }
 
   async verify() {
-    expect(this.result!.data, 'to satisfy', this.fragmentResponse );
+    expect(this.result!.data, 'to satisfy', this.fragment.response);
   }
 }

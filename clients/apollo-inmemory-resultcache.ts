@@ -13,7 +13,7 @@ import {
 // eslint-disable-next-line import/no-internal-modules
 import packageInfo from '@apollo/client/package.json';
 
-import { Client, FragmentId, FragmentResponse, Observer, SingleExample, SingleRawExample } from '../src';
+import { Client, FragmentExample, Fragment, Observer, SingleExample, SingleRawExample } from '../src';
 
 class ApolloObserver implements Observer {
   private _mostRecentResult?: any = null;
@@ -40,12 +40,9 @@ class ApolloObserver implements Observer {
 
 interface ApolloExample extends SingleExample {
   operation: DocumentNode;
-  fragmentOperation?: DocumentNode;
-  fragmentIdPool?: Array<FragmentId>;
-  fragmentResponsePool?: Array<FragmentResponse>
   variables?: object;
   id?: string;
-  fragment?: DocumentNode;
+  fragment?: FragmentExample;
 }
 
 export class ApolloInMemoryResultCache extends Client {
@@ -64,16 +61,18 @@ export class ApolloInMemoryResultCache extends Client {
     });
   }
 
-  transformRawExample(rawExample: SingleRawExample): ApolloExample {
-    let fragmentOperation: DocumentNode;
-    if (rawExample.fragment) 
-      fragmentOperation = graphqlTag(rawExample.fragment)
+  transformRawExample(rawExample: SingleRawExample): ApolloExample {    
+    let fragment: FragmentExample; 
+    
+    if ("fragment" in rawExample) 
+      fragment = {
+        operation: graphqlTag(rawExample.fragment.operation),
+        fragmentPool: rawExample.fragment.fragmentPool
+      }      
     
     return {
       operation: graphqlTag(rawExample.operation),
-      fragmentOperation,
-      fragmentIdPool: rawExample.fragmentIdPool,
-      fragmentResponsePool: rawExample.fragmentResponsePool,
+      fragment,
       response: rawExample.response,
       variables: rawExample.variables,
     };
@@ -90,10 +89,10 @@ export class ApolloInMemoryResultCache extends Client {
     }
   }
 
-  async readFragment({ fragmentOperation, variables }: ApolloExample, id: FragmentId) {
+  async readFragment({ fragment , variables }: ApolloExample, fragmentInstance: Fragment) {
     try {      
       return {
-        data: this.apollo.readFragment({ id: `${id.typename}:${id.id}`, fragment: fragmentOperation, variables }),
+        data: this.apollo.readFragment({ id: `${fragmentInstance.typename}:${fragmentInstance.id}`, fragment: fragment.operation, variables }),
       };
     } catch (error) {
       // Apollo throws if data is missing
