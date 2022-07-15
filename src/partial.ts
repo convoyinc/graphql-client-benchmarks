@@ -29,18 +29,18 @@ interface FieldSetNode extends SelectionSetNode {
  * Create NUM_EXAMPLES partial instances of the input query by selecting a linearly
  * decreasing % of fields. 
  * 
- * This is different to the generatePartialExamples(example: SingleRawExample): Array<SingleRawExample> function bc it works with string queries instead of operations.
+ * This is different to the generatePartialExamples(example: SingleRawExample): SingleRawExample[] function bc it works with string queries instead of operations.
  * 
  * @param {string} query - GraphQL query in a string format
- * @returns {Array<string>} - An array of modified partial GraphQL queries in a string format
+ * @returns {string[]} - An array of modified partial GraphQL queries in a string format
  */
-export function generatePartialExamplesFromQuery(query: string): Array<string> {
+export function generatePartialExamplesFromQuery(query: string): string[] {
   const document = graphqlTag(query);
   const operation = getOperationDefinition(document);
   const leaves = findLeafPaths(document);
   const random = fastRandom(SEED);
 
-  const partials:Array<string> = [];
+  const partials:string[] = [];
   for (let i = NUM_EXAMPLES; i > 0; i--) {
     const selectPercent = i / NUM_EXAMPLES;
     const partialLeaves = selectLeaves(random, leaves, selectPercent);
@@ -65,10 +65,10 @@ export function generatePartialExamplesFromQuery(query: string): Array<string> {
  * Take the object of raw partials from the example provided and structure them in a nice way so the tool can work with them
  * 
  * @param {RawExample} example - example created from the root query which has the operation, variables and response
- * @returns {Array<SingleRawExample>}
+ * @returns {SingleRawExample[]}
  */
-export function restructurePartialExamples(example: RawExample): Array<SingleRawExample> {
-  const partials: Array<SingleRawExample> = [];
+export function restructurePartialExamples(example: RawExample): SingleRawExample[] {
+  const partials: SingleRawExample[] = [];
   Object.values(example.rawPartials).forEach((partial) => {
     const document = graphqlTag(partial.operation);
     const leaves = findLeafPaths(document);

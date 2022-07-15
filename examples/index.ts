@@ -70,7 +70,7 @@ partialContext.keys().forEach(assetPath => {
   }
 })
 
-const examples: Array<RawExample> = [];
+const examples: RawExample[] = [];
 for (const dirname of Object.keys(examplesByDirname)) {
   // Parse fragment id pool from fragment path
   if("fragmentPath" in examplesByDirname[dirname]) {

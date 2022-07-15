@@ -9,7 +9,7 @@ export interface SingleExample {
 // requires to execute operations.
 export interface Example extends SingleExample {
   title: string;  
-  partials: Array<SingleExample>;
+  partials: SingleExample[];
   fragment?: RawFragment;
 }
 
@@ -25,7 +25,7 @@ export interface RawFragment {
   operation: string;
   relayArtifact?: ReaderFragment;
   ownerRelayArtifact?: ConcreteRequest;
-  fragmentPool: Array<Fragment>;
+  fragmentPool: Fragment[];
 }
 
 export interface Fragment {
@@ -42,8 +42,8 @@ export interface FragmentResponse {
 export interface RawExample extends SingleRawExample {
   title: string;
   schema: string;
-  partials: Array<SingleRawExample>;
-  rawPartials?: Array<RawPartial>;
+  partials: SingleRawExample[];
+  rawPartials?: RawPartial[];
 }
 
 export interface RawPartial {
