@@ -1,5 +1,5 @@
 import { DocumentNode } from "graphql";
-import { ConcreteRequest } from "relay-runtime";
+import { ConcreteRequest, OperationDescriptor, ReaderFragment } from "relay-runtime";
 
 export interface SingleExample {
   response: object;  
@@ -23,6 +23,8 @@ export interface SingleRawExample {
 
 export interface RawFragment {
   operation: string;
+  relayArtifact?: ReaderFragment;
+  ownerRelayArtifact?: ConcreteRequest;
   fragmentPool: Array<Fragment>;
 }
 
@@ -30,10 +32,6 @@ export interface Fragment {
   typename: string;
   id: string;
   response: FragmentResponse
-}
-
-export interface FragmentExample extends Omit<RawFragment, "operation"> {
-  operation: DocumentNode;
 }
 
 export interface FragmentResponse {

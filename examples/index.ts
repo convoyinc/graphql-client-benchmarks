@@ -28,11 +28,20 @@ exampleContext.keys().forEach(assetPath => {
   assetType = assetType.replace(".graphql", "")
   const assetContent = exampleContext(assetPath)
 
-  console.log(assetType)
   if (assetType == 'metadata') {
     examplesByDirname[examplePath] = { ...examplesByDirname[examplePath], ...assetContent };
   } else if (assetType == 'fragment') {
     examplesByDirname[examplePath][assetType] = {operation: assetContent}
+  } else if (assetType == 'fragment_relayArtifact'){
+    if('fragment' in examplesByDirname[examplePath])
+      examplesByDirname[examplePath].fragment = {...examplesByDirname[examplePath].fragment, relayArtifact: assetContent.default}
+    else
+      examplesByDirname[examplePath].fragment = {relayArtifact: assetContent.default}
+  } else if (assetType == 'fragmentOwner_relayArtifact'){
+    if('fragment' in examplesByDirname[examplePath])
+      examplesByDirname[examplePath].fragment = {...examplesByDirname[examplePath].fragment, ownerRelayArtifact: assetContent.default}
+    else
+      examplesByDirname[examplePath].fragment = {ownerRelayArtifact: assetContent.default} 
   } else {
     examplesByDirname[examplePath][assetType] = assetContent;
   }

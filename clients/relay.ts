@@ -12,10 +12,11 @@ import {
   Store,
   RecordSource,
   getRequest,
-  createOperationDescriptor
+  createOperationDescriptor,
+  createReaderSelector
 } from 'relay-runtime'
 
-import { Client, SingleExample, Observer, RawExample, ReadResult, Fragment } from '../src';
+import { Client, SingleExample, Observer, RawExample, ReadResult, Fragment, RawFragment } from '../src';
 
 class RelayObserver implements Observer {
   private _mostRecentResult?: any = null;
@@ -42,10 +43,15 @@ class RelayObserver implements Observer {
   }
 }
 
+interface RelayFragmentExample extends Omit<RawFragment, "operation"> {
+  operation: OperationDescriptor;  
+}
+
 interface RelayExample extends SingleExample {
-  operation: any;
+  operation: OperationDescriptor;
   variables?: object;
   relayArtifact: ConcreteRequest;
+  fragment?: RelayFragmentExample;
 }
 
 export class Relay extends Client {
@@ -64,11 +70,31 @@ export class Relay extends Client {
     const request = getRequest(rawExample.relayArtifact);
     const operation = createOperationDescriptor(request, rawExample.variables);
 
+    console.log("I am here, see raw example", rawExample)
+
+    let fragment: RelayFragmentExample; 
+    if ("fragment" in rawExample) {
+      const fragmentOwnerRequest = getRequest(rawExample.fragment.ownerRelayArtifact);
+      const fragmentOwnerOperation = createOperationDescriptor(fragmentOwnerRequest, rawExample.variables)
+      console.log("Operation constructed");
+      
+      fragment = {
+        operation: fragmentOwnerOperation,
+        relayArtifact: rawExample.fragment.relayArtifact,
+        fragmentPool: rawExample.fragment.fragmentPool
+      }     
+
+      console.log("tu je fragment v IF", fragment)
+    }
+
+    console.log("I have fragment after IF", fragment); 
+    
     return {
       operation,
       response: rawExample.response,
       variables: rawExample.variables,
-      relayArtifact: rawExample.relayArtifact
+      relayArtifact: rawExample.relayArtifact,
+      fragment
     };
   }
 
@@ -78,8 +104,10 @@ export class Relay extends Client {
     return (!res.data || res.isMissingData) ? { data: null } : { data: res.data };
   }
   
-  readFragment(example: SingleExample, fragmentInstance: Fragment): Promise<ReadResult<object>> {
-    throw new Error('Method not implemented.');
+  async readFragment({ fragment, variables }: RelayExample, fragmentInstance: Fragment): Promise<ReadResult<object>> {
+    const selector = createReaderSelector(fragment.relayArtifact, fragmentInstance.id, variables, fragment.operation.request)
+    const res = this._client.lookup(selector);
+    return (!res.data || res.isMissingData) ? { data: null } : { data: res.data };
   }
 
   async write({ operation, response }: RelayExample) {

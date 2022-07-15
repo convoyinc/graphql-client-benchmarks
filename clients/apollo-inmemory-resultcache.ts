@@ -13,7 +13,7 @@ import {
 // eslint-disable-next-line import/no-internal-modules
 import packageInfo from '@apollo/client/package.json';
 
-import { Client, FragmentExample, Fragment, Observer, SingleExample, SingleRawExample } from '../src';
+import { Client, Fragment, Observer, SingleExample, SingleRawExample, RawFragment } from '../src';
 
 class ApolloObserver implements Observer {
   private _mostRecentResult?: any = null;
@@ -38,11 +38,14 @@ class ApolloObserver implements Observer {
   }
 }
 
+export interface ApolloFragmentExample extends Omit<RawFragment, "operation"> {
+  operation: DocumentNode;
+}
+
 interface ApolloExample extends SingleExample {
   operation: DocumentNode;
   variables?: object;
-  id?: string;
-  fragment?: FragmentExample;
+  fragment?: ApolloFragmentExample;
 }
 
 export class ApolloInMemoryResultCache extends Client {
@@ -62,7 +65,7 @@ export class ApolloInMemoryResultCache extends Client {
   }
 
   transformRawExample(rawExample: SingleRawExample): ApolloExample {    
-    let fragment: FragmentExample; 
+    let fragment: ApolloFragmentExample; 
     
     if ("fragment" in rawExample) 
       fragment = {

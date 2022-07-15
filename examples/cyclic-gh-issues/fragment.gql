@@ -1,4 +1,4 @@
-fragment RepositoryFragment on Repository {
+fragment fragment on Repository {
   __typename
   id
   createdAt

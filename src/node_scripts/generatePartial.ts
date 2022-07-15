@@ -9,10 +9,18 @@ const exampleDirs = readdirSync('./examples',{ withFileTypes: true }).filter(dir
 exampleDirs.forEach((exampleDir) => {
     // read query
     const query = readFileSync(`./examples/${exampleDir.name}/operation.gql`, 'utf8')
-    
     // construct raw relay artifact and write it to the folder for compilation
     const relayRaw = `import graphql from 'babel-plugin-relay/macro';\ngraphql\`\n${query}\n\``
     writeFileSync(`./examples/${exampleDir.name}/operation.gql.ts`, relayRaw)
+
+    // read fragment if exists
+    if (existsSync(`./examples/${exampleDir.name}/fragment.gql`)) {
+        const fragment = readFileSync(`./examples/${exampleDir.name}/fragment.gql`, 'utf8')
+        const fragmentOwner = readFileSync(`./examples/${exampleDir.name}/fragmentOwner.gql`, 'utf8')
+        // construct raw relay artifact from the fragment and write it to the folder for compilation
+        const relayRawFragment = `import graphql from 'babel-plugin-relay/macro';\ngraphql\`\n${fragment}\n\`\ngraphql\`\n${fragmentOwner}\n\``
+        writeFileSync(`./examples/${exampleDir.name}/fragment.gql.ts`, relayRawFragment)
+    }
 
     // generate partial queries from the main query
     const partials = generatePartialExamplesFromQuery(query)

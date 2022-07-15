@@ -14,6 +14,7 @@ export default class ReadSatisfied extends Benchmark {
     await this.client.write(this.example);
     if (this.example.fragment.fragmentPool)
         this.fragment = this.example.fragment.fragmentPool[Math.floor(Math.random() * this.example.fragment.fragmentPool.length)]            
+        console.log(this.fragment)
   }
 
   async run() {
