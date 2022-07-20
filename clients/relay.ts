@@ -70,24 +70,17 @@ export class Relay extends Client {
     const request = getRequest(rawExample.relayArtifact);
     const operation = createOperationDescriptor(request, rawExample.variables);
 
-    console.log("I am here, see raw example", rawExample)
-
     let fragment: RelayFragmentExample; 
     if ("fragment" in rawExample) {
       const fragmentOwnerRequest = getRequest(rawExample.fragment.ownerRelayArtifact);
       const fragmentOwnerOperation = createOperationDescriptor(fragmentOwnerRequest, rawExample.variables)
-      console.log("Operation constructed");
       
       fragment = {
         operation: fragmentOwnerOperation,
         relayArtifact: rawExample.fragment.relayArtifact,
         fragmentPool: rawExample.fragment.fragmentPool
       }     
-
-      console.log("tu je fragment v IF", fragment)
     }
-
-    console.log("I have fragment after IF", fragment); 
     
     return {
       operation,
