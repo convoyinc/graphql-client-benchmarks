@@ -72,18 +72,8 @@ partialContext.keys().forEach(assetPath => {
 
 const examples: RawExample[] = [];
 for (const dirname of Object.keys(examplesByDirname)) {
-  // Parse fragment id pool from fragment path
-  if("fragmentPath" in examplesByDirname[dirname]) {
-    const responsePool = examplesByDirname[dirname]
-      .fragmentPath.split(".").reduce((a, b) => a[b], examplesByDirname[dirname].response)      
-
-    examplesByDirname[dirname].fragment.fragmentPool = responsePool
-      .map((x) => ({
-        typename: x.__typename,
-        id: x.id,
-        response: x
-      }) as Fragment);
-
+  if ("fragmentPath" in examplesByDirname[dirname]) {
+    examplesByDirname[dirname].fragment = {...examplesByDirname[dirname].fragment, fragmentPath: examplesByDirname[dirname].fragmentPath}
     delete examplesByDirname[dirname].fragmentPath
   }
 

@@ -70,7 +70,7 @@ export class ApolloInMemoryResultCache extends Client {
     if ("fragment" in rawExample) 
       fragment = {
         operation: graphqlTag(rawExample.fragment.operation),
-        fragmentPool: rawExample.fragment.fragmentPool
+        fragmentPath: rawExample.fragment.fragmentPath
       }      
     
     return {

@@ -25,7 +25,7 @@ export interface RawFragment {
   operation: string;
   relayArtifact?: ReaderFragment;
   ownerRelayArtifact?: ConcreteRequest;
-  fragmentPool: Fragment[];
+  fragmentPath?: string;
 }
 
 export interface Fragment {

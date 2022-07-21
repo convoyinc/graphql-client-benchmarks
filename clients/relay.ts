@@ -78,7 +78,7 @@ export class Relay extends Client {
       fragment = {
         operation: fragmentOwnerOperation,
         relayArtifact: rawExample.fragment.relayArtifact,
-        fragmentPool: rawExample.fragment.fragmentPool
+        fragmentPath: rawExample.fragment.fragmentPath
       }     
     }
     
