@@ -20,7 +20,7 @@ export default class WriteWithTwentyFiveObserversAndEmptyCache extends Benchmark
   }
 
   async verify() {
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 25; i++) {
       const observer = this.observers[i];
       const { response } = this.example.partials[i];
       expect(observer.mostRecentResult().data, 'to satisfy', response);
