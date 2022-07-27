@@ -18,8 +18,15 @@ for DIRECTORY in $DIRECTORIES; do
   mv $DIRECTORY/__artifacts__/operationQuery.graphql.ts $DIRECTORY/relayArtifact.graphql.ts
   # remove raw fragment, move generated fragment and rename
   rm $DIRECTORY/fragment.gql.ts
-  mv $DIRECTORY/__artifacts__/fragment.graphql.ts $DIRECTORY/fragment_relayArtifact.graphql.ts
-  mv $DIRECTORY/__artifacts__/fragmentOwnerQuery.graphql.ts $DIRECTORY/fragmentOwner_relayArtifact.graphql.ts
+  # find fragment artefacts names and move them
+  FRAGMENTOWNER=$(find $DIRECTORY/__artifacts__/ -name 'fragment*Query.graphql.ts' -maxdepth 1 | head -n 1)
+  if [[ ! -z "$FRAGMENTOWNER" ]]; then
+    mv $DIRECTORY/__artifacts__/${FRAGMENTOWNER##*/} $DIRECTORY/fragmentOwner_relayArtifact.graphql.ts
+  fi
+  FRAGMENT=$(find $DIRECTORY/__artifacts__/ -name 'fragment*.graphql.ts' -maxdepth 1 | head -n 1)
+  if [[ ! -z "$FRAGMENT" ]]; then
+    mv $DIRECTORY/__artifacts__/${FRAGMENT##*/} $DIRECTORY/fragment_relayArtifact.graphql.ts
+  fi
   # remove all temp versions of partial relay artifacts and replace them with the compiled ones
   rm -rf $DIRECTORY/__partials__/relay/*
   mv $DIRECTORY/__artifacts__/* $DIRECTORY/__partials__/relay/
