@@ -1,3 +1,13 @@
+query fragmentOwnerQuery {
+  organization(login: "facebook") {
+    repositories(first: 10) {
+      nodes {
+        ...fragment
+      }
+    }
+  }
+}
+
 fragment fragment on Repository {
   __typename
   id
