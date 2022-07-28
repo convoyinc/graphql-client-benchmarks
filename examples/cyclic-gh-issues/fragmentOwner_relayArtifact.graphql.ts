@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<56c46ba061a206c922f7b2bfc96570a5>>
+ * @generated SignedSource<<1407f435a8a613495a05ba61b4d98ed1>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -15,7 +15,7 @@ export type fragmentOwnerQuery$data = {
   readonly organization: {
     readonly repositories: {
       readonly nodes: ReadonlyArray<{
-        readonly " $fragmentSpreads": FragmentRefs<"fragment">;
+        readonly " $fragmentSpreads": FragmentRefs<"fragmentRepository">;
       } | null> | null;
     };
   } | null;
@@ -96,7 +96,7 @@ return {
                   {
                     "args": null,
                     "kind": "FragmentSpread",
-                    "name": "fragment"
+                    "name": "fragmentRepository"
                   }
                 ],
                 "storageKey": null
@@ -217,16 +217,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "7d6276a79ae519770d6af3a57d4a77a1",
+    "cacheID": "5f604607401f58b7bb1167425df9820a",
     "id": null,
     "metadata": {},
     "name": "fragmentOwnerQuery",
     "operationKind": "query",
-    "text": "query fragmentOwnerQuery {\n  organization(login: \"facebook\") {\n    repositories(first: 10) {\n      nodes {\n        ...fragment\n        id\n      }\n    }\n    id\n  }\n}\n\nfragment fragment on Repository {\n  __typename\n  id\n  createdAt\n  homepageUrl\n  issues(first: 10, states: OPEN) {\n    __typename\n    nodes {\n      __typename\n      id\n      createdAt\n      title\n      repository {\n        __typename\n        id\n      }\n    }\n  }\n}\n"
+    "text": "query fragmentOwnerQuery {\n  organization(login: \"facebook\") {\n    repositories(first: 10) {\n      nodes {\n        ...fragmentRepository\n        id\n      }\n    }\n    id\n  }\n}\n\nfragment fragmentRepository on Repository {\n  __typename\n  id\n  createdAt\n  homepageUrl\n  issues(first: 10, states: OPEN) {\n    __typename\n    nodes {\n      __typename\n      id\n      createdAt\n      title\n      repository {\n        __typename\n        id\n      }\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "ef8c10c4c3b784882db34b29365abf98";
+(node as any).hash = "b5453ba1a15b871018808f4ba048a3b1";
 
 export default node;

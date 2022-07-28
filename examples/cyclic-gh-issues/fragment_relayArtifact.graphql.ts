@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<b8af38be5abd45e61b065576d0096e27>>
+ * @generated SignedSource<<06f703496cf18b7c5af499ed86fe8dfc>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,7 +10,7 @@
 
 import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type fragment$data = {
+export type fragmentRepository$data = {
   readonly __typename: "Repository";
   readonly createdAt: any;
   readonly homepageUrl: any | null;
@@ -28,11 +28,11 @@ export type fragment$data = {
       readonly title: string;
     } | null> | null;
   };
-  readonly " $fragmentType": "fragment";
+  readonly " $fragmentType": "fragmentRepository";
 };
-export type fragment$key = {
-  readonly " $data"?: fragment$data;
-  readonly " $fragmentSpreads": FragmentRefs<"fragment">;
+export type fragmentRepository$key = {
+  readonly " $data"?: fragmentRepository$data;
+  readonly " $fragmentSpreads": FragmentRefs<"fragmentRepository">;
 };
 
 const node: ReaderFragment = (function(){
@@ -61,7 +61,7 @@ return {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
-  "name": "fragment",
+  "name": "fragmentRepository",
   "selections": [
     (v0/*: any*/),
     (v1/*: any*/),
@@ -136,6 +136,6 @@ return {
 };
 })();
 
-(node as any).hash = "5828aef69d9b4d9d63f1e16935dbd567";
+(node as any).hash = "3a9ea5f446cc1023271630d6b60da7d4";
 
 export default node;

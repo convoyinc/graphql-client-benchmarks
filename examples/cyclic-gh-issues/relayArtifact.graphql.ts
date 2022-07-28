@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<024b348c006e60a6e06a15f6a66b70a7>>
+ * @generated SignedSource<<31c5a2ea7db697b062996e77c065c790>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,8 +9,8 @@
 // @ts-nocheck
 
 import { ConcreteRequest, Query } from 'relay-runtime';
-export type operationQuery$variables = {};
-export type operationQuery$data = {
+export type operationXQuery$variables = {};
+export type operationXQuery$data = {
   readonly organization: {
     readonly __typename: "Organization";
     readonly id: string;
@@ -38,9 +38,9 @@ export type operationQuery$data = {
     };
   } | null;
 };
-export type operationQuery = {
-  response: operationQuery$data;
-  variables: operationQuery$variables;
+export type operationXQuery = {
+  response: operationXQuery$data;
+  variables: operationXQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){
@@ -184,7 +184,7 @@ return {
     "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
-    "name": "operationQuery",
+    "name": "operationXQuery",
     "selections": (v4/*: any*/),
     "type": "Query",
     "abstractKey": null
@@ -193,20 +193,20 @@ return {
   "operation": {
     "argumentDefinitions": [],
     "kind": "Operation",
-    "name": "operationQuery",
+    "name": "operationXQuery",
     "selections": (v4/*: any*/)
   },
   "params": {
-    "cacheID": "dd82984b41b01a932fc609676a7bcab4",
+    "cacheID": "fc0484e1cf373d63c4f5f5d1b0be3273",
     "id": null,
     "metadata": {},
-    "name": "operationQuery",
+    "name": "operationXQuery",
     "operationKind": "query",
-    "text": "query operationQuery {\n  organization(login: \"facebook\") {\n    __typename\n    id\n    repositories(first: 10) {\n      __typename\n      nodes {\n        __typename\n        id\n        createdAt\n        homepageUrl\n        issues(first: 10, states: OPEN) {\n          __typename\n          nodes {\n            __typename\n            id\n            createdAt\n            title\n            repository {\n              __typename\n              id\n            }\n          }\n        }\n      }\n    }\n  }\n}\n"
+    "text": "query operationXQuery {\n  organization(login: \"facebook\") {\n    __typename\n    id\n    repositories(first: 10) {\n      __typename\n      nodes {\n        __typename\n        id\n        createdAt\n        homepageUrl\n        issues(first: 10, states: OPEN) {\n          __typename\n          nodes {\n            __typename\n            id\n            createdAt\n            title\n            repository {\n              __typename\n              id\n            }\n          }\n        }\n      }\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "5464df2db5bb63e46cc4ef96b1b2364c";
+(node as any).hash = "99dfc9b5b779d58e22784925a2422072";
 
 export default node;
