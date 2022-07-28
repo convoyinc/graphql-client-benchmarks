@@ -16,8 +16,9 @@ exampleDirs.forEach((exampleDir) => {
     // read fragment if exists
     if (existsSync(`./examples/${exampleDir.name}/fragment.gql`)) {
         const fragment = readFileSync(`./examples/${exampleDir.name}/fragment.gql`, 'utf8')
+        const fragmentOwner = readFileSync(`./examples/${exampleDir.name}/fragmentOwner.gql`, 'utf8')
         // construct raw relay artifact from the fragment and write it to the folder for compilation
-        const relayRawFragment = `import graphql from 'babel-plugin-relay/macro';\ngraphql\`\n${fragment}\n\``
+        const relayRawFragment = `import graphql from 'babel-plugin-relay/macro';\ngraphql\`\n${fragment}\n\`\ngraphql\`\n${fragmentOwner}\n\``        
         writeFileSync(`./examples/${exampleDir.name}/fragment.gql.ts`, relayRawFragment)
     }
 

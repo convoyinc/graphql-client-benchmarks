@@ -28,7 +28,7 @@ for DIRECTORY in $DIRECTORIES; do
   # remove raw fragment, move generated fragment and rename
   rm $DIRECTORY/fragment.gql.ts
   # find fragment artefacts names and move them
-  FRAGMENTOWNER=$(find $DIRECTORY/__artifacts__/ -name 'fragment*Query.graphql.ts' -maxdepth 1 | head -n 1)
+  FRAGMENTOWNER=$(find $DIRECTORY/__artifacts__/ -name 'fragmentOwner*Query.graphql.ts' -maxdepth 1 | head -n 1)
   if [[ ! -z "$FRAGMENTOWNER" ]]; then
     mv $DIRECTORY/__artifacts__/${FRAGMENTOWNER##*/} $DIRECTORY/fragmentOwner_relayArtifact.graphql.ts
   fi
