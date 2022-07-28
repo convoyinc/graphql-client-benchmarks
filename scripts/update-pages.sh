@@ -16,4 +16,4 @@ git remote set-url origin $REMOTE
 git pull origin
 git add .
 git commit -m "Built web reporter for ${CURRENT_COMMIT}"
-git push origin gh-pages
+git push origin gh-pages --force
