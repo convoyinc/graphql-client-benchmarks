@@ -22,7 +22,7 @@ export default class ReadDuplicate extends Benchmark {
   }
 
   async verify() {
-    const { response } = this.example.partials[3];
+    const { response } = this.example.partials[this.midpoint];
     expect(this.result!.data, 'to satisfy', response);
   }
 }
