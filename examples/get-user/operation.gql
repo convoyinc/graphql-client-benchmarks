@@ -1,0 +1,7 @@
+query operationQuery($userId: ID!) {
+  user(userId: $userId) {
+    id
+    displayName
+    __typename # Adding this in to cover the following bug : https://github.com/apollographql/apollo-client/issues/2510
+  }
+}

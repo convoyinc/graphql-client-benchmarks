@@ -1,0 +1,7 @@
+{
+    "src": "./examples/get-user/",
+    "schema": "./examples/get-user/schema.gql",
+    "language": "typescript",
+    "artifactDirectory": "./examples/get-user/__artifacts__",
+    "exclude": ["**/__partials__/other/**"]
+}

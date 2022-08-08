@@ -1,0 +1,7 @@
+query partial03Query($userId: ID!) {
+  user(userId: $userId) {
+    displayName
+    id
+    __typename
+  }
+}
