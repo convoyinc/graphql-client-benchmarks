@@ -1,0 +1,15 @@
+query partial11Query($convId: ID!) {
+  messages(convId: $convId) {
+    content
+    from
+    imDisplayName
+    messageType
+    __typename
+    id
+    emotions {
+      users {
+        id
+      }
+    }
+  }
+}

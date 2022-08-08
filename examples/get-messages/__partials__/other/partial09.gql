@@ -1,0 +1,15 @@
+query partial09Query($convId: ID!) {
+  messages(convId: $convId) {
+    emotions {
+      key
+      users {
+        id
+      }
+    }
+    from
+    imDisplayName
+    originalArrivalTime
+    __typename
+    id
+  }
+}

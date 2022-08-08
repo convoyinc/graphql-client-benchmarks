@@ -1,0 +1,17 @@
+query partial20Query($convId: ID!) {
+  messages(convId: $convId) {
+    emotions {
+      key
+      users {
+        id
+      }
+    }
+    imDisplayName
+    originalArrivalTime
+    content
+    from
+    messageType
+    __typename
+    id
+  }
+}

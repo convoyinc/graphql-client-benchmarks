@@ -1,0 +1,13 @@
+query partial05Query($convId: ID!) {
+  messages(convId: $convId) {
+    messageType
+    originalArrivalTime
+    __typename
+    id
+    emotions {
+      users {
+        id
+      }
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+    "messages": [
+        {
+            "content": "I should be fine after 9:30",
+            "originalArrivalTime": "2018-07-23T20:40:22.465Z",
+            "imDisplayName": "Michael Tsu",
+            "id": "1532378422465",
+            "from": "89307a45-6698-4d71-87a2-19e38ddae81b",
+            "messageType": "Text",
+            "emotions": null,
+            "__typename": "Message"
+        },
+        {
+            "content": "Preferably after 11",
+            "originalArrivalTime": "2018-07-23T19:59:33.855Z",
+            "imDisplayName": "Mukundan Kavanur Kidambi",
+            "id": "1532375973855",
+            "from": "c6c81d72-e952-4b1c-805b-626bf7381030",
+            "messageType": "Text",
+            "emotions": null,
+            "__typename": "Message"
+        },
+        {
+            "content": "we need to present numbers by Friday, so I'll setup a sync standup starting tomorrow so that we can make sure we are as a team on top of what needs to get done. Any prefs on the time?",
+            "originalArrivalTime": "2018-07-23T18:53:17.421Z",
+            "imDisplayName": "Niraj Khanchandani",
+            "id": "1532371997421",
+            "from": "e641897e-04ad-4bbb-9dc9-b9c975e62036",
+            "messageType": "Text",
+            "emotions": null,
+            "__typename": "Message"
+        },
+        {
+            "content": "<topicupdate><eventtime>1532371902199</eventtime><initiator>8:orgid:72f988bf86f141af91ab2d7cd011db47_e641897e04ad4bbb9dc9b9c975e62036</initiator><value>Datalayer Benchmarking</value></topicupdate>",
+            "originalArrivalTime": "2018-07-23T18:51:42.199Z",
+            "imDisplayName": null,
+            "id": "1532371902199",
+            "from": null,
+            "messageType": "ThreadActivity/TopicUpdate",
+            "emotions": null,
+            "__typename": "Message"
+        },
+        {
+            "content": "<div><div>i have checked in a trivial app into sandbox/fundamentals/sampleElectron app where any website can be run from it. <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"0\">Susheel Ahuja</span>, as discussed offline, we can use that for figuring out our memory and CPU numbers</div>\n</div>",
+            "originalArrivalTime": "2018-07-23T18:51:33.762Z",
+            "imDisplayName": "Niraj Khanchandani",
+            "id": "1532371893762",
+            "from": "e641897e-04ad-4bbb-9dc9-b9c975e62036",
+            "messageType": "RichText/Html",
+            "emotions": null,
+            "__typename": "Message"
+        },
+        {
+            "content": "Hey folks, starting this thread for internal comms on the benchmarking",
+            "originalArrivalTime": "2018-07-23T18:50:53.167Z",
+            "imDisplayName": "Niraj Khanchandani",
+            "id": "1532371853167",
+            "from": "e641897e-04ad-4bbb-9dc9-b9c975e62036",
+            "messageType": "Text",
+            "emotions": null,
+            "__typename": "Message"
+        },
+        {
+            "content": "<addmember><eventtime>1532371852542</eventtime><initiator>8:orgid:72f988bf86f141af91ab2d7cd011db47_e641897e04ad4bbb9dc9b9c975e62036</initiator><rosterVersion>1532371852402</rosterVersion><target>8:orgid:72f988bf86f141af91ab2d7cd011db47_e641897e04ad4bbb9dc9b9c975e62036</target><detailedtargetinfo><id>8:orgid:72f988bf86f141af91ab2d7cd011db47_e641897e04ad4bbb9dc9b9c975e62036</id></detailedtargetinfo><target>8:orgid:72f988bf86f141af91ab2d7cd011db47_89307a4566984d7187a219e38ddae81b</target><detailedtargetinfo><id>8:orgid:72f988bf86f141af91ab2d7cd011db47_89307a4566984d7187a219e38ddae81b</id></detailedtargetinfo><target>8:orgid:72f988bf86f141af91ab2d7cd011db47_c6c81d72e9524b1c805b626bf7381030</target><detailedtargetinfo><id>8:orgid:72f988bf86f141af91ab2d7cd011db47_c6c81d72e9524b1c805b626bf7381030</id></detailedtargetinfo><target>8:orgid:342760c2-76da-4b3b-8604-cee41c40efc7</target><detailedtargetinfo><id>8:orgid:342760c2-76da-4b3b-8604-cee41c40efc7</id></detailedtargetinfo></addmember>",
+            "originalArrivalTime": "2018-07-23T18:50:52.542Z",
+            "imDisplayName": null,
+            "id": "1532371852542",
+            "from": null,
+            "messageType": "ThreadActivity/AddMember",
+            "emotions": null,
+            "__typename": "Message"
+        }
+    ]
+}

@@ -1,0 +1,17 @@
+query partial22Query($convId: ID!) {
+  messages(convId: $convId) {
+    originalArrivalTime
+    messageType
+    from
+    content
+    emotions {
+      key
+      users {
+        id
+      }
+    }
+    imDisplayName
+    __typename
+    id
+  }
+}

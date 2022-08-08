@@ -1,0 +1,14 @@
+query partial06Query($convId: ID!) {
+  messages(convId: $convId) {
+    imDisplayName
+    originalArrivalTime
+    from
+    __typename
+    id
+    emotions {
+      users {
+        id
+      }
+    }
+  }
+}

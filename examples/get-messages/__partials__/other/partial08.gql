@@ -1,0 +1,14 @@
+query partial08Query($convId: ID!) {
+  messages(convId: $convId) {
+    from
+    messageType
+    imDisplayName
+    __typename
+    id
+    emotions {
+      users {
+        id
+      }
+    }
+  }
+}

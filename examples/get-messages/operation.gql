@@ -1,0 +1,22 @@
+query operationQuery($convId: ID!) {
+  messages(convId: $convId) {
+    ...operationMessageFields @relay(mask: false)
+  }
+}
+
+# TODO: take fragments out of here..
+fragment operationMessageFields on Message {
+  __typename
+  content
+  originalArrivalTime
+  imDisplayName
+  id
+  from
+  messageType
+  emotions {
+    key
+    users {
+      id
+    }
+  }
+}

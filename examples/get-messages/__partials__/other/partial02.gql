@@ -1,0 +1,12 @@
+query partial02Query($convId: ID!) {
+  messages(convId: $convId) {
+    imDisplayName
+    __typename
+    id
+    emotions {
+      users {
+        id
+      }
+    }
+  }
+}
