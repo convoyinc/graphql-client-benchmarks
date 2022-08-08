@@ -1,0 +1,7 @@
+{
+    "src": "./examples/get-presence/",
+    "schema": "./examples/get-presence/schema.gql",
+    "language": "typescript",
+    "artifactDirectory": "./examples/get-presence/__artifacts__",
+    "exclude": ["**/__partials__/other/**"]
+}

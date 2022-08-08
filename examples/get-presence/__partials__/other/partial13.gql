@@ -1,0 +1,8 @@
+query partial13Query($userId: ID!) {
+  presence(userId: $userId) {
+    availability
+    activity
+    __typename
+    id
+  }
+}

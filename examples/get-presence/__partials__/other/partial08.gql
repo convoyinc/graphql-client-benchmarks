@@ -1,0 +1,8 @@
+query partial08Query($userId: ID!) {
+  presence(userId: $userId) {
+    availability
+    activity
+    __typename
+    id
+  }
+}
