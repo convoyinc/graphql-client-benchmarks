@@ -10,7 +10,7 @@ export default class ReadWithEmptyCache extends Benchmark {
   result?: ReadResult;
 
   async run() {
-    this.result = await this.client.read(this.example);
+    this.result = await this.client.read(this.example);   
   }
 
   async verify() {
