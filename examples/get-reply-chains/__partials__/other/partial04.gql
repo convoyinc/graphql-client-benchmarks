@@ -1,0 +1,20 @@
+query partial04Query {
+  replyChains {
+    messages {
+      originalArrivalTime
+      from
+      messageType
+      id
+      emotions {
+        __typename
+        users {
+          __typename
+          id
+        }
+      }
+      __typename
+    }
+    id
+    __typename
+  }
+}

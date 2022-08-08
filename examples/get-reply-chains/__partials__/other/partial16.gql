@@ -1,0 +1,23 @@
+query partial16Query {
+  replyChains {
+    messages {
+      emotions {
+        key
+        __typename
+        users {
+          __typename
+          id
+        }
+      }
+      from
+      messageType
+      content
+      imDisplayName
+      originalArrivalTime
+      id
+      __typename
+    }
+    id
+    __typename
+  }
+}

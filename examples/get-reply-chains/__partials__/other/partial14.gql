@@ -1,0 +1,23 @@
+query partial14Query {
+  replyChains {
+    messages {
+      content
+      from
+      messageType
+      emotions {
+        key
+        __typename
+        users {
+          __typename
+          id
+        }
+      }
+      imDisplayName
+      originalArrivalTime
+      id
+      __typename
+    }
+    id
+    __typename
+  }
+}

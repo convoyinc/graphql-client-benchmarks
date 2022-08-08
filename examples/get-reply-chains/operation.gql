@@ -1,0 +1,23 @@
+query operationReplyChainsQuery {
+  replyChains {
+    id
+    messages {
+      content
+      originalArrivalTime
+      imDisplayName
+      id
+      from
+      messageType
+      emotions {
+	    __typename
+        key
+        users {
+		  __typename
+          id
+        }
+      }
+      __typename
+    }
+    __typename
+  }
+}

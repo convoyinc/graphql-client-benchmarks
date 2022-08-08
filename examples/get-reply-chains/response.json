@@ -1,0 +1,174 @@
+{
+    "replyChains": [
+        {
+            "id": "1532047762553",
+            "messages": [
+                {
+                    "content": "It would also be great to invent a few new types.  Eg a real simple version of signmeup",
+                    "originalArrivalTime": "2018-07-21T16:04:45.375Z",
+                    "imDisplayName": "Brian MacDonald",
+                    "id": "1532189085375",
+                    "from": "8:orgid:72f988bf86f141af91ab2d7cd011db47_525ab9ce893847f3ac5540461ccc7506",
+                    "messageType": "Text",
+                    "emotions": null,
+                    "__typename": "Message"
+                },
+                {
+                    "content": "<div><span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"0\">Salil Das</span> <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"1\">Chandresh Jain</span> <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"2\">Karvell Li</span></div>",
+                    "originalArrivalTime": "2018-07-21T15:59:11.172Z",
+                    "imDisplayName": "Marc Pottier",
+                    "id": "1532188751172",
+                    "from": "8:orgid:3ff5e78c-4d7c-4574-ad74-60c41043492e",
+                    "messageType": "RichText/Html",
+                    "emotions": null,
+                    "__typename": "Message"
+                },
+                {
+                    "content": "<div><span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"0\">Michael Brasket</span> let’s discuss what’s possible for polls and surveys in Q3/Q4. <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"1\">Thad Scott</span> we need that design perspective and patterns for chat canvas and adaptive post design principles. This is going to become an acute pain point in the next month and will be needed to ensure we don’t ship our org.</div>",
+                    "originalArrivalTime": "2018-07-21T15:57:07.453Z",
+                    "imDisplayName": "Marc Pottier",
+                    "id": "1532188627453",
+                    "from": "8:orgid:3ff5e78c-4d7c-4574-ad74-60c41043492e",
+                    "messageType": "RichText/Html",
+                    "emotions": null,
+                    "__typename": "Message"
+                },
+                {
+                    "content": "<div>I will rework the comments. <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"0\">Vineet Taneja</span> let’s make sure <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"1\">Crystal Hoyer</span> and I are aligned on left rail designs as this will impact desktop sooner rather than later. We are already rethinking this and will likely need to account for your design decisions.</div>",
+                    "originalArrivalTime": "2018-07-21T15:54:49.625Z",
+                    "imDisplayName": "Marc Pottier",
+                    "id": "1532188489625",
+                    "from": "8:orgid:3ff5e78c-4d7c-4574-ad74-60c41043492e",
+                    "messageType": "RichText/Html",
+                    "emotions": null,
+                    "__typename": "Message"
+                },
+                {
+                    "content": "<div><span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"0\">Sharad Goel</span> <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"1\">Mark Swift</span> I think we are going to want to change the desktop more overflow to also have the 2d grid of app icons</div>",
+                    "originalArrivalTime": "2018-07-21T01:27:32.575Z",
+                    "imDisplayName": "Brian MacDonald",
+                    "id": "1532136452575",
+                    "from": "8:orgid:72f988bf86f141af91ab2d7cd011db47_525ab9ce893847f3ac5540461ccc7506",
+                    "messageType": "RichText/Html",
+                    "emotions": null,
+                    "__typename": "Message"
+                },
+                {
+                    "content": "Very energizing meeting.  Will be a total game changer if we execute on this.",
+                    "originalArrivalTime": "2018-07-21T01:27:32.075Z",
+                    "imDisplayName": "Brian MacDonald",
+                    "id": "1532136452075",
+                    "from": "8:orgid:72f988bf86f141af91ab2d7cd011db47_525ab9ce893847f3ac5540461ccc7506",
+                    "messageType": "Text",
+                    "emotions": null,
+                    "__typename": "Message"
+                },
+                {
+                    "content": "<div><div>\n<div>\n<div>\n<div><strong>Chatanooga LT Review (7/20) notes</strong></div>\n\n<div>\n<div>&nbsp;</div>\n\n<div>\n<div>The <a href=\"https://teams.microsoft.com/_#/pptx/viewer/teams/https%3A~2F~2Fmicrosoft.sharepoint.com~2Fteams~2Fskypespacesteamnew~2FShared%20Documents~2FChatanooga~2FChatanooga%20-%20Execution%20Plan.pptx?threadId=19%3Ac5ff0950d2844d29ae436b100d2d337f%40thread.skype&amp;baseUrl=https%3A~2F~2Fmicrosoft.sharepoint.com~2Fteams~2Fskypespacesteamnew&amp;fileId=9C818E04-51BA-429F-8C49-6AD0CCAF06C5&amp;ctx=files&amp;viewerAction=view\" rel=\"noreferrer noopener\" target=\"_blank\" title=\"https://teams.microsoft.com/_#/pptx/viewer/teams/https%3A~2F~2Fmicrosoft.sharepoint.com~2Fteams~2Fskypespacesteamnew~2FShared%20Documents~2FChatanooga~2FChatanooga%20-%20Execution%20Plan.pptx?threadId=19%3Ac5ff0950d2844d29ae436b100d2d337f%40thread.skype&amp;baseUrl=https%3A~2F~2Fmicrosoft.sharepoint.com~2Fteams~2Fskypespacesteamnew&amp;fileId=9C818E04-51BA-429F-8C49-6AD0CCAF06C5&amp;ctx=files&amp;viewerAction=view\">execution plan for Chatanooga</a> has been hoisted in the channel to track and provide a running status</div>\n\n<div>\n<div>&nbsp;</div>\n\n<div>\n<div>Need a plan for all of the features listed on Slide#5 and marked 'No' to be in-progress; <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"0\">Marc</span>&nbsp;thanks for adding comments to the deck but somehow the comments don't align to the feature-items and hence we can't understand which feature are they referring to; could you please add the comment in Slide#2 of the hoisted deck that tracks the execution plan, <em>in the Comments column</em>? ditto for Slide#3 and Slide#5; <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"1\">Mansoor Jafry</span>&nbsp;please look at other features in this list and provide a plan</div>\n\n<div>\n<div>&nbsp;</div>\n\n<div>\n<div>Unified chat and channels - <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"2\">Mansoor</span>&nbsp;need to freeze on the UX model soon; The module should be called Chat; On mobile it should have the 'also show channels' config on by default for FLW/F1-SKU</div>\n\n<div>\n<div>&nbsp;</div>\n\n<div>\n<div>Phone auth - will go to public preview in Q4 in Teams</div>\n\n<div>\n<div>&nbsp;</div>\n\n<div>\n<div>Need the 'colorful grid view' for the overflow menu (&quot;...&quot;) on mobile, not the monochrome list view, in Q3; <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"3\">Mansoor</span>&nbsp;&amp; <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"4\">Michael Brasket</span>&nbsp;to discuss and provide a plan by 7/27<br>\r\n\n&nbsp;</div>\n\n<div><span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"5\">Ori Kashi</span>&nbsp;will coordinate and run the next bi-weekly checkpoint on 8/3.</div>\n\n<div>&nbsp;</div>\n\n<div>cc: <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"6\">Brian MacDonald</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"7\">Bhrighu Sareen</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"8\">Emma Williams</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"9\">Rish Tandon</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"10\">Mark Swift (TEAMS)</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"11\">Debi Mishra</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"12\">Michael Brasket</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"13\">Mansoor Jafry</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"14\">Marc Pottier</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"15\">Crystal Hoyer</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"16\">Roshin Ramesan</span>,&nbsp;<span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"17\">Rama Juluri</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"18\">Pratik Stephen</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"19\">Bugra Oktay</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"20\">Somak Bhattacharyya</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"21\">Lynn Vo</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"22\">Swati Jhawar</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"23\">Matt Blank</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"24\">Andrew Bybee</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"25\">Larry Jin</span></div>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div>",
+                    "originalArrivalTime": "2018-07-21T01:08:22.916Z",
+                    "imDisplayName": "Vineet Taneja",
+                    "id": "1532135302916",
+                    "from": "8:orgid:b33fb90a-fabd-46fb-9b2f-85f04ea9aa6f",
+                    "messageType": "RichText/Html",
+                    "emotions": null,
+                    "__typename": "Message"
+                },
+                {
+                    "content": "<div><div>\n<div>\n<div>Here's the deck for tomorrow; needs a few slides/screens added so please look at your respective names on the slides and add content as necessary</div>\n\n<div>&nbsp;</div>\n\n<div>Slides 2 - 12 tell the story on what to build and the rest present what we need to do in Q3</div>\n\n<div>&nbsp;</div>\n\n<div><span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"0\">Ori Kashi</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"1\">Mansoor Jafry</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"2\">Bugra Oktay</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"3\">Pratik Stephen</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"4\">Lynn Vo</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"5\">Somak Bhattacharyya</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"6\">Swati Jhawar</span></div>\n</div>\n</div>\n</div>",
+                    "originalArrivalTime": "2018-07-20T00:49:22.553Z",
+                    "imDisplayName": "Vineet Taneja",
+                    "id": "1532047762553a",
+                    "from": "8:orgid:b33fb90a-fabd-46fb-9b2f-85f04ea9aa6f",
+                    "messageType": "RichText/Html",
+                    "emotions": null,
+                    "__typename": "Message"
+                }
+            ],
+            "__typename": "ReplyChains"
+        },
+        {
+            "id": "1532134832960",
+            "messages": [
+                {
+                    "content": "{\"newValue\":\"{\\\"settings\\\":{\\\"subtype\\\":\\\"powerpointpin\\\",\\\"file\\\":\\\"{\\\\\\\"type\\\\\\\":\\\\\\\"pptx\\\\\\\",\\\\\\\"objectId\\\\\\\":\\\\\\\"9C818E04-51BA-429F-8C49-6AD0CCAF06C5\\\\\\\",\\\\\\\"objectUrl\\\\\\\":\\\\\\\"https://microsoft.sharepoint.com/teams/skypespacesteamnew/Shared Documents/Chatanooga/Chatanooga - Execution Plan.pptx\\\\\\\",\\\\\\\"serviceName\\\\\\\":\\\\\\\"teams\\\\\\\",\\\\\\\"providerMetadata\\\\\\\":\\\\\\\"{\\\\\\\\\\\\\\\"code\\\\\\\\\\\\\\\":null,\\\\\\\\\\\\\\\"type\\\\\\\\\\\\\\\":0}\\\\\\\",\\\\\\\"baseUrl\\\\\\\":\\\\\\\"https://microsoft.sharepoint.com/teams/skypespacesteamnew\\\\\\\"}\\\",\\\"dateAdded\\\":\\\"2018-07-21T01:00:32.841Z\\\"},\\\"name\\\":\\\"Chatanooga%20-%20Execution%20Plan\\\",\\\"definitionId\\\":\\\"com.microsoft.teamspace.tab.file.staticviewer.powerpoint\\\",\\\"id\\\":\\\"tab::bad2b37b-c31b-4f12-97dc-57fc6644dca6\\\",\\\"directive\\\":\\\"extension-tab\\\",\\\"type\\\":\\\"tab:\\\",\\\"order\\\":11300}\",\"oldValue\":\"\",\"user\":\"8:orgid:b33fb90a-fabd-46fb-9b2f-85f04ea9aa6f\"}",
+                    "originalArrivalTime": "2018-07-21T01:00:32.96Z",
+                    "imDisplayName": null,
+                    "id": "1532134832960a",
+                    "from": "19:c5ff0950d2844d29ae436b100d2d337f@thread.skype",
+                    "messageType": "ThreadActivity/TabUpdated",
+                    "emotions": null,
+                    "__typename": "Message"
+                }
+            ],
+            "__typename": "ReplyChains"
+        },
+        {
+            "id": "1531943421121",
+            "messages": [
+                {
+                    "content": "<div><div><span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"0\">Somak Bhattacharyya</span>&nbsp;<span class=\"animated-emoticon-20-smile\" title=\"Smiley\" type=\"(smile)\"><img alt=\"😄\" itemid=\"smile\" itemscope=\"\" itemtype=\"http://schema.skype.com/Emoji\" src=\"https://statics.teams.microsoft.com/evergreen-assets/funstuff/skype-emoticons-f/smile/default_20.png\" style=\"width:20px; height:20px\"></span>&nbsp;</div>\n</div>",
+                    "originalArrivalTime": "2018-07-20T07:57:06.574Z",
+                    "imDisplayName": "Lynn Vo",
+                    "id": "1532073426574",
+                    "from": "8:orgid:ed3f15e3-93a8-40df-bb7c-47f0520f4994",
+                    "messageType": "RichText/Html",
+                    "emotions": null,
+                    "__typename": "Message"
+                },
+                {
+                    "content": "<div><div>Framework: <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"0\">Sharad Goel</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"1\">Luis Carrasco</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"2\">Gino Buzzelli</span></div>\n</div>",
+                    "originalArrivalTime": "2018-07-19T19:05:36.712Z",
+                    "imDisplayName": "Vineet Taneja",
+                    "id": "1532027136712",
+                    "from": "8:orgid:b33fb90a-fabd-46fb-9b2f-85f04ea9aa6f",
+                    "messageType": "RichText/Html",
+                    "emotions": null,
+                    "__typename": "Message"
+                },
+                {
+                    "content": "<div><div>The need for a chat based collaboration app to replace popular consumer apps in the Enterprise has been felt by a large %age of customers we have spoken to and is a strategic imperative for us to deliver through Teams.</div>\n\n<div>&nbsp;</div>\n\n<div>Chatanooga = a config of Teams app that is lightweight, provides most of the functionality of popular consumer chat apps, and has enough differentiation sockets for our customers' IT departments to mandate it for their workforce (IWs as well as FLWs)</div>\n\n<div>&nbsp;</div>\n\n<div>Across our teams, we have the necessary features, know-how, features-on-the-backlog and expertise to get this done. &nbsp;The Chatanooga effort is to bring all this together in a major push and <strong>deliver a V1 in Q3CY18</strong> (hence the urgency and importance). Many of the required features are already underway and have had discussion over the past few weeks on prioritizing for landing in Q3.</div>\n\n<div>&nbsp;</div>\n\n<div>The attached decks provide a view of the work and thought-process so far; please parse them for context. <strong><a href=\"https://microsoft.sharepoint.com/teams/skypespacesteamnew/Shared%20Documents/Intune%20(CA%20Policy)%20work%20for%20GA/LT%20Reviews/Enterprise%20Readiness%20and%20IT%20Pro%20-%20LT%20Review%202018%20July.pptx?web=1\" rel=\"noreferrer noopener\" target=\"_blank\" title=\"https://microsoft.sharepoint.com/teams/skypespacesteamnew/Shared%20Documents/Intune%20(CA%20Policy)%20work%20for%20GA/LT%20Reviews/Enterprise%20Readiness%20and%20IT%20Pro%20-%20LT%20Review%202018%20July.pptx?web=1\">This deck from Ori is the latest on the Admin Config plan</a></strong> which is critical to land Chatanooga</div>\n\n<div>&nbsp;</div>\n\n<div>Between today and tomorrow, we'll be talking to most of the teams that need to deliver features to make this happen, in preparation for the <strong>first Chatanooga LT review on Friday morning (10 am)</strong> - invite will be fanned out to required folks soon.&nbsp;</div>\n\n<div>&nbsp;</div>\n\n<div><u><strong>v-team:</strong></u></div>\n\n<div>IT Pro: <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"0\">Ori Kashi</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"1\">Levon Esibov</span></div>\n\n<div>Mobile: <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"2\">Mansoor Jafry</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"3\">Rama Juluri</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"4\">Pratik Stephen</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"5\">Bugra Oktay</span></div>\n\n<div>Mobile (Bangalore): <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"6\">Michael Brasket</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"7\">Richa Arora</span></div>\n\n<div>TACO: <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"8\">Crystal Hoyer</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"9\">Roshin Ramesan</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"10\">Rama Juluri</span></div>\n\n<div>Messaging: <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"11\">Marc Pottier</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"12\">Karvell Li</span></div>\n\n<div>Phone auth: <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"13\">Lynn Vo</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"14\">Swati Jhawar</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"15\">Jennifer Shen</span></div>\n\n<div>Extensibility: <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"16\">Larry Jin</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"17\">Andrew Bybee</span></div>\n\n<div>Design: <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"18\">Matt Blank</span></div>\n\n<div>&nbsp;</div>\n\n<div>LT: <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"19\">Bhrighu Sareen</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"20\">Rish Tandon</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"21\">Mark Swift (TEAMS)</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"22\">Don Gillett</span>,<span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"23\">Graham Sheldon</span>, <span itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"24\">Emma Williams</span></div>\n\n\n</div>",
+                    "originalArrivalTime": "2018-07-18T19:50:21.121Z",
+                    "imDisplayName": "Vineet Taneja",
+                    "id": "1531943421121a",
+                    "from": "8:orgid:b33fb90a-fabd-46fb-9b2f-85f04ea9aa6f",
+                    "messageType": "RichText/Html",
+                    "emotions": null,
+                    "__typename": "Message"
+                }
+            ],
+            "__typename": "ReplyChains"
+        },
+        {
+            "id": "1531940671824",
+            "messages": [
+                {
+                    "content": "{\"newValue\":\"{\\\"settings\\\":{\\\"subtype\\\":\\\"wiki-tab\\\",\\\"wikiTabId\\\":1,\\\"wikiDefaultTab\\\":true,\\\"hasContent\\\":false},\\\"name\\\":\\\"Wiki\\\",\\\"definitionId\\\":\\\"com.microsoft.teamspace.tab.wiki\\\",\\\"id\\\":\\\"tab::5fe3adad-6a81-4983-9bf1-9fb75c40d2db\\\",\\\"directive\\\":\\\"extension-tab\\\",\\\"type\\\":\\\"tab:\\\",\\\"order\\\":11200}\",\"oldValue\":\"\",\"user\":\"8:orgid:b33fb90a-fabd-46fb-9b2f-85f04ea9aa6f\"}",
+                    "originalArrivalTime": "2018-07-18T19:04:31.824Z",
+                    "imDisplayName": null,
+                    "id": "1531940671824a",
+                    "from": "19:c5ff0950d2844d29ae436b100d2d337f@thread.skype",
+                    "messageType": "ThreadActivity/TabUpdated",
+                    "emotions": null,
+                    "__typename": "Message"
+                }
+            ],
+            "__typename": "ReplyChains"
+        },
+        {
+            "id": "1531940668590",
+            "messages": [
+                {
+                    "content": "<addmember><eventtime>1531940668590</eventtime><initiator>8:orgid:b33fb90a-fabd-46fb-9b2f-85f04ea9aa6f</initiator><rosterVersion>1531940668387</rosterVersion><target>8:orgid:b33fb90a-fabd-46fb-9b2f-85f04ea9aa6f</target></addmember>",
+                    "originalArrivalTime": "2018-07-18T19:04:28.59Z",
+                    "imDisplayName": null,
+                    "id": "1531940668590a",
+                    "from": "19:c5ff0950d2844d29ae436b100d2d337f@thread.skype",
+                    "messageType": "ThreadActivity/AddMember",
+                    "emotions": null,
+                    "__typename": "Message"
+                }
+            ],
+            "__typename": "ReplyChains"
+        }
+    ]
+}
