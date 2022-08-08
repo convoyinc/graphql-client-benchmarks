@@ -1,0 +1,59 @@
+query partial16Query {
+  chats {
+    isMuted
+    tooltipTitle
+    lastMessage {
+      originalArrivalTime
+      imDisplayName
+      threadType
+      version
+      parentMessageId
+      content
+      clientMessageId
+      __typename
+      id
+    }
+    messagePreview
+    isLastMessageText
+    isBotUser
+    hideIconSrc
+    isSfB
+    activeCallsCount
+    favoriteIconSrc
+    pictureUpn
+    leaveButtonText
+    isLastMessageFromMe
+    hasFailedMessages
+    lastMessageTime
+    isOneOnOne
+    canBeLeft
+    members {
+      givenName
+      displayName
+      __typename
+      id
+    }
+    isBotBlocked
+    longTitle
+    pinnedIndex
+    pinnedButtonText
+    isFederated
+    pinnedIconSrc
+    plGroupKey
+    showMarkers
+    hasActiveCalls
+    hasActions
+    muteButtonText
+    muteIconSrc
+    canBeDiscarded
+    messagePreviewAria
+    canBeHidden
+    favoriteButtonText
+    canBeFavorited
+    title
+    hideButtonText
+    pictureGroup
+    __typename
+    id
+  }
+}

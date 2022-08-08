@@ -1,0 +1,65 @@
+query partial18Query {
+  chats {
+    canBeHidden
+    isLastMessageText
+    canBeFavorited
+    lastMessage {
+      from
+      clientMessageId
+      type
+      threadType
+      originalArrivalTime
+      imDisplayName
+      imDisplayName
+      version
+      parentMessageId
+      __typename
+      id
+    }
+    canBeLeft
+    isNewChat
+    pinnedIconSrc
+    muteButtonText
+    tooltipTitle
+    isMuted
+    isFederated
+    discardButtonText
+    members {
+      displayName
+      givenName
+      __typename
+      id
+    }
+    isBotBlocked
+    canBeDiscarded
+    canBePinned
+    longTitle
+    datatid
+    isBotUser
+    isOneOnOne
+    hasFailedMessages
+    isLastMessageFromMe
+    activeCallsCount
+    muteIconSrc
+    pictureUpn
+    lastMessageTime
+    showAtMention
+    isHighImportance
+    favoriteIconSrc
+    hasActiveCalls
+    isHidden
+    hideIconSrc
+    messagePreview
+    isSfB
+    canBotBeBlocked
+    displayName
+    isMeeting
+    blockButtonText
+    plGroupKey
+    pinnedIndex
+    otherMemberMris
+    hasActions
+    __typename
+    id
+  }
+}

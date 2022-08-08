@@ -1,0 +1,20 @@
+query partial02Query {
+  chats {
+    lastMessage {
+      content
+      from
+      __typename
+      id
+    }
+    isBotUser
+    datatid
+    isHighImportance
+    otherMemberMris
+    __typename
+    id
+    members {
+      __typename
+      id
+    }
+  }
+}

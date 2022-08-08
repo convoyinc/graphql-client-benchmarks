@@ -1,0 +1,28 @@
+query partial05Query {
+  chats {
+    isSfB
+    pictureUpn
+    lastMessage {
+      imDisplayName
+      content
+      type
+      __typename
+      id
+    }
+    pinnedIndex
+    otherMemberMris
+    showMarkers
+    displayName
+    isMuted
+    messagePreview
+    hideIconSrc
+    isBotBlocked
+    isLastMessageFromMe
+    __typename
+    id
+    members {
+      __typename
+      id
+    }
+  }
+}

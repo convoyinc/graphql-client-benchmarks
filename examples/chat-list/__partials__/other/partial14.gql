@@ -1,0 +1,54 @@
+query partial14Query {
+  chats {
+    lastMessage {
+      containerId
+      type
+      from
+      imDisplayName
+      clientMessageId
+      version
+      parentMessageId
+      originalArrivalTime
+      __typename
+      id
+    }
+    isMeeting
+    messagePreview
+    title
+    isNewChat
+    otherMemberMris
+    showMarkers
+    isOneOnOne
+    isLastMessageText
+    canBeMuted
+    blockButtonText
+    pinnedIndex
+    leaveButtonText
+    canBeFavorited
+    hideIconSrc
+    isLastMessageFromMe
+    canBePinned
+    pictureGroup
+    hasActiveCalls
+    hasFailedMessages
+    canBeDiscarded
+    datatid
+    plGroupKey
+    tooltipTitle
+    isMuted
+    displayName
+    canBeLeft
+    muteButtonText
+    muteIconSrc
+    favoriteIconSrc
+    messagePreviewAria
+    isBotUser
+    pinnedIconSrc
+    __typename
+    id
+    members {
+      __typename
+      id
+    }
+  }
+}

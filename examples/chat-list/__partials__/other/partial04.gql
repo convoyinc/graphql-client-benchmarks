@@ -1,0 +1,26 @@
+query partial04Query {
+  chats {
+    title
+    canBeHidden
+    lastMessage {
+      parentMessageId
+      version
+      imDisplayName
+      content
+      clientMessageId
+      __typename
+      id
+    }
+    activeCallsCount
+    isMuted
+    messagePreview
+    showAtMention
+    plGroupKey
+    __typename
+    id
+    members {
+      __typename
+      id
+    }
+  }
+}

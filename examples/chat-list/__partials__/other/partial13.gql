@@ -1,0 +1,51 @@
+query partial13Query {
+  chats {
+    title
+    muteIconSrc
+    hasActions
+    plGroupKey
+    isOneOnOne
+    canBeDiscarded
+    lastMessage {
+      content
+      type
+      clientMessageId
+      imDisplayName
+      messageType
+      version
+      threadType
+      containerId
+      __typename
+      id
+    }
+    messagePreview
+    favoriteButtonText
+    muteButtonText
+    discardButtonText
+    pictureGroup
+    hasFailedMessages
+    isFederated
+    leaveButtonText
+    canBeHidden
+    isLastMessageFromMe
+    showMarkers
+    hideIconSrc
+    isLastMessageText
+    activeCallsCount
+    lastMessageTime
+    favoriteIconSrc
+    hideButtonText
+    longTitle
+    showAtMention
+    pinnedIconSrc
+    isNewChat
+    tooltipTitle
+    isHighImportance
+    __typename
+    id
+    members {
+      __typename
+      id
+    }
+  }
+}

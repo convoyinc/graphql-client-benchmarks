@@ -1,0 +1,34 @@
+query partial07Query {
+  chats {
+    activeCallsCount
+    hasActions
+    displayName
+    plGroupKey
+    pinnedIconSrc
+    favoriteIconSrc
+    pictureGroup
+    hasFailedMessages
+    canBeLeft
+    favoriteButtonText
+    isLastMessageFromMe
+    showMarkers
+    hasActiveCalls
+    canBeMuted
+    muteIconSrc
+    lastMessage {
+      from
+      composeTime
+      __typename
+      id
+    }
+    leaveButtonText
+    isBotBlocked
+    isFederated
+    __typename
+    id
+    members {
+      __typename
+      id
+    }
+  }
+}

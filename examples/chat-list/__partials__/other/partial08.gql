@@ -1,0 +1,37 @@
+query partial08Query {
+  chats {
+    lastMessage {
+      version
+      from
+      messageType
+      threadType
+      composeTime
+      imDisplayName
+      __typename
+      id
+    }
+    canBeHidden
+    isLastMessageFromMe
+    isSfB
+    isBotBlocked
+    members {
+      displayName
+      __typename
+      id
+    }
+    canBePinned
+    isBotUser
+    isFederated
+    lastMessageTime
+    longTitle
+    otherMemberMris
+    pictureUpn
+    blockButtonText
+    hasFailedMessages
+    canBeMuted
+    canBeFavorited
+    favoriteIconSrc
+    __typename
+    id
+  }
+}

@@ -1,0 +1,23 @@
+query partial03Query {
+  chats {
+    longTitle
+    hideButtonText
+    canBeDiscarded
+    canBeFavorited
+    isOneOnOne
+    lastMessage {
+      type
+      threadType
+      __typename
+      id
+    }
+    members {
+      givenName
+      __typename
+      id
+    }
+    pinnedIconSrc
+    __typename
+    id
+  }
+}

@@ -1,0 +1,89 @@
+query operationXQuery {
+  chats {
+    ...operationChatFields @relay(mask: false)
+  }
+}
+
+fragment operationChatFields on Conversation {
+  __typename
+  id
+  title
+  isOneOnOne
+  lastMessage {
+    __typename
+    content
+    originalArrivalTime
+    imDisplayName
+    from
+    id
+
+    messageType
+    clientMessageId
+    imDisplayName
+    type
+    composeTime
+    containerId
+    parentMessageId
+    version
+    threadType
+  }
+  members {
+    ...operationUserFields @relay(mask: false)
+  }
+
+  # TODO mukav: Figure out why client resolvers are not working
+  isHighImportance
+  isMuted
+  isLastMessageFromMe
+  activeCallsCount  
+  datatid  
+  displayName  
+  hasActiveCalls  
+  hasFailedMessages  
+  otherMemberMris  
+  isSfB  
+  isNewChat  
+  isBotBlocked  
+  isBotUser  
+  isFederated  
+  isHidden  
+  pictureUpn  
+  pinnedIndex  
+  showAtMention  
+  showMarkers  
+  tooltipTitle  
+  longTitle  
+  pictureGroup  
+  lastMessageTime  
+  messagePreview  
+  messagePreviewAria  
+  isLastMessageText  
+  isMeeting  
+  plGroupKey  
+  hasActions  
+  canBeDiscarded  
+  canBotBeBlocked  
+  canBePinned  
+  canBeMuted  
+  canBeLeft  
+  canBeHidden  
+  canBeFavorited  
+  pinnedButtonText  
+  pinnedIconSrc  
+  favoriteButtonText  
+  favoriteIconSrc  
+  discardButtonText  
+  muteButtonText  
+  muteIconSrc  
+  blockButtonText  
+  hideButtonText  
+  hideIconSrc  
+  leaveButtonText
+}
+
+fragment operationUserFields on User {
+  __typename
+  id
+  displayName
+  givenName
+}
