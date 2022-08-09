@@ -1,7 +1,0 @@
-{
-    "src": "./examples/get-messages/",
-    "schema": "./examples/get-messages/schema.gql",
-    "language": "typescript",
-    "artifactDirectory": "./examples/get-messages/__artifacts__",
-    "exclude": ["**/__partials__/other/**"]
-}
