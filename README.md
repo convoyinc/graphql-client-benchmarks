@@ -1,5 +1,3 @@
-[![pages-build-deployment](https://github.com/Andycko/graphql-client-benchmarks/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/Andycko/graphql-client-benchmarks/actions/workflows/pages/pages-build-deployment)
-
 # GraphQL Client Benchmarks
 
 A benchmarking suite for GraphQL clients, with focus on their cache implementations.
