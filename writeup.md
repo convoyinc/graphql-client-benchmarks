@@ -2,6 +2,13 @@
 ## Intro
 A tool to benchmark the cache performance of various GraphQL clients in reading/writing/updating data in the cache. It uses the core API's of the GraphQL clients to meassure to achieve front-end framework agnostic results.
 
+## Experiment setup
+This section is to outline the conditions under which the benchmark was ran and achieved the results depicted below.
+- **OS**: macOS Monterey 12.5
+- **CPU**: 2.4 GHz 8-Core Intel Core i9
+- **GPU**: Intel UHD Graphics 630 1536 MB
+- **RAM**: 32 GB 2667 MHz DDR4
+- **Browser**: Google Chrome  - Version 103.0.5060.134 (Official Build) (x86_64)
 ## Goals
 The goal of this tool is to provide reliable and holistic data about cache performance that can drive key decisions while choosing a GraphQL client. It should provide a big enough variety of examples to be able to tailor decesions based on individual factors and use cases.
 
@@ -26,3 +33,6 @@ This benchmark is to be checked by the authors of the above mentioned GraphQL cl
 
 ### Memory
 In light of the previously mentioned findings we have decided that a memory meassurement would be a welcome addition to benchmark as Relay might be using more memory to support its fast response times.
+
+## Related work
+[Original benchmark tool](https://github.com/convoyinc/graphql-client-benchmarks)
