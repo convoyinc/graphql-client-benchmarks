@@ -25,14 +25,17 @@ The tool uses various query examples to run the benchmark. It has two built in q
 
 ## Findings
 ![Benchmark results](./results.png "Benchamrk results") 
-From the results of the benchmark we have found that generally throught different examples and tests the Relay client has been performing 10x faster throught the board. This raises questions about what are they doing better and what is stopping people from making Relay their first choice. One of the factors in decision making is definitelly ease of use, as Relay has a steeper learning curve compared to Apollo or others.
+From the results of the benchmark we have found that generally throught different examples and tests the Relay client has been performing 10x faster throughout the board. This raises questions about what are they doing better and what is stopping people from making Relay their first choice. One of the factors in decision making is definitelly ease of use, as Relay has a steeper learning curve compared to Apollo or others.
 
-## Future
+## Future Work
+### Experimental pre-normalized cache
+Based on the following [benchmark comparing GraphQL clients cache performance with and without data normalization](https://github.com/vladar/graphql-normalized) we have decided that it would be a worthy addition to test in the future whether removing the data-normalization step from the client provides significant performance improvements. This could be achieved by adding patches to both clients as the ability to process pre-normalized results is not yet implemented in the current versions at the time of writing this writeup. However, results achieved by this could provide significant evident for the authors of the frameworks to think about implementing such functionality. As far as we are concerned, Relay client has already started building such [experimental functionality](https://github.com/facebook/relay/blob/f663bc0a667413ac07c0673328e6457d93a9577a/packages/relay-runtime/store/RelayExperimentalGraphResponseTransform.js#L44-L47).
+### Memory
+In light of the previously mentioned findings we have decided that a memory meassurement would be a welcome addition to benchmark as Relay might be using more memory to support its fast response times.
 ### Reliability check
 This benchmark is to be checked by the authors of the above mentioned GraphQL clients to make sure that the usage of the clients' core API's is correct and that neither of the clients is favoured.
 
-### Memory
-In light of the previously mentioned findings we have decided that a memory meassurement would be a welcome addition to benchmark as Relay might be using more memory to support its fast response times.
 
 ## Related work
-[Original benchmark tool](https://github.com/convoyinc/graphql-client-benchmarks)
+- [Original benchmark tool](https://github.com/convoyinc/graphql-client-benchmarks)
+- [Benchmark comparing GraphQL clients cache performance with and without data normalization](https://github.com/vladar/graphql-normalized)
