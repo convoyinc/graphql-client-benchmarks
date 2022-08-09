@@ -1,6 +1,8 @@
+[![pages-build-deployment](https://github.com/Andycko/graphql-client-benchmarks/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/Andycko/graphql-client-benchmarks/actions/workflows/pages/pages-build-deployment)
 
 # Run without building in browser
 https://andycko.github.io/graphql-client-benchmarks/
+
 # Run locally (before new docs come)
 - run `yarn compile-ts`
 - run `yarn dev`
