@@ -1,8 +1,0 @@
-query operationQuery($userId: ID!) {
-  presence(userId: $userId) {
-    __typename
-    id
-    availability
-    activity
-  }
-}

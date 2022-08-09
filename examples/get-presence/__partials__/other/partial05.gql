@@ -1,7 +1,0 @@
-query partial05Query($userId: ID!) {
-  presence(userId: $userId) {
-    activity
-    __typename
-    id
-  }
-}

@@ -1,8 +1,0 @@
-{
-    "presence": {
-        "id": "e641897e-04ad-4bbb-9dc9-b9c975e62036",
-        "availability": "PresenceUnknown",
-        "activity": "PresenceUnknown",
-        "__typename": "Presence"
-    }
-}

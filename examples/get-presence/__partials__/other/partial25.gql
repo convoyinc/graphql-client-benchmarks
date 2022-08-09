@@ -1,8 +1,0 @@
-query partial25Query($userId: ID!) {
-  presence(userId: $userId) {
-    activity
-    availability
-    __typename
-    id
-  }
-}

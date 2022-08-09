@@ -1,7 +1,0 @@
-query partial01Query($userId: ID!) {
-  presence(userId: $userId) {
-    availability
-    __typename
-    id
-  }
-}
