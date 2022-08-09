@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -x
 
 # find dirs in examples dir and save them
 DIRECTORIES=$(find ./examples -type d -maxdepth 1 -not -path './examples')
