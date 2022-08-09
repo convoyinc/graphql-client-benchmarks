@@ -1,7 +1,0 @@
-{
-    "src": "./examples/chat-list/",
-    "schema": "./examples/chat-list/schema.gql",
-    "language": "typescript",
-    "artifactDirectory": "./examples/chat-list/__artifacts__",
-    "exclude": ["**/__partials__/other/**"]
-}
