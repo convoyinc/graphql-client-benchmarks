@@ -1,7 +1,0 @@
-{
-    "src": "./examples/get-reply-chains/",
-    "schema": "./examples/get-reply-chains/schema.gql",
-    "language": "typescript",
-    "artifactDirectory": "./examples/get-reply-chains/__artifacts__",
-    "exclude": ["**/__partials__/other/**"]
-}

@@ -15,7 +15,6 @@ import packageInfo from '@apollo/client/package.json';
 
 import { Client, Fragment, Observer, SingleExample, SingleRawExample } from '../src';
 import { ApolloFragmentExample } from './apollo-inmemory-resultcache';
-import examples from '../examples';
 
 class ApolloObserver implements Observer {
   private _mostRecentResult?: any = null;
@@ -108,16 +107,6 @@ export class ApolloInMemory extends Client {
       query: operation,
       variables,
     });
-  }
-
-  async normalize() {
-    // this input object is what I need from the above (write) function
-    // {
-    //   result: data --> examples.response
-    //   query: operation,
-    //   dataId: id || 'ROOT_QUERY',
-    //   variables
-    // }
   }
 
   observe({ operation, variables }: ApolloExample) {
