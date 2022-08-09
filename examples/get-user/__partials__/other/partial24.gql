@@ -1,7 +1,0 @@
-query partial24Query($userId: ID!) {
-  user(userId: $userId) {
-    displayName
-    id
-    __typename
-  }
-}

@@ -1,7 +1,0 @@
-query partial15Query($userId: ID!) {
-  user(userId: $userId) {
-    displayName
-    id
-    __typename
-  }
-}
