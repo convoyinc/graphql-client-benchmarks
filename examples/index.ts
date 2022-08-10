@@ -99,6 +99,4 @@ function isRawExample(value: any): value is RawExample {
   return value.title && value.operation && value.response && value.schema;
 }
 
-console.log('Examples', examples);
-
 export = examples;
