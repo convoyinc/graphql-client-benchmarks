@@ -46,12 +46,20 @@ const DEFAULT_CONFIG: Configuration = {
   targetRelativeMarginOfError: 5.0,
 };
 
+const customConfig: Configuration = {
+  verifyPasses: 0,
+  warmups: 0,
+  minSamples: 2,
+  maxDurationMs: 1 /* seconds */ * 1e3,
+  targetRelativeMarginOfError: 15.0,
+}
+
 export function runSuite(
   reporter: Reporter,
   benchmarkClasses: BenchmarkConstructor[],
   clientClasses: ClientConstructor[],
   rawExample: RawExample,
-  config: Configuration = DEFAULT_CONFIG,
+  config: Configuration = customConfig,
 ): SuitePromise {
   const context: Context = {
     reporter,

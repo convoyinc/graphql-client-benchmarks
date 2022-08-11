@@ -22,9 +22,9 @@ function polyfillNode() {
   require.extensions['.gql'] = function loadGraphQLDocument(module, filename) {
     module.exports = fs.readFileSync(filename, { encoding: 'utf-8' });
   };
-  require.extensions['.graphql.ts'] = function loadGraphQLDocument(module, filename) {
-    module.exports = fs.readFileSync(filename, { encoding: 'utf-8' });
-  };
+  // require.extensions['.graphql.js'] = function loadGraphQLDocument(module, filename) {
+  //   module.exports = {default: JSON.stringify(require(filename).default)};
+  // };
 }
 
 function polyfillBrowser() {

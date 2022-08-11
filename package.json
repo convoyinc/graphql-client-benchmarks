@@ -31,7 +31,7 @@
     "fast-stats": "^0.0.3",
     "graphql": "^16.5.0",
     "graphql-tag": "^2.12.6",
-    "ink": "^3.2.0",
+    "ink": "^0.5.0",
     "le-table": "^6.1.8",
     "lodash": "^4.17.10",
     "path-browserify": "^1.0.1",

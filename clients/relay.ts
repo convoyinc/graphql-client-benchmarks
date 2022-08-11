@@ -91,7 +91,7 @@ export class Relay extends Client {
     };
   }
 
-  async read({ operation }: RelayExample) {
+  async read({ operation }: RelayExample) {    
     const res = this._client.lookup(operation.fragment);
     return (!res.data || res.isMissingData) ? { data: null } : { data: res.data };
   }

@@ -6,10 +6,10 @@ import { RawExample, Fragment, restructurePartialExamples } from '../src';
 const exampleContext = require.context(
   '.',
   true,
-  /(metadata\.json|operation\.gql|response\.json|schema\.gql|relayArtifact\.graphql\.ts|fragment\.gql|variables\.json)$/,
+  /(metadata\.json|operation\.gql|response\.json|schema\.gql|relayArtifact\.graphql\.js|fragment\.gql|variables\.json)$/,
 );
 
-const partialContext = require.context('.', true, /(partial.+\.gql|partial.+Query\.graphql\.ts)$/);
+const partialContext = require.context('.', true, /(partial.+\.gql|partial.+Query\.graphql\.js)$/);
 
 const examplesByDirname: any = {};
 // Walk all asset files, and group them into examples (by dirname).
