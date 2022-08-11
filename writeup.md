@@ -10,13 +10,13 @@ This section is to outline the conditions under which the benchmark was run and 
 - **RAM**: 32 GB 2667 MHz DDR4
 - **Browser**: Google Chrome  - Version 103.0.5060.134 (Official Build) (x86_64)
 ## Goals
-The goal of this tool is to provide reliable and holistic data about cache performance that can drive key decisions while choosing a GraphQL client. It should provide a big enough variety of examples to be able to tailor decisions based on individual factors and use cases.
+The goal of this tool is to provide reliable and holistic data about cache performance that can drive key decisions while choosing a GraphQL client or contributing performance optimizations to existing clients. It should provide a big enough variety of examples to be able to tailor decisions based on individual factors and use cases. One of the main benefits of this benchmark is that it allows people working with GraphQL clients to explore how they behave with their specific scenarios (data size, query shape, etc).
 
 ## Current state
 ![Current benchmark tool interface](./interface.png "Current benchmark tool interface") 
 Currently, this tool has been upgraded to use the newest versions of GraphQL clients. Below is a description of the clients used by the tool and example queries tested.
 ### Clients
-At the moment, this benchmark is set up to work with two GraphQL clients - Apollo Client 3.8, and Relay 14.0. These are one of the most popular GraphQL clients, however, the benchmark is not only limited to them. New clients can be added without bigger effort. 
+At the moment, this benchmark is set up to work with two GraphQL clients - Apollo Client 3.6, and Relay 14.0. These are one of the most popular GraphQL clients, however, the benchmark is not only limited to them. New clients can be added without bigger effort. 
 
 Furthermore, the Apollo client can be seen twice in the benchmark and that is because we are testing it with and without the Result cache enabled. Result cache is one of the two parts of Apollo clients' cache which is used to memoize query responses and then provides more than 10x faster response times when an identical query is read in the future. However, this is a niche use case and therefore, we have decided to look at the difference in performance in all the use cases.
 
@@ -25,7 +25,9 @@ The tool uses various query examples to run the benchmark. It has two built-in q
 
 ## Findings
 ![Benchmark results](./results.png "Benchmark results") 
-From the results of the benchmark, we have found that generally through different examples and tests the Relay client has been performing 10x faster throughout the board. This raises questions about what are they doing better and what is stopping people from making Relay their first choice. One of the factors in decision-making is most probably ease of use, as Relay has a steeper learning curve compared to Apollo or others. To make sure that Relay is not taking an advantage of using more memory we have performed base testing, which proved that there is not a significant difference in the amount of used memory between the clients. 
+From the results of the benchmark, we have found that generally through different examples and tests the Relay client has been performing 10x faster throughout the board. This raises questions about what are they doing better and what is stopping people from making Relay their first choice. One of the factors in decision-making is most probably ease of use, as Relay has a steeper learning curve compared to Apollo or others. Furthemore, the need to precompile GraphQL artifacts in Relay might be an incovenience for some as well.
+
+To make sure that Relay is not taking an advantage of using more memory we have performed base testing, which proved that there is not a significant difference in the amount of used memory between the clients. 
 
 ## Future Work
 ### Experimental cache
