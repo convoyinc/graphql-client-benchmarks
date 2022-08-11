@@ -136,6 +136,16 @@ async function runClientBenchmark(
     subject: Subject.CLIENT_BENCHMARK,
     type: Type.START,
   });
+  
+  // Establish a memory baseline for the client
+  let heapUsedBase, heapTotalBase;
+  if (global.gc){
+    const { memoryUsage } = require("process")    
+    global.gc();
+    let { heapUsed, heapTotal } = memoryUsage()
+    heapUsedBase = heapUsed
+    heapTotalBase = heapTotal
+  }
 
   const client: Client = new ClientClass();
 
@@ -211,6 +221,8 @@ async function runClientBenchmark(
   // Iterations
 
   const stats = new Stats();
+  const heapUsedStats = new Stats();
+  const heapTotalStats = new Stats();
   const runStart = performanceNow();
   if (!context.canceled && !context.failure) {
     while (true) {
@@ -223,7 +235,7 @@ async function runClientBenchmark(
         type: Type.START,
       });
 
-      const duration = await runSingleBenchmarkPass(
+      const {duration, memoryUsage} = await runSingleBenchmarkPass(
         context,
         BenchmarkClass,
         ClientClass,
@@ -233,6 +245,11 @@ async function runClientBenchmark(
       if (typeof duration !== 'undefined') {
         stats.push(duration);
       }
+      if (typeof memoryUsage !== 'undefined') {
+        heapUsedStats.push(memoryUsage.heapUsed)
+        heapTotalStats.push(memoryUsage.heapTotal)
+      }
+
 
       reporter({
         ...eventCommon,
@@ -240,7 +257,7 @@ async function runClientBenchmark(
         phase: Phase.ITERATION,
         type: Type.END,
         duration,
-        stats: statsSummary(stats),
+        stats: statsSummary(stats, heapUsedStats, heapTotalStats, heapUsedBase, heapTotalBase),
         failure: context.failure,
       });
 
@@ -252,7 +269,7 @@ async function runClientBenchmark(
   await new Promise(resolve => setTimeout(resolve, 50));
 
   // Remove outliers.
-  const finalStats = statsSummary(stats.iqr());
+  const finalStats = statsSummary(stats.iqr(), heapUsedStats.iqr(), heapTotalStats.iqr(), heapUsedBase, heapTotalBase);
 
   reporter({
     ...eventCommon,
@@ -287,10 +304,23 @@ async function runSingleBenchmarkPass(
     const benchmark: Benchmark = new BenchmarkClass(new ClientClass(), example);
     await benchmark.setup();
 
+    // force gc in Node to have clear memory readings 
+    if (global.gc) {
+      global.gc();
+    }    
+
     const start = performanceNow();
     await benchmark.run();
     const duration = performanceNow() - start;
-  
+    
+    // force gc again and perform readigns
+    let memoryReadings;
+    if (global.gc){
+      const { memoryUsage } = require("process")    
+      global.gc();
+      memoryReadings = memoryUsage()      
+    }
+
     if (verify) {
       await benchmark.verify();
     }
@@ -299,7 +329,7 @@ async function runSingleBenchmarkPass(
     // Yield the run loop.
     await new Promise(resolve => setTimeout(resolve, 0));
 
-    return duration;
+    return {duration, memoryUsage: memoryReadings};
   } catch (error) {
     context.failure = { error, phase };
     console.log("ERROR: ",error);
@@ -311,7 +341,7 @@ function percentRelativeMarginOfError(stats: Stats) {
   return (stats.moe() / stats.amean()) * 100;
 }
 
-function statsSummary(stats: Stats): Event.ClientBenchmarkStats {
+function statsSummary(stats: Stats, heapUsedStats: Stats, heapTotalStats: Stats, heapUsedBase: number, heapTotalBase: number): Event.ClientBenchmarkStats {
   const [min, max] = stats.range();
   return {
     iterations: stats.length,
@@ -320,5 +350,11 @@ function statsSummary(stats: Stats): Event.ClientBenchmarkStats {
     max,
     marginOfError: stats.moe(),
     percentRelativeMarginOfError: percentRelativeMarginOfError(stats),
+    memoryUsage: {
+      heapUsed: heapUsedStats.amean(),
+      heapTotal: heapTotalStats.amean(),
+      heapUsedBase,
+      heapTotalBase
+    }
   };
 }

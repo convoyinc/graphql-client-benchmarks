@@ -7,7 +7,7 @@
   "homepage": "https://github.com/convoyinc/graphql-client-benchmarks",
   "bugs": "https://github.com/convoyinc/graphql-client-benchmarks/issues",
   "scripts": {
-    "cli": "node ./src/reporters/cli/entry.js",
+    "cli": "node --expose-gc ./src/reporters/cli/entry.js",
     "compile": "./scripts/compile.sh",
     "compile-artifacts": "./scripts/compile-artifacts.sh",
     "compile-ts": "./scripts/compile-ts.sh",

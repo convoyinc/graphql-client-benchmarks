@@ -66,8 +66,7 @@ export class SuiteSummary extends Component<Summary> {
         <Table.Cell hAlign="center" vAlign="middle" height={3}>
           <Color white bgRed>
             {' '}
-            Error during {result.phase}{' '}
-            { String(result.failure.error.message) }
+            Error during {result.phase} {String(result.failure.error.message)}
           </Color>
           {'\u200b'}
         </Table.Cell>
@@ -94,6 +93,17 @@ export class SuiteSummary extends Component<Summary> {
           {'\n'}
           {'\u200b'}
           count: {stats.iterations} range: {stats.min.toFixed(0)}-{stats.max.toFixed(0)}ms
+          {'\n'}
+          {'\u200b'}
+          memory:
+          {'\n'}
+          {'\u200b'}
+          -- Heap used DIFF: {Math.floor((stats.memoryUsage.heapUsed - stats.memoryUsage.heapUsedBase)/1000)}kB
+          {'\n'}
+          {'\u200b'}
+          {/* -- Heap Total DIFF: {Math.floor((stats.memoryUsage.heapTotal - stats.memoryUsage.heapTotalBase)/1000)}kB                
+          {'\n'}
+          {'\u200b'} */}
         </Color>
       </Table.Cell>
     );

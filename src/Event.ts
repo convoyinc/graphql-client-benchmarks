@@ -47,6 +47,7 @@ export namespace Event {
     max: number;
     marginOfError: number;
     percentRelativeMarginOfError: number;
+    memoryUsage?: any;
   }
 
   export interface Failure {
