@@ -49,7 +49,7 @@ export class SuiteSummary extends Component<Summary> {
 
     return benchmarks.map(benchmark => (
       <Table.Row>
-        <Table.Cell width={40} height={3} stretch={false}>
+        <Table.Cell width={40} height={5} stretch={false}>
           <Color blue> {benchmark.title} </Color>
         </Table.Cell>
         {clients.map(client => this._renderStats(benchmark.title, client.name))}
@@ -63,7 +63,7 @@ export class SuiteSummary extends Component<Summary> {
 
     if (result && result.failure) {
       return (
-        <Table.Cell hAlign="center" vAlign="middle" height={3}>
+        <Table.Cell hAlign="center" vAlign="middle" height={5}>
           <Color white bgRed>
             {' '}
             Error during {result.phase} {String(result.failure.error.message)}
@@ -75,7 +75,7 @@ export class SuiteSummary extends Component<Summary> {
       const status = result ? result.phase : 'pending';
 
       return (
-        <Table.Cell hAlign="center" vAlign="middle" height={3}>
+        <Table.Cell hAlign="center" vAlign="middle" height={5}>
           <Color dim>{status}…</Color>
         </Table.Cell>
       );
@@ -83,8 +83,8 @@ export class SuiteSummary extends Component<Summary> {
     const { complete, stats } = result;
 
     return (
-      <Table.Cell height={3}>
-        <Color dim={!complete}>
+      <Table.Cell height={5}>
+        <Color dim={!complete}>        
           {'\u200b'}
           mean: {stats.mean.toFixed(3)}ms ±{stats.marginOfError.toFixed(3)}ms
           {'\n'}
@@ -99,11 +99,9 @@ export class SuiteSummary extends Component<Summary> {
           {'\n'}
           {'\u200b'}
           -- Heap used DIFF: {Math.floor((stats.memoryUsage.heapUsed - stats.memoryUsage.heapUsedBase)/1000)}kB
-          {'\n'}
+          {/* {'\n'}
           {'\u200b'}
-          {/* -- Heap Total DIFF: {Math.floor((stats.memoryUsage.heapTotal - stats.memoryUsage.heapTotalBase)/1000)}kB                
-          {'\n'}
-          {'\u200b'} */}
+          -- Heap Total DIFF: {Math.floor((stats.memoryUsage.heapTotal - stats.memoryUsage.heapTotalBase)/1000)}kB                 */}
         </Color>
       </Table.Cell>
     );
