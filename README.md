@@ -1,4 +1,22 @@
 [![pages-build-deployment](https://github.com/Andycko/graphql-client-benchmarks/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/Andycko/graphql-client-benchmarks/actions/workflows/pages/pages-build-deployment)
+# Table of contents
+- [GraphQL Client Benchmarks](#graphql-client-benchmarks)
+  - [Intro](#intro)
+  - [Goals](#goals)
+  - [How does it work?](#how-does-it-work)
+    - [Running the benchmark](#running-the-benchmark)
+      - [Run without building in browser](#run-without-building-in-browser)
+      - [Run locally](#run-locally)
+        - [Web](#web)
+        - [CLI](#cli)
+  - [Customisation](#customisation)
+    - [Examples](#examples)
+    - [Environments](#environments)
+    - [Contributing & Advanced Use](#contributing--advanced-use)
+  - [Why testing result cache in Apollo](#why-testing-result-cache-in-apollo)
+  - [Benchmarks](#benchmarks)
+  - [Findings](#findings)
+  - [Future](#future)
 # GraphQL Client Benchmarks
 ## Intro
 A tool to benchmark the cache performance of various GraphQL clients in reading/writing/updating data in the cache. It uses the core APIs of the GraphQL clients to measure to achieve front-end framework agnostic results.
