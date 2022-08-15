@@ -73,7 +73,7 @@ export class SuiteSummaryCollector {
         });
       }
     } else if (event.subject === Subject.CLIENT_BENCHMARK && event.type === Type.END) {
-      this._updateBenchmarkResult(event, { complete: true, failure: event.failure });
+      this._updateBenchmarkResult(event, { complete: true, failure: event.failure });      
     } else if (event.subject === Subject.BENCHMARK && event.type === Type.END) {
       const { benchmark, clients } = event;
       const benchmarkResults = this._summary.results[benchmark.title];

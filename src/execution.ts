@@ -5,6 +5,7 @@ import { Benchmark, BenchmarkMetadata, BenchmarkConstructor } from './Benchmark'
 import { Client, ClientMetadata, ClientConstructor } from './Client';
 import { Event } from './Event';
 import { Example, RawExample } from './Example';
+import { existsSync, readFile, writeFile } from 'fs';
 
 const { Phase, Subject, Type } = Event;
 
@@ -52,7 +53,7 @@ const customConfig: Configuration = {
   minSamples: 2,
   maxDurationMs: 1 /* seconds */ * 1e3,
   targetRelativeMarginOfError: 15.0,
-}
+};
 
 export function runSuite(
   reporter: Reporter,
@@ -136,15 +137,15 @@ async function runClientBenchmark(
     subject: Subject.CLIENT_BENCHMARK,
     type: Type.START,
   });
-  
+
   // Establish a memory baseline for the client
   let heapUsedBase, heapTotalBase;
-  if (global.gc){
-    const { memoryUsage } = require("process")    
+  if (global.gc) {
+    const { memoryUsage } = require('process');
     global.gc();
-    let { heapUsed, heapTotal } = memoryUsage()
-    heapUsedBase = heapUsed
-    heapTotalBase = heapTotal
+    let { heapUsed, heapTotal } = memoryUsage();
+    heapUsedBase = heapUsed;
+    heapTotalBase = heapTotal;
   }
 
   const client: Client = new ClientClass();
@@ -162,12 +163,12 @@ async function runClientBenchmark(
   const verifyStart = performanceNow();
 
   let example: Example;
-  try {    
-    const rootExample = client.transformRawExample(rawExample);    
+  try {
+    const rootExample = client.transformRawExample(rawExample);
     example = {
       ...rootExample,
       title,
-      partials: partials.map(p => client.transformRawExample(p))
+      partials: partials.map(p => client.transformRawExample(p)),
     };
   } catch (error) {
     context.failure = { error, phase: Phase.VERIFY };
@@ -235,7 +236,7 @@ async function runClientBenchmark(
         type: Type.START,
       });
 
-      const {duration, memoryUsage} = await runSingleBenchmarkPass(
+      const { duration, memoryUsage } = await runSingleBenchmarkPass(
         context,
         BenchmarkClass,
         ClientClass,
@@ -246,10 +247,9 @@ async function runClientBenchmark(
         stats.push(duration);
       }
       if (typeof memoryUsage !== 'undefined') {
-        heapUsedStats.push(memoryUsage.heapUsed)
-        heapTotalStats.push(memoryUsage.heapTotal)
+        heapUsedStats.push(memoryUsage.heapUsed);
+        heapTotalStats.push(memoryUsage.heapTotal);
       }
-
 
       reporter({
         ...eventCommon,
@@ -266,10 +266,16 @@ async function runClientBenchmark(
   }
 
   // Brief pause to give the UI (and maybe GC) a chance to catch up.
-  await new Promise(resolve => setTimeout(resolve, 50));
+  await new Promise(resolve => setTimeout(resolve, 10));
 
   // Remove outliers.
-  const finalStats = statsSummary(stats.iqr(), heapUsedStats.iqr(), heapTotalStats.iqr(), heapUsedBase, heapTotalBase);
+  const finalStats = statsSummary(
+    stats.iqr(),
+    heapUsedStats.iqr(),
+    heapTotalStats.iqr(),
+    heapUsedBase,
+    heapTotalBase,
+  );
 
   reporter({
     ...eventCommon,
@@ -281,6 +287,9 @@ async function runClientBenchmark(
 
   // And we're done with the failure
   context.failure = undefined;
+
+  // save findings into json file, to chart it later
+  if (stats) saveData(client.constructor.name, stats.amean());
 
   return finalStats;
 }
@@ -304,21 +313,21 @@ async function runSingleBenchmarkPass(
     const benchmark: Benchmark = new BenchmarkClass(new ClientClass(), example);
     await benchmark.setup();
 
-    // force gc in Node to have clear memory readings 
+    // force gc in Node to have clear memory readings
     if (global.gc) {
       global.gc();
-    }    
+    }
 
     const start = performanceNow();
     await benchmark.run();
     const duration = performanceNow() - start;
-    
+
     // force gc again and perform readigns
     let memoryReadings;
-    if (global.gc){
-      const { memoryUsage } = require("process")    
+    if (global.gc) {
+      const { memoryUsage } = require('process');
       global.gc();
-      memoryReadings = memoryUsage()      
+      memoryReadings = memoryUsage();
     }
 
     if (verify) {
@@ -329,10 +338,10 @@ async function runSingleBenchmarkPass(
     // Yield the run loop.
     await new Promise(resolve => setTimeout(resolve, 0));
 
-    return {duration, memoryUsage: memoryReadings};
+    return { duration, memoryUsage: memoryReadings };
   } catch (error) {
     context.failure = { error, phase };
-    console.log("ERROR: ",error);
+    console.log('ERROR: ', error);
     return undefined;
   }
 }
@@ -341,7 +350,13 @@ function percentRelativeMarginOfError(stats: Stats) {
   return (stats.moe() / stats.amean()) * 100;
 }
 
-function statsSummary(stats: Stats, heapUsedStats: Stats, heapTotalStats: Stats, heapUsedBase: number, heapTotalBase: number): Event.ClientBenchmarkStats {
+function statsSummary(
+  stats: Stats,
+  heapUsedStats: Stats,
+  heapTotalStats: Stats,
+  heapUsedBase: number,
+  heapTotalBase: number,
+): Event.ClientBenchmarkStats {
   const [min, max] = stats.range();
   return {
     iterations: stats.length,
@@ -354,7 +369,34 @@ function statsSummary(stats: Stats, heapUsedStats: Stats, heapTotalStats: Stats,
       heapUsed: heapUsedStats.amean(),
       heapTotal: heapTotalStats.amean(),
       heapUsedBase,
-      heapTotalBase
-    }
+      heapTotalBase,
+    },
   };
+}
+
+export function saveData(name: string, stat: number) {
+  // read the file
+  readFile('./findings.json', { encoding: 'utf8', flag: 'a+' }, (err, data) => {
+    if (err) {
+      console.error(`Error while reading file: ${err}`);
+    }
+    const normalized = stat.toFixed(3);
+
+    let updatedData;
+    try {
+      // parse JSON string to JSON object
+      updatedData = JSON.parse(data);
+    } catch (error) {
+      updatedData = {};
+    }
+
+    // add a new record
+    if (name in updatedData) updatedData[name].push(normalized);
+    else updatedData[name] = [normalized];
+
+    // write new data back to the file
+    writeFile('./findings.json', JSON.stringify(updatedData, null, 2), err => {
+      if (err) console.log(`Error writing file: ${err}`);
+    });
+  });
 }

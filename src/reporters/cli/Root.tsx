@@ -41,7 +41,7 @@ export class Root extends Component<RootProps> {
     }
 
     if (!this._summary) return '';
-
+    
     return <SuiteSummary {...this._summary} />;
   }
 

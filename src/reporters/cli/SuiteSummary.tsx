@@ -5,7 +5,7 @@ import { Summary } from '../../reporting';
 
 export class SuiteSummary extends Component<Summary> {
   render() {
-    const { title } = this.props;
+    const { title, running, canceled } = this.props;
     return (
       <div>
         <Indent size={1}>
@@ -81,7 +81,7 @@ export class SuiteSummary extends Component<Summary> {
       );
     }
     const { complete, stats } = result;
-
+      
     return (
       <Table.Cell height={5}>
         <Color dim={!complete}>        
@@ -105,5 +105,10 @@ export class SuiteSummary extends Component<Summary> {
         </Color>
       </Table.Cell>
     );
+  }
+
+  writeData() {
+    const {results} = this.props
+    console.log(results)
   }
 }
