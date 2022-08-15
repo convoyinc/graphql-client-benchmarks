@@ -27,8 +27,13 @@ The tool uses various query examples to run the benchmark. It has two built-in q
 ![Benchmark results](./results.png "Benchmark results") 
 From the results of the benchmark, we have found that generally through different examples and tests the Relay client has been performing 10x faster throughout the board. This raises questions about what are they doing better and what is stopping people from making Relay their first choice. One of the factors in decision-making is most probably ease of use, as Relay has a steeper learning curve compared to Apollo or others. Furthemore, the need to precompile GraphQL artifacts in Relay might be an incovenience for some as well.
 
-To make sure that Relay is not taking an advantage of using more memory we have performed base testing, which proved that there is not a significant difference in the amount of used memory between the clients. 
+For a better interpretation of the findings we have aggregated data over 3 separate benchmark runs, calculated the mean runtime for every test and plotted the following chart. 
+![Benchmark results - Chart 1](./graph1.jpg "Benchmark results - Chart 1") 
 
+To provide a clearer image of the performance of the Relay client, we have also plotted the chart bellow which has its vertical axis limited to 30ms.
+![Benchmark results - Chart 2](./graph2.jpg "Benchmark results - Chart 2") 
+
+**Disclaimer:**  To make sure that Relay is not taking an advantage of using more memory we have performed base testing, which proved that there is not a significant difference in the amount of used memory between the clients. 
 ## Future Work
 ### Experimental cache
 This tool has the potential to be used by developers to test the performance and validity of their experimental cache builds from the prototyping phase all the way to release.
