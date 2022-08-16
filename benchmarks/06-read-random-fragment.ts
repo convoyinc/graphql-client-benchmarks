@@ -17,7 +17,7 @@ export default class RandomRead extends Benchmark {
     // Write to cache
     await this.client.write(this.example);
 
-    if ('fragmentPath' in this.example.fragment) {
+    if ('fragment' in this.example && this.example.fragment) {      
       // find all responses which match the fragmentPath, pick a random one
       // and save it
       const responsePool = this.example.fragment.fragmentPath
