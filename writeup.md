@@ -35,16 +35,14 @@ To provide a clearer image of the performance of the Relay client, we have also 
 
 **Disclaimer:**  To make sure that Relay is not taking an advantage of using more memory we have performed base testing, which proved that there is not a significant difference in the amount of used memory between the clients. 
 ## Future Work
+### Memory analysis
+As previously mentioned, the benchmark already possesses basic memory usage measurement, however, we believe that it would be a welcome addition for the benchmark to provide more elaborate memory analysis. This could be potentially the next step in the development of this tool as it will provide further important insight about the clients.
 ### Experimental cache
 This tool has the potential to be used by developers to test the performance and validity of their experimental cache builds from the prototyping phase all the way to release.
 #### Pre-normalized cache
 Based on the following [benchmark comparing GraphQL clients cache performance with and without data normalization](https://github.com/vladar/graphql-normalized) we have decided that it would be a worthy addition to test in the future whether removing the data-normalization step from the client provides significant performance improvements. This could be achieved by adding patches to both clients as the ability to process pre-normalized results is not yet implemented in the current versions at the time of writing this writeup. However, the results achieved by this could provide significant evidence for the authors of the frameworks to think about implementing such functionality. As far as we are concerned, the Relay client has already started building such [experimental functionality](https://github.com/facebook/relay/blob/f663bc0a667413ac07c0673328e6457d93a9577a/packages/relay-runtime/store/RelayExperimentalGraphResponseTransform.js#L44-L47).
-
-### Memory
-As previously mentioned, the benchmark already possesses basic memory usage measurement, however, we believe that it might be a welcome addition for the benchmark to provide more elaborate memory measurement data.
 ### Reliability check
 This benchmark is to be checked by the authors of the above-mentioned GraphQL clients to make sure that the usage of the client's core APIs is correct and that neither of the clients is favoured.
-
 
 ## Related work
 - [Original benchmark tool](https://github.com/convoyinc/graphql-client-benchmarks)
