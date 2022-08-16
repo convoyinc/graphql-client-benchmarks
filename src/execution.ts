@@ -5,7 +5,6 @@ import { Benchmark, BenchmarkMetadata, BenchmarkConstructor } from './Benchmark'
 import { Client, ClientMetadata, ClientConstructor } from './Client';
 import { Event } from './Event';
 import { Example, RawExample } from './Example';
-import { existsSync, readFile, writeFile } from 'fs';
 
 const { Phase, Subject, Type } = Event;
 
@@ -48,7 +47,7 @@ const DEFAULT_CONFIG: Configuration = {
 };
 
 const customConfig: Configuration = {
-  verifyPasses: 0,
+  verifyPasses: 1,
   warmups: 0,
   minSamples: 2,
   maxDurationMs: 1 /* seconds */ * 1e3,
@@ -375,10 +374,15 @@ function statsSummary(
 }
 
 export function saveData(name: string, stat: number) {
+  if (!global.gc)
+    return
+  
+  const { readFile, writeFile } = require('fs');
   // read the file
   readFile('./findings.json', { encoding: 'utf8', flag: 'a+' }, (err, data) => {
     if (err) {
       console.error(`Error while reading file: ${err}`);
+      return
     }
     const normalized = stat.toFixed(3);
 
@@ -397,6 +401,7 @@ export function saveData(name: string, stat: number) {
     // write new data back to the file
     writeFile('./findings.json', JSON.stringify(updatedData, null, 2), err => {
       if (err) console.log(`Error writing file: ${err}`);
+      return
     });
   });
 }
