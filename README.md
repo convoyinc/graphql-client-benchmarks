@@ -51,7 +51,7 @@ The benchmarks are designed to be run in three different ways:
 
 - **web**: The [web reporter](./src/reporters/web) provides a UI for running the baked in examples, as well as an editor to enter your own (This functionality has been suspended due to the pre-runtime relay compilation step).
 - **cli**: The [CLI reporter](./src/reporters/cli) provides a UI for running the baked in examples on a terminal. It also performs basic memory meassurements, where it meassures the base heap usage before the client initialization and then meassures it again after the test has run. GC is manually performed before meassurement to make sure we have clean data.
-- **api**: The benchmark suite and runner is also exposed via [an API](./src/index.ts) that you can use to run the examples, or provide your own. The primary entry point is [`runSuite`](./src/execution.ts). Take a look at the web or cli reporters for an idea of how to run it, and you'll probably want to leverage the [console reporter](./src/reporters/console) to get started.
+- **api**: The benchmark suite and runner is also exposed via [an API](./src/index.ts) that you can use to run the examples, or provide your own. The primary entry point is [`runSuite`](./src/execution.ts). Furthemore after every run a `findings.json` file is created which holds the resulting data to be used in a statistical analysis. Take a look at the web or cli reporters for an idea of how to run it, and you'll probably want to leverage the [console reporter](./src/reporters/console) to get started.
 
 ### Contributing & Advanced Use
 For any other case, you'll want to check out the repository, or depend on the package directly.
