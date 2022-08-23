@@ -1,0 +1,26 @@
+query partial03Query {
+  organization(login: "facebook") {
+    repositories(first: 10) {
+      nodes {
+        createdAt
+        issues(first: 10, states: OPEN) {
+          nodes {
+            createdAt
+            __typename
+            id
+            repository {
+              __typename
+              id
+            }
+          }
+          __typename
+        }
+        __typename
+        id
+      }
+      __typename
+    }
+    __typename
+    id
+  }
+}

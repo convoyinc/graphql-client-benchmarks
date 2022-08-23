@@ -1,15 +1,18 @@
 import {
-  getOperationDefinitionOrDie,
+  getOperationDefinition,
   getFragmentDefinitions,
   createFragmentMap,
   FragmentMap,
-} from 'apollo-utilities';
+  // eslint-disable-next-line import/no-internal-modules
+} from '@apollo/client/utilities';
 import fastRandom from 'fast-random';
 import graphqlTag from 'graphql-tag';
+import { v4 as uuidv4 } from 'uuid';
+import _ from 'lodash';
 import { print } from 'graphql/language/printer'; // eslint-disable-line import/no-internal-modules
-import { DocumentNode, SelectionSetNode, FieldNode, OperationDefinitionNode } from 'graphql';
+import { DocumentNode, SelectionSetNode, FieldNode, OperationDefinitionNode, Kind } from 'graphql';
 
-import { SingleRawExample } from './Example';
+import { RawExample, SingleExample, SingleRawExample } from './Example';
 
 // Use a consistent seed for consistent partials for a given query.
 const SEED = 12345678;
@@ -25,26 +28,28 @@ interface FieldSetNode extends SelectionSetNode {
 }
 
 /**
- * Create 8 partial instances of the operation, by selecting a linearly
+ * Create NUM_EXAMPLES partial instances of the input query by selecting a linearly
  * decreasing % of fields.
  *
- * E.g. the first example will have 100% of the fields, the second 87.5%, and so
- * on.
+ * This is different to the generatePartialExamples(example: SingleRawExample): SingleRawExample[] function bc it works with string queries instead of operations.
+ *
+ * @param {string} query - GraphQL query in a string format
+ * @returns {string[]} - An array of modified partial GraphQL queries in a string format
  */
-export function generatePartialExamples(example: SingleRawExample): SingleRawExample[] {
-  const document = graphqlTag(example.operation);
-  const operation = getOperationDefinitionOrDie(document);
+export function generatePartialExamplesFromQuery(query: string): string[] {
+  const document = graphqlTag(query);
+  const operation = getOperationDefinition(document);
   const leaves = findLeafPaths(document);
   const random = fastRandom(SEED);
 
-  const partials: SingleRawExample[] = [];
+  const partials: string[] = [];
   for (let i = NUM_EXAMPLES; i > 0; i--) {
     const selectPercent = i / NUM_EXAMPLES;
     const partialLeaves = selectLeaves(random, leaves, selectPercent);
     const partialSelectionSet = selectionSetFromLeaves(partialLeaves);
     const partialOperation: OperationDefinitionNode = {
-      kind: 'OperationDefinition',
-      name: { kind: 'Name', value: `partial${i}` },
+      kind: Kind.OPERATION_DEFINITION,
+      name: { kind: Kind.NAME, value: `partial${i < 10 ? '0' + String(i) : i}Query` },
       selectionSet: partialSelectionSet,
       directives: operation.directives,
       operation: operation.operation,
@@ -52,19 +57,41 @@ export function generatePartialExamples(example: SingleRawExample): SingleRawExa
       variableDefinitions: operation.variableDefinitions,
     };
 
+    partials.push(print(partialOperation));
+  }
+
+  return partials;
+}
+
+/**
+ * Take the object of raw partials from the example provided and structure them in a nice way so the tool can work with them
+ *
+ * @param {RawExample} example - example created from the root query which has the operation, variables and response
+ * @returns {SingleRawExample[]}
+ */
+export function restructurePartialExamples(example: RawExample): SingleRawExample[] {
+  const partials: SingleRawExample[] = [];
+  Object.values(example.rawPartials).forEach(partial => {
+    const document = graphqlTag(partial.operation);
+    const leaves = findLeafPaths(document);
+    const partialSelectionSet = selectionSetFromLeaves(leaves);
+
     partials.push({
-      operation: print(partialOperation),
+      operation: partial.operation,
+      relayArtifact: partial.relayArtifact,
       variables: example.variables,
       response: reduceResponse(partialSelectionSet, example.response),
     });
-  }
+  });
+
+  partials.sort().reverse();
 
   return partials;
 }
 
 function findLeafPaths(document: DocumentNode) {
   const leaves: FieldNode[][] = [];
-  const operation = getOperationDefinitionOrDie(document);
+  const operation = getOperationDefinition(document);
   const fragmentMap = createFragmentMap(getFragmentDefinitions(document));
   walkSelectionSetForLeaves(leaves, fragmentMap, operation.selectionSet, []);
 
@@ -128,7 +155,7 @@ function selectionSetFromLeaves(leaves: FieldNode[][]): FieldSetNode {
     mergeLeaf(selections, leaf);
   }
 
-  return { kind: 'SelectionSet', selections };
+  return { kind: Kind.SELECTION_SET, selections };
 }
 
 function mergeLeaf(selections: OnlyFieldNode[], leaf: FieldNode[]) {
@@ -143,13 +170,13 @@ function mergeLeaf(selections: OnlyFieldNode[], leaf: FieldNode[]) {
   let ancestor = selections.find(s => s.name.value === top.name.value);
   if (!ancestor) {
     ancestor = {
-      kind: 'Field',
+      kind: Kind.FIELD,
       alias: top.alias,
       name: top.name,
       arguments: top.arguments,
       directives: top.directives,
       selectionSet: {
-        kind: 'SelectionSet',
+        kind: Kind.SELECTION_SET,
         selections: [],
       },
     };
@@ -177,4 +204,43 @@ function reduceResponse(selectionSet: FieldSetNode, response: object | any[]) {
   }
 
   return reducedResponse;
+}
+
+
+export function populateResponse(response: object) {
+  if (!response) return response;
+  const modifiedResponse = _.cloneDeep(response);
+
+  // Create a Queue and add our initial node in it
+  let q = [];
+  let explored = new Set();
+  q.push(modifiedResponse);
+
+  // Mark the first node as explored explored.
+  explored.add(modifiedResponse);
+
+  // We'll continue till our queue gets empty
+  while (!(q.length == 0)) {
+    let t = q.shift();
+
+    // Check every node we visit if it is an array, and if yes, populate
+    // with 100 copies of first item.
+    if (Array.isArray(t) && t.length > 0) {
+      for (let x = t.length; x < 100; x++) {
+        t.push(_.cloneDeep({ ...t[0], id: uuidv4() }));
+      }
+    }
+
+    // 1. In the edges object, we search for nodes this node is directly connected to.
+    // 2. We filter out the nodes that have already been explored.
+    // 3. Then we mark each unexplored node as explored and add it to the queue.
+    let edges = typeof t == 'object' ? Object.keys(t) : t;
+    Array.isArray(edges) &&
+      edges.filter(n => !explored.has(t[n])).forEach(n => {
+        explored.add(t[n]);
+        q.push(t[n]);
+      });
+  }
+
+  return modifiedResponse;
 }

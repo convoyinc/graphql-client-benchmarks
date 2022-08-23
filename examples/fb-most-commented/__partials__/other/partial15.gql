@@ -1,0 +1,26 @@
+query partial15Query {
+  organization(login: "facebook") {
+    repositories(first: 50) {
+      nodes {
+        createdAt
+        issues(first: 50, states: OPEN, orderBy: {field: COMMENTS, direction: DESC}) {
+          nodes {
+            title
+            createdAt
+            comments {
+              totalCount
+              __typename
+            }
+            __typename
+            id
+          }
+          __typename
+        }
+        homepageUrl
+        __typename
+      }
+      __typename
+    }
+    __typename
+  }
+}

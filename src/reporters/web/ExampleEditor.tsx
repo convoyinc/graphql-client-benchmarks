@@ -1,7 +1,7 @@
 import * as dapper from '@convoy/dapper';
 
 import { RawExample } from '../../Example';
-import { generatePartialExamples } from '../../partial';
+// import { generatePartialExamples } from '../../partial';
 
 // Values double as display strings.
 enum Section {
@@ -211,7 +211,9 @@ export class ExampleEditor extends React.PureComponent<EditorProps, EditorState>
     if (!example) return;
 
     try {
-      example.partials = generatePartialExamples(example);
+      // example.partials = generatePartialExamples(example);
+      // TODO-UPGRADE: diasble this for our purposes
+      throw new Error("The query editing service is currently disabled");
     } catch (error) {
       alert(`Unable to process your query/response/schema: ${error.message}`);
       return;

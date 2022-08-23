@@ -1,3 +1,4 @@
 {
-  "title": "Cyclic Response (GitHub Issues)"
+  "title": "Cyclic Response (GitHub Issues)",
+  "fragmentPath": "organization.repositories.nodes"
 }

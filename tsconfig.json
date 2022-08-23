@@ -13,7 +13,7 @@
       "dom",
       "esnext.asynciterable"
     ],
-    "module": "commonjs",
-    "target": "es2017"
+    "module": "CommonJS",
+    "target": "es2017",
   }
 }

@@ -25,14 +25,13 @@ export async function main() {
     suitePromise.cancel();
   }
 
-  const stopRendering = render(<Root registerEventHandler={registerEventHandler} onExit={onExit} />);
-  suitePromise = runSuite(reporter, benchmarks, clients, example);
+  const stopRendering = render(<Root registerEventHandler={registerEventHandler} onExit={onExit} />);  
+  const canceled = await runSuite(reporter, benchmarks, clients, example);  
 
-  const canceled = await suitePromise;
   // Give it a chance to render a final time.
   await new Promise(resolve => setTimeout(resolve, 0));
 
-  if (!canceled) {
+  if (canceled != undefined) {
     stopRendering();
   }
 }

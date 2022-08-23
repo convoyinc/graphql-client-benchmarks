@@ -9,6 +9,7 @@ import { SuiteSummary } from './SuiteSummary';
 import { RawExample } from '../../Example';
 import { ExampleEditor } from './ExampleEditor';
 
+
 // Update at a lowish framerate to give priority to benchmarks.
 const UPDATE_DELAY_MS = 50;
 
@@ -187,7 +188,7 @@ export class Root extends React.PureComponent<{}, RootState> {
   private _renderExampleSelector() {
     const { examples, exampleIndex } = this.state;
     return (
-      <select className={this.styles.exampleSelector} value={exampleIndex} onChange={this._onChangeExample}>
+      <select className={this.styles.exampleSelectorContainer} value={exampleIndex} onChange={this._onChangeExample}>
         {examples.map((example, index) => (
           <option value={index} key={index}>
             {example.title}
@@ -244,7 +245,7 @@ export class Root extends React.PureComponent<{}, RootState> {
     this._suitePromise = runSuite(this._collector.consumeEvent, benchmarks, clients, example);
     this._suitePromise.then(canceled => {
       this.setState({
-        runState: canceled ? RunState.CANCELED : RunState.COMPLETE,
+        runState: canceled !== null ? RunState.CANCELED : RunState.COMPLETE,
       });
       this._suitePromise = null;
     });

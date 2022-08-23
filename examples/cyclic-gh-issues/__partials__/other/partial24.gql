@@ -1,0 +1,28 @@
+query partial24Query {
+  organization(login: "facebook") {
+    repositories(first: 10) {
+      nodes {
+        homepageUrl
+        issues(first: 10, states: OPEN) {
+          nodes {
+            title
+            createdAt
+            __typename
+            id
+            repository {
+              __typename
+              id
+            }
+          }
+          __typename
+        }
+        createdAt
+        __typename
+        id
+      }
+      __typename
+    }
+    __typename
+    id
+  }
+}

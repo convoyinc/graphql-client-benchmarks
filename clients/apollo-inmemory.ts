@@ -1,17 +1,24 @@
+// Updated imports
 import graphqlTag from 'graphql-tag';
-import { ApolloCache } from 'apollo-cache';
-import { ApolloClient, ObservableQuery } from 'apollo-client';
+import {
+  ApolloClient,
+  ApolloLink,
+  ApolloCache,
+  InMemoryCache,
+  ObservableQuery,
+  ObservableSubscription,
+  DocumentNode,
 // eslint-disable-next-line import/no-internal-modules
-import { Subscription } from 'apollo-client/util/Observable';
-import { ApolloLink } from 'apollo-link';
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import packageInfo from 'apollo-cache-inmemory/package.json';
+} from '@apollo/client/core';
+// eslint-disable-next-line import/no-internal-modules
+import packageInfo from '@apollo/client/package.json';
 
-import { Client, Observer, SingleExample, SingleRawExample } from '../src';
+import { Client, Fragment, Observer, SingleExample, SingleRawExample } from '../src';
+import { ApolloFragmentExample } from './apollo-inmemory-resultcache';
 
 class ApolloObserver implements Observer {
   private _mostRecentResult?: any = null;
-  private _subscription?: Subscription;
+  private _subscription?: ObservableSubscription;
   constructor(observable: ObservableQuery<any>) {
     this._subscription = observable.subscribe(
       ({ data }) => {
@@ -33,8 +40,10 @@ class ApolloObserver implements Observer {
 }
 
 interface ApolloExample extends SingleExample {
-  operation: any;
+  operation: DocumentNode;
   variables?: object;
+  id?: string;
+  fragment?: ApolloFragmentExample;
 }
 
 export class ApolloInMemory extends Client {
@@ -44,7 +53,7 @@ export class ApolloInMemory extends Client {
 
   apollo: ApolloClient<any>;
 
-  constructor(cache: ApolloCache<any> = new InMemoryCache()) {
+  constructor(cache: ApolloCache<any> = new InMemoryCache({resultCaching: false})) {
     super();
 
     this.apollo = new ApolloClient({
@@ -54,8 +63,17 @@ export class ApolloInMemory extends Client {
   }
 
   transformRawExample(rawExample: SingleRawExample): ApolloExample {
+    let fragment: ApolloFragmentExample; 
+    
+    if ("fragment" in rawExample) 
+      fragment = {
+        operation: graphqlTag(rawExample.fragment.operation),
+        fragmentPath: rawExample.fragment.fragmentPath
+      }      
+    
     return {
       operation: graphqlTag(rawExample.operation),
+      fragment,
       response: rawExample.response,
       variables: rawExample.variables,
     };
@@ -65,6 +83,17 @@ export class ApolloInMemory extends Client {
     try {
       return {
         data: this.apollo.readQuery({ query: operation, variables }),
+      };
+    } catch (error) {
+      // Apollo throws if data is missing
+      return null;
+    }
+  }
+
+  async readFragment({ fragment , variables }: ApolloExample, fragmentInstance: Fragment) {
+    try {      
+      return {
+        data: this.apollo.readFragment({ id: `${fragmentInstance.typename}:${fragmentInstance.id}`, fragment: fragment.operation, variables }),
       };
     } catch (error) {
       // Apollo throws if data is missing

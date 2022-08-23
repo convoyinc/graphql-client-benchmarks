@@ -1,6 +1,5 @@
-import { ApolloHermes } from './apollo-hermes';
-import { ApolloHermesStrict } from './apollo-hermes-strict';
 import { ApolloInMemory } from './apollo-inmemory';
+import { ApolloInMemoryResultCache } from './apollo-inmemory-resultcache';
 import { Relay } from './relay';
 
-export = [ApolloHermes, ApolloHermesStrict, ApolloInMemory, Relay];
+export = [ApolloInMemory, ApolloInMemoryResultCache, Relay];

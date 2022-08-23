@@ -1,28 +1,36 @@
-query cyclicGitHubIssues {
+query operationXQuery {
   organization(login: "facebook") {
+    ...operationXOrg @relay(mask: false)
+  }
+}
+
+fragment operationXOrg on Organization {
+  __typename
+  id
+  repositories(first: 10) {
     __typename
-    id
-    repositories(first: 10) {
+    nodes {
       __typename
-      nodes {
+      id
+      createdAt      
+      ...operationXHomepage @relay(mask: false)
+      issues(first: 10, states: OPEN) {
         __typename
-        id
-        createdAt
-        homepageUrl
-        issues(first: 10, states: OPEN) {
+        nodes {
           __typename
-          nodes {
+          id
+          createdAt
+          title
+          repository {
             __typename
             id
-            createdAt
-            title
-            repository {
-              __typename
-              id
-            }
           }
         }
       }
     }
   }
+}
+
+fragment operationXHomepage on Repository {
+  homepageUrl
 }

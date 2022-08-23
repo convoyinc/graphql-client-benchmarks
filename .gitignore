@@ -5,6 +5,13 @@
 node_modules/
 npm-*.log*
 yarn-*.log*
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
 
 # TypeScript
 *.js
@@ -15,3 +22,9 @@ yarn-*.log*
 
 # Webpack
 dist/
+
+# VS Code
+.vscode/
+
+# Statistics
+findings.json

@@ -1,0 +1,22 @@
+query partial01Query {
+  organization(login: "facebook") {
+    repositories(first: 50) {
+      nodes {
+        issues(first: 50, states: OPEN, orderBy: {field: COMMENTS, direction: DESC}) {
+          nodes {
+            title
+            __typename
+            id
+            comments {
+              __typename
+            }
+          }
+          __typename
+        }
+        __typename
+      }
+      __typename
+    }
+    __typename
+  }
+}
