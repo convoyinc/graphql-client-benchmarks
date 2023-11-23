@@ -5,18 +5,19 @@ __metadata:
   version: 6
   cacheKey: 8
 
-"@apollo/client@npm:^3.6.8":
-  version: 3.6.8
-  resolution: "@apollo/client@npm:3.6.8"
+"@apollo/client@npm:^3.8.7":
+  version: 3.8.7
+  resolution: "@apollo/client@npm:3.8.7"
   dependencies:
     "@graphql-typed-document-node/core": ^3.1.1
-    "@wry/context": ^0.6.0
-    "@wry/equality": ^0.5.0
-    "@wry/trie": ^0.3.0
+    "@wry/context": ^0.7.3
+    "@wry/equality": ^0.5.6
+    "@wry/trie": ^0.4.3
     graphql-tag: ^2.12.6
     hoist-non-react-statics: ^3.3.2
-    optimism: ^0.16.1
+    optimism: ^0.17.5
     prop-types: ^15.7.2
+    response-iterator: ^0.2.6
     symbol-observable: ^4.0.0
     ts-invariant: ^0.10.3
     tslib: ^2.3.0
@@ -25,15 +26,18 @@ __metadata:
     graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
     graphql-ws: ^5.5.5
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
     subscriptions-transport-ws: ^0.9.0 || ^0.11.0
   peerDependenciesMeta:
     graphql-ws:
       optional: true
     react:
       optional: true
+    react-dom:
+      optional: true
     subscriptions-transport-ws:
       optional: true
-  checksum: c29dd3f68952cf17229b72d39188e0d93ea672ae1e1615f90b1d95ba7553c6a03bc16dede7c13b23c60e9863d7ff183f56d62b233a761127000f544a490f63f7
+  checksum: b4343d7f64481d6e4ee9f3ff461cfdab669728104b7540a4fff885232335fed55920e76de823ee4f2fa711aa72afbbf1cfe29601eacabb3577dc1f3ee82046d4
   languageName: node
   linkType: hard
 
@@ -401,20 +405,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/relay-compiler@npm:^8.0.3":
-  version: 8.0.3
-  resolution: "@types/relay-compiler@npm:8.0.3"
-  dependencies:
-    "@types/relay-runtime": "*"
-    graphql: ^14.5.3
-  checksum: 846be0d6ae9378d2f520e46cbda5d31badf674b1a8e045135fbf2a477bd41e4aadff37a524628ba8d96bba0f8b17983ce049265e604e740722b1f6d45d9d913d
+"@types/relay-compiler@npm:^14.0.3":
+  version: 14.0.3
+  resolution: "@types/relay-compiler@npm:14.0.3"
+  checksum: 9551de2270beb43ff144dd5743ed130514db2e27be6b54cad24a3931bc2915650059f922d1e4341a708b76bbe448d66b7eff0f48fb698c3f3abb657e18001263
   languageName: node
   linkType: hard
 
-"@types/relay-runtime@npm:*, @types/relay-runtime@npm:^13.0.3":
-  version: 13.0.3
-  resolution: "@types/relay-runtime@npm:13.0.3"
-  checksum: b6151ddc74bd306873a854afaa651f972c7ca6e7685c9fe791f32f3ce1cff56e30c64db457abfa8488957af6a8e3462a5097d4b87ae2076d25e0ec59a115ac5f
+"@types/relay-runtime@npm:^14.1.17":
+  version: 14.1.17
+  resolution: "@types/relay-runtime@npm:14.1.17"
+  checksum: c0bd36ba4107faf8f450cf46b6ff53b488dc2ab66ce1c47904d31510539b4a5b25a8559313ea4334f3dea169488b6d75f9a0655d7cf8e6405da2d35c5fb4febf
   languageName: node
   linkType: hard
 
@@ -660,30 +661,30 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wry/context@npm:^0.6.0":
-  version: 0.6.1
-  resolution: "@wry/context@npm:0.6.1"
+"@wry/context@npm:^0.7.0, @wry/context@npm:^0.7.3":
+  version: 0.7.4
+  resolution: "@wry/context@npm:0.7.4"
   dependencies:
     tslib: ^2.3.0
-  checksum: 4187863175061a8f54659f124e3e5c202e010b2b65bf886b4de9777ce8a45cf183b6f6d88f1f537002cbcbea52103a2eadc337d494106490def10acaf9522c5d
+  checksum: 9bc8c30a31f9c7d36b616e89daa9280c03d196576a4f9fef800e9bd5de9434ba70216322faeeacc7ef1ab95f59185599d702538114045df729a5ceea50aef4e2
   languageName: node
   linkType: hard
 
-"@wry/equality@npm:^0.5.0":
-  version: 0.5.2
-  resolution: "@wry/equality@npm:0.5.2"
+"@wry/equality@npm:^0.5.6":
+  version: 0.5.7
+  resolution: "@wry/equality@npm:0.5.7"
   dependencies:
     tslib: ^2.3.0
-  checksum: 19a01043a0583663924ed9f4ea109818b9b4cb540877ca75ea49545689f54c6bfc69e725a8b3b129a2ac15ea368fd40bbb94c22e7a5e4ec370f7c4697e64b8b1
+  checksum: 892f262fae362df80f199b12658ea6966949539d4a3a50c1acf00d94a367d673a38f8efa1abcb726ae9e5cc5e62fce50c540c70f797b7c8a2c4308b401dfd903
   languageName: node
   linkType: hard
 
-"@wry/trie@npm:^0.3.0":
-  version: 0.3.1
-  resolution: "@wry/trie@npm:0.3.1"
+"@wry/trie@npm:^0.4.3":
+  version: 0.4.3
+  resolution: "@wry/trie@npm:0.4.3"
   dependencies:
     tslib: ^2.3.0
-  checksum: c3f6b200aefc64b5cd9976b7ed0dd22852eb826d835c5dccd3d03ef788d258af50ca64e8de654e5f812134afdb9d5890f334c8de2276d0dca1751785694654f9
+  checksum: 106e021125cfafd22250a6631a0438a6a3debae7bd73f6db87fe42aa0757fe67693db0dfbe200ae1f60ba608c3e09ddb8a4e2b3527d56ed0a7e02aa0ee4c94e1
   languageName: node
   linkType: hard
 
@@ -3253,7 +3254,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "graphql-client-benchmarks@workspace:."
   dependencies:
-    "@apollo/client": ^3.6.8
+    "@apollo/client": ^3.8.7
     "@convoy/dapper": ^2.0.104
     "@types/bluebird": ^3.5.36
     "@types/chroma-js": ^1.3.5
@@ -3261,8 +3262,8 @@ __metadata:
     "@types/lodash": ^4.14.110
     "@types/node": ^12.12.22
     "@types/react": ^18.0.14
-    "@types/relay-compiler": ^8.0.3
-    "@types/relay-runtime": ^13.0.3
+    "@types/relay-compiler": ^14.0.3
+    "@types/relay-runtime": ^14.1.17
     "@types/webpack-env": ^1.17.0
     babel-plugin-relay: ^14.0.0
     bluebird: ^3.7.2
@@ -3287,8 +3288,8 @@ __metadata:
     raw-loader: ^0.5.1
     react: ^17.0.2
     react-dom: ^17.0.2
-    relay-compiler: ^14.0.0
-    relay-runtime: ^14.0.0
+    relay-compiler: ^16.0.0
+    relay-runtime: ^16.0.0
     require-context: "github:bojidar-bg/require-context"
     shelljs: ^0.8.0
     source-map-support: ^0.5.6
@@ -3323,15 +3324,6 @@ __metadata:
   version: 15.3.0
   resolution: "graphql@npm:15.3.0"
   checksum: df18079e3a1ecb875821a71531b74eb1e6099ec1fb8d6e79faff4b43561cb23acbb80c9e05845292e08b6321d507e55dc7d5a60d72cdd093720a6f0f00983d1e
-  languageName: node
-  linkType: hard
-
-"graphql@npm:^14.5.3":
-  version: 14.7.0
-  resolution: "graphql@npm:14.7.0"
-  dependencies:
-    iterall: ^1.2.2
-  checksum: e5f4e60799421a573904f390e1ec0aa76360f751688dbbe62e9c35baa0d3727c8d59a659bfc524f126dffe3518da87fd8ecaa78c94fd5c0fe4e035c670745242
   languageName: node
   linkType: hard
 
@@ -4210,13 +4202,6 @@ __metadata:
   version: 3.0.1
   resolution: "isobject@npm:3.0.1"
   checksum: db85c4c970ce30693676487cca0e61da2ca34e8d4967c2e1309143ff910c207133a969f9e4ddb2dc6aba670aabce4e0e307146c310350b298e74a31f7d464703
-  languageName: node
-  linkType: hard
-
-"iterall@npm:^1.2.2":
-  version: 1.3.0
-  resolution: "iterall@npm:1.3.0"
-  checksum: c78b99678f8c99be488cca7f33e4acca9b72c1326e050afbaf023f086e55619ee466af0464af94a0cb3f292e60cb5bac53a8fd86bd4249ecad26e09f17bb158b
   languageName: node
   linkType: hard
 
@@ -5197,13 +5182,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"optimism@npm:^0.16.1":
-  version: 0.16.1
-  resolution: "optimism@npm:0.16.1"
+"optimism@npm:^0.17.5":
+  version: 0.17.5
+  resolution: "optimism@npm:0.17.5"
   dependencies:
-    "@wry/context": ^0.6.0
-    "@wry/trie": ^0.3.0
-  checksum: 7506a3e5e37b8945059ffacd68039e920ad121aab3eeff27483b7a8b594f6f694f2a3b61a198aeecc43b81753d35c8cb32b7f662d2b5e2d2449fe7068da678e1
+    "@wry/context": ^0.7.0
+    "@wry/trie": ^0.4.3
+    tslib: ^2.3.0
+  checksum: 5990217d989e9857dc523a64cb6e5a9205eae68c7acac78f7dde8fbe50045d0f11ca8068cdbb51b1eae15510d96ad593a99cf98c6f86c41d1b6f90e54956ff11
   languageName: node
   linkType: hard
 
@@ -5892,23 +5878,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"relay-compiler@npm:^14.0.0":
-  version: 14.0.0
-  resolution: "relay-compiler@npm:14.0.0"
+"relay-compiler@npm:^16.0.0":
+  version: 16.0.0
+  resolution: "relay-compiler@npm:16.0.0"
   bin:
     relay-compiler: cli.js
-  checksum: 3ff56e2b2337085023b16b7444ba62b67bacb9d82691cd0bc6fe456548efdbf8125bff7e086ba277fd9af1aa55deb28372be7cea9b40e2b13ecc56f194c2e3f8
+  checksum: 887fdb27f01f6abb9b0640a808618429da9cd5b12b87a5bd655916b790347499f7cafa21cf668f9c62ca70ff4aded863caf4611c5cb5d55712cac57fe0d72e42
   languageName: node
   linkType: hard
 
-"relay-runtime@npm:^14.0.0":
-  version: 14.0.0
-  resolution: "relay-runtime@npm:14.0.0"
+"relay-runtime@npm:^16.0.0":
+  version: 16.0.0
+  resolution: "relay-runtime@npm:16.0.0"
   dependencies:
     "@babel/runtime": ^7.0.0
     fbjs: ^3.0.2
     invariant: ^2.2.4
-  checksum: 5226f3dcf878ddf843c4248199021b679504668320e35b700237c6ae9ff0ead2710c9099f855cff0e840e14e78c5159f7a9c132a9096ad0cb32986837dcf75a0
+  checksum: 2769cb364db0d1106d777e676138c12ec0bfaee373f47d5569d72eb1bf49107dd07d02d5f3a196ce58a5becf01a4a5a8324a40059e9e923d18eb86b634e14207
   languageName: node
   linkType: hard
 
@@ -6075,6 +6061,13 @@ __metadata:
   bin:
     resolve: bin/resolve
   checksum: 5656f4d0bedcf8eb52685c1abdf8fbe73a1603bb1160a24d716e27a57f6cecbe2432ff9c89c2bd57542c3a7b9d14b1882b73bfe2e9d7849c9a4c0b8b39f02b8b
+  languageName: node
+  linkType: hard
+
+"response-iterator@npm:^0.2.6":
+  version: 0.2.6
+  resolution: "response-iterator@npm:0.2.6"
+  checksum: b0db3c0665a0d698d65512951de9623c086b9c84ce015a76076d4bd0bf733779601d0b41f0931d16ae38132fba29e1ce291c1f8e6550fc32daaa2dc3ab4f338d
   languageName: node
   linkType: hard
 

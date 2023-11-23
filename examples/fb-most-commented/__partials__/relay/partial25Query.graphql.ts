@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<1605728b7784d2e55f240a3a02b711ee>>
+ * @generated SignedSource<<ffc947a5f89061c2554e1c33829477c0>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,7 +9,7 @@
 // @ts-nocheck
 
 import { ConcreteRequest, Query } from 'relay-runtime';
-export type partial25Query$variables = {};
+export type partial25Query$variables = Record<PropertyKey, never>;
 export type partial25Query$data = {
   readonly organization: {
     readonly __typename: "Organization";
@@ -18,7 +18,7 @@ export type partial25Query$data = {
       readonly nodes: ReadonlyArray<{
         readonly __typename: "Repository";
         readonly createdAt: any;
-        readonly homepageUrl: any | null;
+        readonly homepageUrl: any | null | undefined;
         readonly issues: {
           readonly __typename: "IssueConnection";
           readonly nodes: ReadonlyArray<{
@@ -30,11 +30,11 @@ export type partial25Query$data = {
             readonly createdAt: any;
             readonly id: string;
             readonly title: string;
-          } | null> | null;
+          } | null | undefined> | null | undefined;
         };
-      } | null> | null;
+      } | null | undefined> | null | undefined;
     };
-  } | null;
+  } | null | undefined;
 };
 export type partial25Query = {
   response: partial25Query$data;

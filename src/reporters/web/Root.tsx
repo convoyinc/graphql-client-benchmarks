@@ -101,7 +101,7 @@ const STYLES = dapper.compile({
   },
   summary: {
     $canceled: {
-      opacity: 0.5,
+      // opacity: 0.5,
     },
   },
 });

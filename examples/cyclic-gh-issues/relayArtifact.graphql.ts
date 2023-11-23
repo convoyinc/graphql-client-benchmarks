@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<31c5a2ea7db697b062996e77c065c790>>
+ * @generated SignedSource<<258dd56e0cccae66fe6b65fc3fec63f0>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,7 +9,7 @@
 // @ts-nocheck
 
 import { ConcreteRequest, Query } from 'relay-runtime';
-export type operationXQuery$variables = {};
+export type operationXQuery$variables = Record<PropertyKey, never>;
 export type operationXQuery$data = {
   readonly organization: {
     readonly __typename: "Organization";
@@ -19,7 +19,7 @@ export type operationXQuery$data = {
       readonly nodes: ReadonlyArray<{
         readonly __typename: "Repository";
         readonly createdAt: any;
-        readonly homepageUrl: any | null;
+        readonly homepageUrl: any | null | undefined;
         readonly id: string;
         readonly issues: {
           readonly __typename: "IssueConnection";
@@ -32,11 +32,11 @@ export type operationXQuery$data = {
               readonly id: string;
             };
             readonly title: string;
-          } | null> | null;
+          } | null | undefined> | null | undefined;
         };
-      } | null> | null;
+      } | null | undefined> | null | undefined;
     };
-  } | null;
+  } | null | undefined;
 };
 export type operationXQuery = {
   response: operationXQuery$data;

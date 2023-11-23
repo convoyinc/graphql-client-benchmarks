@@ -25,6 +25,8 @@ dist/
 
 # VS Code
 .vscode/
+.DS_Store/
+.idea/
 
 # Statistics
 findings.json

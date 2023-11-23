@@ -1,6 +1,6 @@
 import packageInfo from 'relay-runtime/package.json';
 
-import type { 
+import type {
   Snapshot,
   Disposable,
   OperationDescriptor,
@@ -44,7 +44,7 @@ class RelayObserver implements Observer {
 }
 
 interface RelayFragmentExample extends Omit<RawFragment, "operation"> {
-  operation: OperationDescriptor;  
+  operation: OperationDescriptor;
 }
 
 interface RelayExample extends SingleExample {
@@ -70,18 +70,18 @@ export class Relay extends Client {
     const request = getRequest(rawExample.relayArtifact);
     const operation = createOperationDescriptor(request, rawExample.variables);
 
-    let fragment: RelayFragmentExample; 
+    let fragment: RelayFragmentExample;
     if ("fragment" in rawExample) {
       const fragmentOwnerRequest = getRequest(rawExample.fragment.ownerRelayArtifact);
       const fragmentOwnerOperation = createOperationDescriptor(fragmentOwnerRequest, rawExample.variables)
-      
+
       fragment = {
         operation: fragmentOwnerOperation,
         relayArtifact: rawExample.fragment.relayArtifact,
         fragmentPath: rawExample.fragment.fragmentPath
-      }     
+      }
     }
-    
+
     return {
       operation,
       response: rawExample.response,
@@ -91,11 +91,11 @@ export class Relay extends Client {
     };
   }
 
-  async read({ operation }: RelayExample) {    
+  async read({ operation }: RelayExample) {
     const res = this._client.lookup(operation.fragment);
     return (!res.data || res.isMissingData) ? { data: null } : { data: res.data };
   }
-  
+
   async readFragment({ fragment, variables }: RelayExample, fragmentInstance: Fragment): Promise<ReadResult<object>> {
     const selector = createReaderSelector(fragment.relayArtifact, fragmentInstance.id, variables, fragment.operation.request)
     const res = this._client.lookup(selector);

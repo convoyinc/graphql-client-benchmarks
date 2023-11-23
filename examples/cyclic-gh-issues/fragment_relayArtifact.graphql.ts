@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<06f703496cf18b7c5af499ed86fe8dfc>>
+ * @generated SignedSource<<4908e43637747c50fc342fd0810844a8>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -13,7 +13,7 @@ import { FragmentRefs } from "relay-runtime";
 export type fragmentRepository$data = {
   readonly __typename: "Repository";
   readonly createdAt: any;
-  readonly homepageUrl: any | null;
+  readonly homepageUrl: any | null | undefined;
   readonly id: string;
   readonly issues: {
     readonly __typename: "IssueConnection";
@@ -26,7 +26,7 @@ export type fragmentRepository$data = {
         readonly id: string;
       };
       readonly title: string;
-    } | null> | null;
+    } | null | undefined> | null | undefined;
   };
   readonly " $fragmentType": "fragmentRepository";
 };
