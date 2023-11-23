@@ -2,7 +2,7 @@
   "name": "graphql-client-benchmarks",
   "description": "A benchmarking suite for GraphQL clients, with focus on their cache implementations",
   "license": "Apache-2.0",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "repository": "convoyinc/graphql-client-benchmarks",
   "homepage": "https://github.com/convoyinc/graphql-client-benchmarks",
   "bugs": "https://github.com/convoyinc/graphql-client-benchmarks/issues",
